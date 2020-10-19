@@ -1,4 +1,4 @@
-package com.main.tryitdiet;
+package com.example.tryitdiet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

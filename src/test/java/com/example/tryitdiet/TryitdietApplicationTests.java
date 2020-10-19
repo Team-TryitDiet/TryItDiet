@@ -1,4 +1,4 @@
-package com.main.tryitdiet;
+package com.example.tryitdiet;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
