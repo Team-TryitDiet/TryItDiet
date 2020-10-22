@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // Login Configuration
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/") // when they successfully log in, redirect to /posts
+                .defaultSuccessUrl("/profile") // when they successfully log in, redirect to /posts
                 .permitAll()
                 // Logout Configuration
                 .and()
