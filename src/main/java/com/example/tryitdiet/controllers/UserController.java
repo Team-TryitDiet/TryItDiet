@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
+
     public UserController(UserRepository userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
     }
+
     @GetMapping("/")
 //    @ResponseBody
     public String welcome() {
@@ -22,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute User user){
+    public String register(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userRepo.save(user);
@@ -30,13 +32,13 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showRegisterPage(Model model){
+    public String showRegisterPage(Model model) {
         model.addAttribute("user", new User());
         return "users/register";
     }
 
     @GetMapping("/login")
-    public String showLoginPage(){
+    public String showLoginPage() {
         return "users/login";
     }
 
@@ -45,6 +47,7 @@ public class UserController {
         model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "users/profile";
     }
+
 
     @PostMapping("/user/edit")
     public String editUserInformation(@ModelAttribute User user){
