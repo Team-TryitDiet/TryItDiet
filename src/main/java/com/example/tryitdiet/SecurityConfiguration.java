@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     // Override what happens when specific HTTP pages are loaded / requests are made / etc
     @Override
-    protected void configure(HttpSecurity http) {
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 // Login Configuration
                 .formLogin()
@@ -48,6 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout") // we set a parameter 'logout', so we can display a message to the user
+                // Pages that can be viewed by anyone
                 .and()
                 .authorizeRequests()
                 .antMatchers("/") // Another Neat Tool matcher - if someone hits these Urls in their browser they are allowed to view

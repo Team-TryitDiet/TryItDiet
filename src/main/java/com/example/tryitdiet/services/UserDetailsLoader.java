@@ -2,6 +2,7 @@ package com.example.tryitdiet.services;
 
 import com.example.tryitdiet.models.User;
 import com.example.tryitdiet.models.UserWithRoles;
+import com.example.tryitdiet.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
