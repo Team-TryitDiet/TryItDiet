@@ -1,10 +1,32 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create Ad</title>
+    <div th:replace="partials/head :: head"/>
 </head>
 <body>
+<!--<header th:replace="partials/header :: header"/>-->
+<nav th:replace="partials/navbar :: navbar"/>
 
+<h1>Create an account</h1>
+<form th:action="@{/register}" method="POST" th:object="${user}">
+    <label for="username">Username</label>
+    <input id="username" th:field="*{username}" />
+
+    <label for="email">Email</label>
+    <input id="email" th:field="*{email}" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" th:field="*{password}" />
+
+    <label for="phone_number">Phone Number</label>
+    <input id="phone_number" value="optional" th:field="*{phone_number}" />
+
+    <input value="Sign me up!" type="submit" />
+</form>
+<footer th:replace="partials/footer :: footer"/>
+<div th:replace="partials/scripts :: scripts"/>
 </body>
 </html>
