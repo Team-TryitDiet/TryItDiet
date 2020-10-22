@@ -1,5 +1,6 @@
+package com.example.tryitdiet.models;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -21,14 +22,14 @@ public class User {
     @Column(nullable = true, length = 12)
     private String phone_number;
 
-    @Column(nullable = false)
-    private boolean is_admin;
+//    @Column(nullable = false)
+//    private boolean is_admin;
 
     @Column(nullable = false)
     private boolean is_banned;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Post> posts;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//    private List<Post> posts;
 
 }
 
