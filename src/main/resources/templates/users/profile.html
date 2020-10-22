@@ -1,10 +1,24 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create Ad</title>
+    <div th:replace="partials/head :: head"/>
 </head>
 <body>
+<!--<header th:replace="partials/header :: header"/>-->
+<nav th:replace="partials/navbar :: navbar"/>
 
+
+<h1>Welcome to <span th:text="${user.username}"></span>'s Profile Page</h1>
+<!--    <label for="username">Username</label>-->
+<!--    <input id="username" name="username" />-->
+<!--    <label for="password">Password</label>-->
+<!--    <input id="password" type="password" name="password" />-->
+
+</form>
+<footer th:replace="partials/footer :: footer"/>
+<div th:replace="partials/scripts :: scripts"/>
 </body>
 </html>
