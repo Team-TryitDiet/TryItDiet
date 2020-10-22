@@ -46,4 +46,10 @@ public class UserController {
         return "users/profile";
     }
 
+    @PostMapping("/user/edit")
+    public String editUserInformation(@ModelAttribute User user){
+        userRepo.save(user);
+        return "redirect:/profile";
+    }
+
 }
