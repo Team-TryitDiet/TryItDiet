@@ -1,7 +1,7 @@
 package com.example.tryitdiet.controllers;
-
 import com.example.tryitdiet.models.User;
 import com.example.tryitdiet.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,18 +42,9 @@ public class UserController {
         return "users/login";
     }
 
-    @PostMapping("/user/{id}")
-    public String profilePage(@PathVariable long id, Model model) {
-        model.addAttribute("user", userRepo.getOne(id));
+    @GetMapping("/profile")
+    public String profilePage( Model model){
+        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "users/profile";
     }
-
-
-
-
-
-
-
-
-
 }

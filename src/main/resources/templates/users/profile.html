@@ -10,21 +10,13 @@
 <!--<header th:replace="partials/header :: header"/>-->
 <nav th:replace="partials/navbar :: navbar"/>
 
-<h1>Your Profile</h1>
-<form th:action="@{/profile}" method="POST" th:object="${user}">
+<h1>Welcome to <span th:text="${user.username}"></span>'s Profile Page</h1>
 <!--    <label for="username">Username</label>-->
-<!--    <input id="username" th:field="*{username}" />-->
-
-<!--    <label for="email">Email</label>-->
-<!--    <input id="email" th:field="*{email}" />-->
-
+<!--    <input id="username" name="username" />-->
 <!--    <label for="password">Password</label>-->
-<!--    <input id="password" type="password" th:field="*{password}" />-->
+<!--    <input id="password" type="password" name="password" />-->
 
-<!--    <label for="phone_number">Phone Number</label>-->
-<!--    <input id="phone_number" value="optional" th:field="*{phone_number}" />-->
 
-<!--    <input value="Sign me up!" type="submit" />-->
 </form>
 <footer th:replace="partials/footer :: footer"/>
 <div th:replace="partials/scripts :: scripts"/>
