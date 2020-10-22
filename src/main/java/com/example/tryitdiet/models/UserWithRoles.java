@@ -27,15 +27,7 @@ public class UserWithRoles extends User implements UserDetails {
         // no roles will be returned. none.
     }
 
-    @Override
-    public String getPassword() {
-        return null;
-    }
 
-    @Override
-    public String getUsername() {
-        return null;
-    }
 
     // Override the UserDetails methods, and have them available here, with our pre-determined values
     @Override
