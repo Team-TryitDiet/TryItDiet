@@ -1,6 +1,21 @@
-body {
+body, html {
     height: 100%;
     width: 100%;
-    background-image: url("./img/coconut-art.jpg");
+
+}
+
+.bg {
+    background-image: url("../img/coconut-art.jpg");
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.foot {
+    background-color: #E5B3C0;
+    color: #360036;
+}
+
+a:link  {
+    color: #360036;
 }
