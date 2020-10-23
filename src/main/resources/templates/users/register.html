@@ -12,6 +12,7 @@
 
 <h1>Create an account</h1>
 <form th:action="@{/register}" method="POST" th:object="${user}">
+    <input type="text" th:field="*{id}" style="display: none;">
     <label for="username">Username</label>
     <input id="username" th:field="*{username}" />
 
@@ -19,10 +20,13 @@
     <input id="email" th:field="*{email}" />
 
     <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+    <input id="password" name="password" type="password" th:field="*{password}" />
 
-    <label for="phone_number">Phone Number</label>
-    <input id="phone_number" value="optional" th:field="*{phone_number}" />
+    <label for="confirmPassword">Confirm the Password</label>
+    <input id="confirmPassword" name="confirmPassword" type="password"/>
+
+    <label for="phone_number">Phone Number:(optional) ***-***-****</label>
+    <input id="phone_number"  th:field="*{phone_number}" />
 
     <input value="Sign me up!" type="submit" />
 </form>
