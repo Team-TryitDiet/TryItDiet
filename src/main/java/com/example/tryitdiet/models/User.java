@@ -1,6 +1,7 @@
 package com.example.tryitdiet.models;
 
 import com.example.tryitdiet.models.Post;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,10 +14,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100,unique = true)
     private String username;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 255,unique = true)
     private String email;
 
     @Column(nullable = false, length = 255)
@@ -26,9 +27,11 @@ public class User {
     private String phone_number;
 
     @Column(nullable = false)
+    @ColumnDefault("false")
     private boolean is_admin;
 
     @Column(nullable = false)
+    @ColumnDefault("false")
     private boolean is_banned;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
