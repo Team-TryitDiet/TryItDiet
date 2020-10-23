@@ -24,11 +24,21 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute User user) {
+    public String register(@ModelAttribute User user,@RequestParam(name="confirmPassword") String confirmPassword, @RequestParam(name="password") String password) {
+        if (!password.equals(confirmPassword)) {
+            return "users/register";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        userRepo.save(user);
-        return "redirect:/login";
+        if(user.getId()==0){
+            userRepo.save(user);
+            return "redirect:/login";
+        }else {
+            userRepo.save(user);
+            return "users/profile";
+        }
+
+
     }
 
     @GetMapping("/register")
@@ -47,4 +57,12 @@ public class UserController {
         model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "users/profile";
     }
+
+
+    @GetMapping("/user/edit")
+    public String editUserInformation(@ModelAttribute User user,Model model){
+        model.addAttribute("user",(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        return "users/register";
+    }
+
 }
