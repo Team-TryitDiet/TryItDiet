@@ -39,25 +39,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                // Login Configuration
+                /** Login Configuration **/
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/profile") // when they successfully log in, redirect to /posts
                 .permitAll()
-                // Logout Configuration
+                /** Logout Configuration **/
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout") // we set a parameter 'logout', so we can display a message to the user
-                // Pages that can be viewed by anyone
+                /** Pages that can be viewed by anyone **/
                 .and()
                 .authorizeRequests()
                 .antMatchers("/") // Another Neat Tool matcher - if someone hits these Urls in their browser they are allowed to view
                 .permitAll() // like a catch-all
-                ;
-
-//        .and()
-//                .authorizeRequests()
-//                .antMatchers("/posts/register") // pages that we DO want users to be logged in to view/access
-//                .authenticated() // for the previously mentioned Another Neat Tool Matched URL patterns, users should be authenticated to access them
+                /** Pages that can be viewed by anyone **/
+                .and()
+                .authorizeRequests()
+                .antMatchers("/posts/create") // pages that we DO want users to be logged in to view/access
+                .authenticated(); // for the previously mentioned Another Neat Tool Matched URL patterns, users should be authenticated to access them
     }
 }

@@ -34,8 +34,8 @@ public class User {
     @ColumnDefault("false")
     private boolean is_banned;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-//    private List<Post> posts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
 
 

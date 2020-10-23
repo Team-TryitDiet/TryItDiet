@@ -18,7 +18,6 @@ public class UserController {
     }
 
     @GetMapping("/")
-//    @ResponseBody
     public String welcome() {
         return "index";
     }
@@ -62,5 +61,6 @@ public class UserController {
         model.addAttribute("user",(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "users/register";
     }
+
 
 }
