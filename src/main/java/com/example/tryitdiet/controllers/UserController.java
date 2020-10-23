@@ -16,7 +16,6 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
     @GetMapping("/")
-//    @ResponseBody
     public String welcome() {
         return "index";
     }
@@ -45,10 +44,4 @@ public class UserController {
         model.addAttribute("user", userRepo.getOne(id));
         return "users/profile";
     }
-
-
-
-
-
-
 }
