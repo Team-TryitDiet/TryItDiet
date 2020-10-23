@@ -1,6 +1,6 @@
 package com.example.tryitdiet.models;
 
-import com.example.tryitdiet.models.Post;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -37,6 +37,10 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
+    private List<Comment> comments;
+
 
 
     public User() {
@@ -60,8 +64,19 @@ public class User {
         this.phone_number = phone_number;
         this.is_admin = is_admin;
         this.is_banned = is_banned;
+        this.posts = posts;
     }
-
+    public User(long id, String username, String email, String password, String phone_number, boolean is_admin, boolean is_banned, List<Post> posts, List<Comment> comments) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phone_number = phone_number;
+        this.is_admin = is_admin;
+        this.is_banned = is_banned;
+        this.posts = posts;
+        this.comments = comments;
+    }
 
     public long getId() {
         return id;
@@ -118,12 +133,13 @@ public class User {
     public void setIs_banned(boolean is_banned) {
         this.is_banned = is_banned;
     }
-//    public List<Post> getPosts() {
-//        return posts;
-//    }
-//
-//    public void setPosts(List<Post> posts) {
-//        this.posts = posts;
-//    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 }
 

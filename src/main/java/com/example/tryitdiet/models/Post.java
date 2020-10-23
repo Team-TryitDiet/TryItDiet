@@ -2,6 +2,7 @@ package com.example.tryitdiet.models;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="posts")
@@ -25,8 +26,12 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Comment> comments;
+
     // Default Constructor
     public Post() {}
+
 
     // Constructor
     public Post(long id, String title, Date date, String description) {
@@ -34,6 +39,23 @@ public class Post {
         this.title = title;
         this.date = date;
         this.description = description;
+    }
+
+    public Post(long id, String title, String description, Date date, User user, List<Comment> comments) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.user = user;
+        this.comments = comments;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public long getId() {
