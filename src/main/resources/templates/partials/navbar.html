@@ -15,7 +15,7 @@
                         <a class="nav-link" href="#"></a>
 
                     </li>
-
+<!-- Beginning of the drop down menu-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                   Diets
@@ -35,27 +35,16 @@
                         </ul>
                     </li>
 
-
-<!--                    This drop down for navbar is straight from the bootstrap website-->
-
-                    <!--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>-->
-
-
-
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Try it!</a>-->
-<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Posts</a>
+                    </li>
+
+                    <!-- If the user is not logged in (anonymous to the site), display the login form and register button -->
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
                     </li>
 
                     <li class="nav-item">
