@@ -1,9 +1,11 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <standard_links th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tryit Diet</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/">Tryit Diet</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -11,36 +13,61 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    <li>
+<!--                    <li>
                         <a class="nav-link active" aria-current="page" href="/register">Register</a>
                     </li>
                     <li>
                         <a class="nav-link active" aria-current="page" href="/login">Login</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="#"></a>
 
                     </li>
-
+                    <!-- Beginning of the drop down menu-->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                  Diets
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Diets
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="diets/dairy-free">Dairy Free</a></li>
+                            <li><a class="dropdown-item" href="diets/gluten-free">Gluten-Free</a></li>
+                            <li><a class="dropdown-item" href="diets/high-protein">High-Protein</a></li>
+                            <li><a class="dropdown-item" href="diets/keto">Keto</a></li>
+                            <li><a class="dropdown-item" href="diets/paleo">Paleo</a></li>
+                            <li><a class="dropdown-item" href="diets/pescatarian">Pescatarian</a></li>
+                            <li><a class="dropdown-item" href="diets/mediterranean">Mediterranean</a></li>
+                            <li><a class="dropdown-item" href="diets/vegan">Vegan</a></li>
+                            <li><a class="dropdown-item" href="diets/vegetarian">Vegetarian</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Try it!</a>
+                        <a class="nav-link active" aria-current="page" href="#">Posts</a>
+                    </li>
+
+                    <!-- If the user is not logged in (anonymous to the site), display the login form and register button -->
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+
+                    <!-- If the user is already logged in / authenticated, display the logout button (form) -->
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                        </form>
                     </li>
                 </ul>
                 <form class="d-flex">
                     <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-
                 </form>
 
             </div>
