@@ -37,8 +37,6 @@ public class UserController {
             userRepo.save(user);
             return "users/profile";
         }
-
-
     }
 
     @GetMapping("/register")
