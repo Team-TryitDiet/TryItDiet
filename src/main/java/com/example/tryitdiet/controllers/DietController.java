@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DietController {
 
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "users/login";
+    @GetMapping("/diets/dairy-free")
+    public String showDairyFreePage() {
+        return "diets/dairy-free";
     }
 }
