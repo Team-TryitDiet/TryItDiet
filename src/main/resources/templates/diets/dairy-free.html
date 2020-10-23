@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link th:replace="partials/head :: head"/>
+    <link rel="stylesheet" th:href="@{/css/dairy-free.css}">
+</head>
+<body class="bg">
+<nav th:replace="partials/navbar :: navbar"></nav>
+<main class="container-fluid">
+    <h1 class="justify-content-center">TryIt Diet</h1>
+</main>
+<footer th:replace="partials/footer :: footer"></footer>
+<scripts th:replace="partials/scripts :: scripts"></scripts>
+</body>
+</html>
