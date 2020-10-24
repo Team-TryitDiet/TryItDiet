@@ -18,7 +18,6 @@ public class UserController {
     }
 
     @GetMapping("/")
-//    @ResponseBody
     public String welcome() {
         return "index";
     }
