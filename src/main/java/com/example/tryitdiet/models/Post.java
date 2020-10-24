@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name="posts")
+@Table(name = "posts")
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private long id;
 
     @Column(nullable = false, length = 250)
@@ -25,8 +26,13 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User user;
 
+    // Set relationship between Post and Recipe
+    @OneToOne(cascade = CascadeType.ALL)
+    private Recipe recipe;
+
     // Default Constructor
-    public Post() {}
+    public Post() {
+    }
 
     // Constructor
     public Post(long id, String title, Date date, String description) {
@@ -74,5 +80,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 }
