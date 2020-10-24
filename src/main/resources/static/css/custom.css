@@ -155,6 +155,52 @@
 {
     background-color: #ea4c89
 }
+
+/*Beginning of unique logo colors*/
+
+.navsiz {
+    font-size: xx-large;
+}
+.navfont{
+    font-family: 'Marck Script', cursive;
+}
+
+.dair {
+    color: #aa00aa;
+}
+
+.glut {
+    color: #784B92;
+}
+
+.hp {
+    color: #0F4880;
+}
+
+.ket {
+    color: #008040;
+}
+
+.pal {
+    color: #76cb55;
+}
+
+.pesc {
+    color: #feed00;
+}
+
+.medit {
+    color: #ffa600;
+}
+
+.vega {
+    color:  #fd8626;
+}
+
+.vegit {
+    color: #f63b3f;
+}
+
 @media (max-width:767px)
 {
     .social-icons li.title

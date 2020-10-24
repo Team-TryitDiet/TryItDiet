@@ -3,14 +3,16 @@
 <standard_links th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Tryit Diet</a>
+            <a class="navbar-brand navfont navsiz" href="/">
+                <span class="dair">T</span><span class="glut">r</span><span class="hp">y</span><span class="ket">i</span><span class="medit">t</span>
+                <span class="pal"> D</span><span class="pesc">i</span><span class="vega">e</span><span class="vegit">t</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item navsiz">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
 <!--                    <li>
@@ -24,7 +26,7 @@
 
                     </li>
                     <!-- Beginning of the drop down menu-->
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown navsiz">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-expanded="false">
                             Diets
@@ -46,20 +48,20 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item navsiz">
                         <a class="nav-link active" aria-current="page" href="#">Posts</a>
                     </li>
 
                     <!-- If the user is not logged in (anonymous to the site), display the login form and register button -->
-                    <li sec:authorize="isAnonymous()" class="nav-item">
+                    <li sec:authorize="isAnonymous()" class="nav-item navsiz">
                         <a class="nav-link" href="/register">Register</a>
                     </li>
-                    <li sec:authorize="isAnonymous()" class="nav-item">
+                    <li sec:authorize="isAnonymous()" class="nav-item navsiz">
                         <a class="nav-link" href="/login">Login</a>
                     </li>
 
                     <!-- If the user is already logged in / authenticated, display the logout button (form) -->
-                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <li sec:authorize="isAuthenticated()" class="nav-item navsiz">
                         <form th:action="@{/logout}" th:method="post">
                             <button class="btn-link btn" style="margin-top: 8px">Logout</button>
                         </form>
