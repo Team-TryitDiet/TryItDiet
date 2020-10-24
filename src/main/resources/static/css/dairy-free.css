@@ -1,0 +1,22 @@
+body, html {
+    height: 100%;
+    width: 100%;
+
+}
+
+.bg2 {
+    background-image: url("../img/violet.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footdf {
+    /*background-color: #784B92;*/
+    background-color: #aa00aa;
+    color: #FFECDB;
+}
+
+a:link  {
+    color: #360036;
+}
