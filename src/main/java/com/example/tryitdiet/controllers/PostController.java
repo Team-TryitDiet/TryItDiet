@@ -113,7 +113,7 @@ public class PostController {
         comment.setBody(body);
         comment.setUser(user);
         comment.setPost(post);
-        commentRepo.save(comment);
+        commentRepo.saveAndFlush(comment);
         return "redirect:/posts/" + post.getId();
     }
 

@@ -23,15 +23,27 @@
             </div>
         </div>
     </div>
+
+    <!--    Create a comment-->
     <div class="d-flex">
         <div class="content">
             <h3>Create a Comment</h3>
             <form th:action="@{'/posts/'+${id}+'/comment'}" method="post">
                 <label for="body">Comment Body</label>
-                <textarea id="body" name="body" ></textarea>
+                <textarea id="body" name="body"></textarea>
                 <button type="submit" value="submit"> Submit</button>
             </form>
         </div>
+    </div>
+
+    <!--    post all comments-->
+    <div class="card" th:each="comment : ${comments}">
+        <div class="card-body">
+            <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
+            <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
+
+        </div>
+
     </div>
 </div>
 
