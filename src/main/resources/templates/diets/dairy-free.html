@@ -10,7 +10,20 @@
 <body class="bg2">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <main class="container-fluid">
-    <h1 class="justify-content-center">Dairy-Free Diet</h1>
+    <div class="card text-center">
+        <div class="card-header">
+            Diet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Dairy-Free</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+<!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+        </div>
+        <!--<div class="card-footer text-muted">
+            2 days ago
+        </div>-->
+    </div>
+<!--    <h1 class="justify-content-center">Dairy-Free Diet</h1>-->
 </main>
 <footer th:include="partials/footer :: footer" class="footdf"></footer>
 <scripts th:replace="partials/scripts :: scripts"></scripts>
