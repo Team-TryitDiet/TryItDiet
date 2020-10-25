@@ -19,7 +19,18 @@
                 <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
                     <button type="submit" class="btn btn-primary">Delete</button>
                 </form>
+
             </div>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="content">
+            <h3>Create a Comment</h3>
+            <form th:action="@{'/posts/'+${id}+'/comment'}" method="post">
+                <label for="body">Comment Body</label>
+                <textarea id="body" name="body" ></textarea>
+                <button type="submit" value="submit"> Submit</button>
+            </form>
         </div>
     </div>
 </div>
