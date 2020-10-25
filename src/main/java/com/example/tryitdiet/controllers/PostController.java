@@ -5,30 +5,29 @@ import com.example.tryitdiet.models.Post;
 import com.example.tryitdiet.models.User;
 import com.example.tryitdiet.repositories.CommentRepository;
 import com.example.tryitdiet.repositories.PostRepository;
+import com.example.tryitdiet.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.expression.Lists;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PostController {
 
     // Dependency Injection
     private final PostRepository postRepo;
+    private final UserRepository userRepo;
     private final CommentRepository commentRepo;
 
     // PostController Constructor
-    public PostController(PostRepository postRepo, CommentRepository commentRepo) {
+    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo) {
         this.postRepo = postRepo;
+        this.userRepo = userRepo;
         this.commentRepo = commentRepo;
     }
 
@@ -78,9 +77,11 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String showSinglePost(@PathVariable(name = "id") long id, Model model) {
         Post post = postRepo.findById(id).orElse(null);
-        List <Comment> comments = postRepo.getOne(id).getComments();
-        model.addAttribute("comments",comments);
+        List <Comment> comments = post.getComments();
+        model.addAttribute("allComments",comments);
         model.addAttribute("post", post);
+        // add a new comment object to the model
+        model.addAttribute("newComment", new Comment());
         return "posts/show";
     }
 
@@ -105,16 +106,19 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    //create new comment
-    @PostMapping("posts/{id}/comment")
-    public String createComment(@ModelAttribute Post post, @RequestParam(name = "body") String body){
-        Comment comment = new Comment();
+    // Create new comment
+    @PostMapping("posts/comment")
+    public String createComment(@RequestParam(name = "postId") long postId, @ModelAttribute Comment newComment){
+
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        comment.setBody(body);
-        comment.setUser(user);
-        comment.setPost(post);
-        commentRepo.saveAndFlush(comment);
-        return "redirect:/posts/" + post.getId();
+
+        User currentUser = userRepo.findById(user.getId()).orElse(null);
+        Post currentPost = postRepo.findById(postId).orElse(null);
+        newComment.setUser(currentUser);
+        newComment.setPost(currentPost);
+        commentRepo.save(newComment);
+
+        return "redirect:/posts/" + postId;
     }
 
     @GetMapping("/comments/edit")
@@ -131,11 +135,18 @@ public class PostController {
         return "redirect:/posts/" + commentRepo.getOne(comment.getId()).getPost().getId();
     }
 
-    @GetMapping("/comments/delete")
-    public String deleteComment(@ModelAttribute Comment comment ){
-        long id1 = comment.getPost().getId();
-        commentRepo.delete(comment);
-        return "redirect:/posts/" + id1 ;
+    // Delete a comment
+    @PostMapping("/comments/delete")
+    public String deleteComment(
+            @RequestParam(name = "commentId") long commentId,
+            @RequestParam(name = "postId") long postId
+    ){
+//        for(Comment comment : comments) {
+//            System.out.println(comment.getBody());
+//        }
+        System.out.println(commentId);
+        commentRepo.deleteById(commentId);
+        return "redirect:/posts/" + postId ;
     }
 
 

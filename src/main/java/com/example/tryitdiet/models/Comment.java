@@ -13,16 +13,16 @@ public class Comment {
     @Column(nullable = false)
     private String body;
 
-// who create the comments
+    // who create the comments
     @ManyToOne @JoinColumn (name = "user_id")
     private User user;
 
-//the post that is commented on
+    // post that is commented on
     @ManyToOne @JoinColumn (name = "post_id")
     private Post post;
 
-//    the comment id that reply to certain comments
-    @Column(nullable = true)
+    // the comment id that reply to certain comments
+    @Column
     private long parentId;
 
     public Comment() {
