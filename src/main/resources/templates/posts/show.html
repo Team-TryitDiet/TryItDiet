@@ -39,9 +39,20 @@
     <!--    post all comments-->
     <div class="card" th:each="comment : ${comments}">
         <div class="card-body">
-            <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
-            <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
+            <input type="hidden" th:field="${comment.id}">
+<!--            <input type="hidden" th:field="${comment.parentId}" name="commentParentId">-->
+<!--            <input type="hidden" th:field="${comment.post.id}" name="commentPost">-->
+            <div class="card-text"><h2 th:field="${comment.getUser().getUsername()}"></h2></div>
+            <div class="card-text"><p th:field="${comment.getBody()}"></p></div>
+            <div class="d-flex">
+                <form th:action="@{'/comments/'+${id}+'/edit(id='+ ${comment.id} + ')'}" method="get">
+                    <button type="submit" class="btn btn-primary mr-1">Edit the comment</button>
+                </form>
+                <form th:action="@{'/comments/delete'}" method="get">
+                    <button type="submit" class="btn btn-primary">Delete the comment</button>
+                </form>
 
+            </div>
         </div>
 
     </div>

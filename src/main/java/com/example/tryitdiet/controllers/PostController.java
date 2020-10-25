@@ -117,21 +117,26 @@ public class PostController {
         return "redirect:/posts/" + post.getId();
     }
 
-    @PostMapping("comments/{id}/edit")
-    public String editComment(@PathVariable long id,
-                              @RequestParam(name = "body") String body){
-        Comment comment = commentRepo.getOne(id);
+    @GetMapping("/comments/edit")
+    public String editCommentGet(@ModelAttribute Comment comment, Model model){
+        model.addAttribute(("comment"), commentRepo.getOne(comment.getId()));
+        return "comments/editComment";
+    }
+
+    @PostMapping("/comments/{id}/edit")
+    public String editComment(@ModelAttribute Comment comment,@RequestParam(name = "body") String body){
+        commentRepo.getOne(comment.getId());
         comment.setBody(body);
         commentRepo.save(comment);
-        return "redirect:/posts/" + commentRepo.getOne(id).getPost().getId();
+        return "redirect:/posts/" + commentRepo.getOne(comment.getId()).getPost().getId();
     }
 
-    @PostMapping("comments/{id}/delete")
-    public String deleteComment(@PathVariable long id){
-        commentRepo.delete(commentRepo.getOne(id));
-        return "redirect:/posts/" + commentRepo.getOne(id).getPost().getId();
+    @GetMapping("/comments/delete")
+    public String deleteComment(@ModelAttribute Comment comment ){
+        long id1 = comment.getPost().getId();
+        commentRepo.delete(comment);
+        return "redirect:/posts/" + id1 ;
     }
-
 
 
 }
