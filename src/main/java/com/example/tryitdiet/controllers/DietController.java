@@ -51,4 +51,9 @@ public class DietController {
     public String showVegetarianPage() {
         return "diets/vegetarian";
     }
+
+    @GetMapping("/diets/other")
+    public String showOtherPage() {
+        return "diets/other";
+    }
 }

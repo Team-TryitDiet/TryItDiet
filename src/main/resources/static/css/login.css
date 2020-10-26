@@ -10,3 +10,8 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.forbg {
+    background-color: ghostwhite;
+    opacity: .7;
+}
