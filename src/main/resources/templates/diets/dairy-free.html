@@ -5,14 +5,26 @@
     <title>Home</title>
     <link th:replace="partials/head :: head"/>
     <link rel="stylesheet" th:href="@{/css/dairy-free.css}">
-    <link  th:href="@{/css/footer.css}" type="text/css">
+    <link th:href="@{/css/footer.css}" type="text/css">
 </head>
 <body class="bg2">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<main class="container-fluid">
-    <h1 class="justify-content-center">Dairy-Free Diet</h1>
+<main class="container-fluid d-flex justify-content-center align-items-center">
+    <br>
+    <div class="card text-center justify-content-center align-items-center cardop">
+        <div class="card-header">
+            Dairy-Free
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">No more moo cows? No problem!</h5>
+            <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of not consuming any dairy products. Some of the most common dairy foods are cream, cheese, butter, ice cream, mok, and yogurt. Be cautious however because many
+                products may have dairy ingredients in their product. One of the best ways to identify if there is any dairy products, is to refer to the food label if possible.</p>
+            <p></p>
+            <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+        </div>
+    </div>
 </main>
-<footer th:include="partials/footer :: footer" class="footdf"></footer>
+<footer th:include="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>

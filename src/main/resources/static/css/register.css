@@ -4,14 +4,9 @@ body, html {
 
 }
 
-.bg1 {
-    background-image: url("../img/login-art.jpg");
+.bg3 {
+    background-image: url("../img/mocha.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.forbg {
-    background-color: ghostwhite;
-    opacity: .7;
 }

@@ -1,27 +1,98 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <standard_links th:fragment="footer">
 
+
+<!--    prototype first navbar-->
     <!-- Site footer -->
     <footer class="site-footer foot footdf">
         <div class="container d-flex">
-            <div class="row justify-content-around">
-<!--                Beginning of the first part footer, diets-->
-                <div class="col-6 col-xs-6 col-md-3">
+<!--            <div class="col-12 row justify-content-around">
+&lt;!&ndash;                Beginning of the first part footer, diets&ndash;&gt;
+                <div class=" col-6 col-xs-6 col-md-3">
                     <h6>Diets</h6>
-                            <ul class="footer-links row justify-content-between">
-                                <li><a href="http://tryitdiet.com/diet/dairy-free">Dairy Free</a></li>
-                                <li><a href="http://tryitdiet.com/diet/gluten-free/">Gluten-Free</a></li>
-                                <li><a href="http://tryitdiet.com/diet/high-protein/">High Protein</a></li>
-                                <li><a href="http://tryitdiet.com/diet/keto">Keto</a></li>
-                                <li><a href="http://tryitdiet.com/diet/paleo">Paleo</a></li>
-                                <li><a href="http://tryitdiet.com/diet/pescatarian">Pescatarian</a></li>
-                                <li><a href="http://tryitdiet.com/diet/mediterranean">Mediterranean</a></li>
-                                <li><a href="http://tryitdiet.com/diet/vegan">Vegan</a></li>
-                                <li><a href="http://tryitdiet.com/diet/vegetarian">Vegetarian</a></li>
+                            <ul class="footer-links noop">
+                                    <li><a href="http://tryitdiet.com/diets/dairy-free">Dairy Free</a></li>
+                                    <li><a href="http://tryitdiet.com/diets/gluten-free/">Gluten-Free</a></li>
+                                    <li><a href="http://tryitdiet.com/diets/high-protein/">High Protein</a></li>
+                                    <li><a href="http://tryitdiet.com/diets/keto">Keto</a></li>
                             </ul>
                 </div>
-<!--second part of the footer The Quick Links Section-->
-                <div class="col-6 col-xs-6 col-md-3">
+                <div class=" col-6 col-xs-6 col-md-3">
+                    <br>
+                            <ul class="footer-links noop">
+                                    <li><a href="http://tryitdiet.com/diets/paleo">Paleo</a></li>
+                                    <li><a href="http://tryitdiet.com/diets/pescatarian">Pescatarian</a></li>
+                                    <li><a href="http://tryitdiet.com/diets/mediterranean">Mediterranean</a></li>
+                                    <li><a href="http://tryitdiet.com/diets/vegan">Vegan</a></li>
+                                    <li><a href="http://tryitdiet.com/diets/vegetarian">Vegetarian</a></li>
+                            </ul>
+                </div>
+&lt;!&ndash;second part of the footer The Quick Links Section&ndash;&gt;
+                <div class="col-12 col-xs-6 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="http://scanfcode.com/about/">About Us</a></li>
+                        <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>-->
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by</p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+<!--                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>-->
+<!--                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>-->
+                        <li><a class="dair" href="/diets/dairy-free"><i class="fas fa-ice-cream"></i></a></li>
+                        <li><a class="glut" href="/diets/gluten-free"><i class="fas fa-bread-slice"></i></a></li>
+                        <li><a class="hp" href="/diets/high-protein"><i class="fas fa-drumstick-bite"></i></a></li>
+                        <li><a class="ket" href="/diets/keto"><i class="fas fa-egg"></i></a></li>
+                        <li><a class="pal" href="/diets/paleo"><i class="fas fa-apple-alt"></i></a></li>
+                        <li><a class="pesc" href="/diets/pescatarian"><i class="fas fa-fish"></i></a></li>
+                        <li><a class="medit" href="/diets/mediterranean"><i class="fas fa-oil-can"></i></a></li>
+                        <li><a class="vega" href="/diets/vegan"><i class="fas fa-seedling"></i></a></li>
+                        <li><a class="vegit" href="/diets/vegetarian"><i class="fas fa-carrot"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+<!--    prototype second navbar-->
+
+    <!-- Site footer -->
+ <!--   <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+                        <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
+                        <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
+                        <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
+                        <li><a href="http://scanfcode.com/category/android/">Android</a></li>
+                        <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
                         <li><a href="http://scanfcode.com/about/">About Us</a></li>
@@ -37,7 +108,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-6 col-xs-12">
-                    <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by</p>
+                    <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by
+                        <a href="#">Scanfcode</a>.
+                    </p>
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
@@ -50,7 +123,8 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>-->
+
 </standard_links>
 
 
