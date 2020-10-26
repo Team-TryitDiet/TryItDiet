@@ -1,6 +1,7 @@
 package com.example.tryitdiet.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "recipes")
@@ -21,6 +22,12 @@ public class Recipe {
     @OneToOne(mappedBy = "recipe")
     private Post post;
 
+    // Many to Many Relationships
+    // Set relationship between Ingredients and Recipes
+    @ManyToMany(mappedBy = "recipes")
+    private List<Ingredient> ingredients;
+
+
     // Default Constructor
     public Recipe() {}
 
@@ -32,7 +39,6 @@ public class Recipe {
     }
 
     // Getters and Setters
-
     public long getId() {
         return id;
     }

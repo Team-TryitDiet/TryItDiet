@@ -1,6 +1,7 @@
 package com.example.tryitdiet.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ingredients")
@@ -12,6 +13,23 @@ public class Ingredient {
     private String name;
 
     // Many to Many Relationships
+    // Set relationship between Recipes and Ingredients
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="recipes_ingredients",
+            joinColumns = {@JoinColumn(name="recipe_id")},
+            inverseJoinColumns = {@JoinColumn(name="ingredient_id")}
+    )
+    private List<Recipe> recipes;
+
+    // Set relationship between Ingredients and Recipes
+//    @ManyToMany(mappedBy = "ingredients")
+//    @JoinTable(
+//            name="ingredients_foodgroups",
+//            joinColumns = {@JoinColumn(name="recipe_id")},
+//            inverseJoinColumns = {@JoinColumn(name="ingredient_id")}
+//    )
+//    private List<Ingredient> foodgroups;
 
     // Constructors
     public Ingredient() {}
