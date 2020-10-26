@@ -23,6 +23,34 @@
         <br>
         <textarea th:value="${recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
         <br>
+        <input type="checkbox" id="dairy-free" name="dairy-free" value="dairy-free">
+        <label for="dairy-free"> dairy-free</label>
+        <br>
+        <input type="checkbox" id="gluten-free" name="gf" th:value="gluten-free">
+        <label for="gluten-free"> gluten-free </label>
+        <br>
+        <input type="checkbox" id="high-protein" name="high-protein" value="high-protein">
+        <label for="high-protein"> high-protein </label>
+        <br>
+        <input type="checkbox" id="keto" name="keto" value="keto">
+        <label for="keto"> keto </label>
+        <br>
+        <input type="checkbox" id="paleo" name="paleo" value="paleo">
+        <label for="paleo"> paleo </label>
+        <br>
+        <input type="checkbox" id="pescatarian" name="pescatarian" value="pescatarian">
+        <label for="pescatarian"> pescatarian </label>
+        <br>
+        <input type="checkbox" id="mediterranean" name="mediterranean" value="mediterranean">
+        <label for="mediterranean"> mediterranean </label>
+        <br>
+        <input type="checkbox" id="vegan" name="vegan" value="vegan">
+        <label for="vegan"> vegan</label>
+        <br>
+        <input type="checkbox" id="vegetarian" name="vegetarian" value="vegetarian">
+        <label for="vegetarian"> vegetarian </label>
+        <br>
+
         <button type="submit">Create</button>
     </form>
 </div>

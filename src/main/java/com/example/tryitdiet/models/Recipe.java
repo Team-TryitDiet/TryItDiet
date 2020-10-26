@@ -1,6 +1,7 @@
 package com.example.tryitdiet.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "recipes")
@@ -21,6 +22,16 @@ public class Recipe {
     @OneToOne(mappedBy = "recipe")
     private Post post;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="recipes_diets",
+            joinColumns={@JoinColumn(name="recipe_id")},
+            inverseJoinColumns={@JoinColumn(name="diet_id")}
+    )
+    private List<Diet> diets;
+
+
+
     // Default Constructor
     public Recipe() {}
 
@@ -29,6 +40,14 @@ public class Recipe {
         this.id = id;
         this.preparation = preparation;
         this.notes = notes;
+    }
+
+    public Recipe(long id, String preparation, String notes, Post post, List<Diet> diets) {
+        this.id = id;
+        this.preparation = preparation;
+        this.notes = notes;
+        this.post = post;
+        this.diets = diets;
     }
 
     // Getters and Setters
@@ -63,5 +82,13 @@ public class Recipe {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public List<Diet> getDiets() {
+        return diets;
+    }
+
+    public void setDiets(List<Diet> diets) {
+        this.diets = diets;
     }
 }
