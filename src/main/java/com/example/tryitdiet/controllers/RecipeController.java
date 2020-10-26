@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,7 +41,10 @@ public class RecipeController {
 
     // Create Recipe Post Method
     @PostMapping("/posts/recipe")
-    public String saveRecipe(@ModelAttribute Post post, @ModelAttribute Recipe recipe) throws ParseException {
+    public String saveRecipe(
+            @ModelAttribute Post post,
+            @ModelAttribute Recipe recipe
+    ) throws ParseException {
 
         // Get the currently logged in user
         User author = (User) SecurityContextHolder
@@ -67,6 +71,28 @@ public class RecipeController {
         postRecipe.setRecipe(savedRecipe);
         postRepo.save(postRecipe); // update post with recipe information
 
+        return "redirect:/posts";
+    }
+
+    // Edit Recipe Get Method
+    @GetMapping("/posts/recipe/edit")
+    public String editRecipe(
+            @RequestParam(name = "postId") long postId,
+            Model model
+    ) {
+        Post post = postRepo.findById(postId).orElse(null);
+//        Recipe recipe = recipeRepo.findById(post.getRecipe().getId()).orElse(null);
+        model.addAttribute("post", post);
+        return "recipes/edit";
+    }
+
+    // Update Recipe Post method
+    @PostMapping("/posts/recipe/edit")
+    public String updateRecipe(
+            @ModelAttribute Post post
+    ) {
+        // update post and recipe
+        postRepo.save(post);
         return "redirect:/posts";
     }
 }

@@ -13,9 +13,19 @@
             <div class="card-text" th:text="${post.description}"></div>
             <div class="card-text" th:text="${post.getUser().getEmail()}"></div>
             <div class="d-flex">
-                <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
-                    <button type="submit" class="btn btn-primary mr-1">Edit</button>
-                </form>
+                <div th:switch="${post.recipe != null}">
+                    <div th:case="${true}">
+                        <form th:action="@{/posts/recipe/edit}" method="get">
+                            <input type="hidden" name="postId" th:value="${post.id}">
+                            <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                        </form>
+                    </div>
+                    <div th:case="*">
+                        <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
+                            <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                        </form>
+                    </div>
+                </div>
                 <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
                     <button type="submit" class="btn btn-primary">Delete</button>
                 </form>
