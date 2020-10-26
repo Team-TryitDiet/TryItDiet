@@ -121,18 +121,24 @@ public class PostController {
         return "redirect:/posts/" + postId;
     }
 
+//    edit the comment
     @GetMapping("/comments/edit")
-    public String editCommentGet(@ModelAttribute Comment comment, Model model){
-        model.addAttribute(("comment"), commentRepo.getOne(comment.getId()));
+    public String passingInfoEditComment(@RequestParam(name="commentId")long commentId,
+                                         @RequestParam(name="postId") long postId, Model model){
+        Post post = postRepo.getOne(postId);
+        Comment comment = commentRepo.getOne(commentId);
+        model.addAttribute("post",post);
+        model.addAttribute("comment",comment);
         return "comments/editComment";
     }
 
-    @PostMapping("/comments/{id}/edit")
-    public String editComment(@ModelAttribute Comment comment,@RequestParam(name = "body") String body){
-        commentRepo.getOne(comment.getId());
+    @PostMapping("/comments/edit")
+    public String editComment(@ModelAttribute Comment comment,
+                              @RequestParam(name="body") String body){
         comment.setBody(body);
         commentRepo.save(comment);
-        return "redirect:/posts/" + commentRepo.getOne(comment.getId()).getPost().getId();
+        return "redirect:/posts/" + comment.getPost().getId();
+
     }
 
     // Delete a comment
@@ -141,9 +147,6 @@ public class PostController {
             @RequestParam(name = "commentId") long commentId,
             @RequestParam(name = "postId") long postId
     ){
-//        for(Comment comment : comments) {
-//            System.out.println(comment.getBody());
-//        }
         System.out.println(commentId);
         commentRepo.deleteById(commentId);
         return "redirect:/posts/" + postId ;

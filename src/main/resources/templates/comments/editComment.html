@@ -7,7 +7,9 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <div class="container">
-    <form th:action="@{'comments/edit'}" th:object="${comment}" method="POST">
+    <form th:action="@{/comments/edit}" th:object="${comment}" method="POST">
+        <input type="hidden" name="postId" th:field="*{post.id}"/>
+        <input type="hidden" name="userId" th:field="*{user.id}"/>
         <label for="body">Comment Body</label>
         <textarea id="body" name="body" th:field="*{body}"></textarea>
         <br>
