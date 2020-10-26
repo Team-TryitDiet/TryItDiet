@@ -36,8 +36,6 @@ public class UserController {
             userRepo.save(user);
             return "users/profile";
         }
-
-
     }
 
     @GetMapping("/register")
@@ -63,5 +61,6 @@ public class UserController {
         model.addAttribute("user",(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "users/register";
     }
+
 
 }

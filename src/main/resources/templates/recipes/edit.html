@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <links th:include="partials/head :: head"></links>
+</head>
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
+
+<div class="container">
+    <form th:action="@{/posts/recipe/edit}" method="post">
+        <input type="hidden" th:field="${post.id}" name="postId">
+        <input type="hidden" th:field="${post.recipe.id}" name="recipeId">
+        <input type="hidden" th:field="${post.date}" name="date">
+        <input type="hidden" th:field="${post.user.id}" name="userId">
+        <label for="prep">Recipe Title: </label>
+        <br>
+        <input th:field="${post.title}" name="title" />
+        <label for="prep">Recipe preparation: </label>
+        <br>
+        <textarea th:field="${post.recipe.preparation}" name="preparation" id="prep" cols="72" rows="4"></textarea>
+        <br>
+        <label for="body">Recipe Notes: </label>
+        <br>
+        <textarea th:field="${post.recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+<footer th:replace="partials/footer :: footer"></footer>
+<scripts th:replace="partials/scripts :: scripts"/>
+</body>
+</html>

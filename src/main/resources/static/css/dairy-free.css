@@ -1,0 +1,35 @@
+body, html {
+    height: 100%;
+    width: 100%;
+
+}
+
+.bg2 {
+    background-image: url("../img/violet.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footdf {
+    background-color: var(--cp-dair);
+    color: #FFECDB;
+    opacity: .9;
+}
+
+.noop {
+    opacity: 1;
+}
+
+.cardop {
+    opacity: .8;
+    width: 50%;
+}
+
+a:link  {
+    color: #360036;
+}
+
+nav a:hover {
+    background-color: var(--cp-dair);
+}

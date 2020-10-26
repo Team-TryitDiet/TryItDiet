@@ -5,8 +5,13 @@ body, html {
 }
 
 .bg1 {
-    background-image: url("../img/.jpg");
+    background-image: url("../img/login-art.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.forbg {
+    background-color: ghostwhite;
+    opacity: .7;
 }

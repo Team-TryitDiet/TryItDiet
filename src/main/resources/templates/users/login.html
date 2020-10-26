@@ -3,22 +3,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Ad</title>
+    <title>Create or Edit the user</title>
     <div th:replace="partials/head :: head"/>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
-<body>
+<body class="bg1">
 <!--<header th:replace="partials/header :: header"/>-->
 <nav th:replace="partials/navbar :: navbar"/>
+<div class="container-fluid">
+    <div class="d-flex justify-content-center pl-0">
+        <div class="column pl-4">
 
-<h1>Create an account</h1>
-<form th:action="@{/login}" method="POST">
-    <label for="username">Username</label>
-    <input id="username" name="username" />
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" />
+            <form class="forbg" th:action="@{/login}" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" name="username">
+                    <small id="usernameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button value="log in" type="submit" class="btn btn-secondary">Submit</button>
+            </form>
 
-    <input value="Log in" type="submit" />
-</form>
+
+<!--            basic form-->
+           <!-- <h1 class="justify-content-center">Log in</h1>
+            <form th:action="@{/login}" method="POST" class="column">
+                <label for="username">Username</label>
+                <input id="username" name="username" />
+                <br>
+                <label for="password">Password </label>
+                <input id="password" type="password" name="password" />
+                <input value="Log in" type="submit" />
+            </form>-->
+        </div>
+    </div>
+</div>
+
+
 <footer th:replace="partials/footer :: footer"/>
 <div th:replace="partials/scripts :: scripts"/>
 </body>
