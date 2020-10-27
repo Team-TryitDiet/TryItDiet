@@ -1,8 +1,10 @@
 package com.example.tryitdiet.controllers;
 
+import com.example.tryitdiet.models.Ingredient;
 import com.example.tryitdiet.models.Post;
 import com.example.tryitdiet.models.Recipe;
 import com.example.tryitdiet.models.User;
+import com.example.tryitdiet.repositories.IngredientRepository;
 import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.RecipeRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class RecipeController {
@@ -23,11 +26,13 @@ public class RecipeController {
     // Dependency Injection
     private final RecipeRepository recipeRepo;
     private final PostRepository postRepo;
+    private final IngredientRepository ingredientRepo;
 
     // RecipeController Constructor
-    public RecipeController(RecipeRepository recipeRepo, PostRepository postRepo) {
+    public RecipeController(RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo) {
         this.recipeRepo = recipeRepo;
         this.postRepo = postRepo;
+        this.ingredientRepo = ingredientRepo;
     }
 
     // Create Recipe Get Method
@@ -36,6 +41,7 @@ public class RecipeController {
         // add a brand new post and a brand new recipe to the model
         model.addAttribute("post", new Post());
         model.addAttribute("recipe", new Recipe());
+        model.addAttribute("ingredientsList", ingredientRepo.findAll());
         return "recipes/create";
     }
 
@@ -43,7 +49,8 @@ public class RecipeController {
     @PostMapping("/posts/recipe")
     public String saveRecipe(
             @ModelAttribute Post post,
-            @ModelAttribute Recipe recipe
+            @ModelAttribute Recipe recipe,
+            @RequestParam(value = "ingredients") List<Ingredient> ingredients
     ) throws ParseException {
 
         // Get the currently logged in user
@@ -51,6 +58,10 @@ public class RecipeController {
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
+
+        for(Ingredient ingredient : ingredients) {
+            System.out.println(ingredient.getName());
+        }
 
         // Set the currently logged in user to the newly created post/recipe
         post.setUser(author);
