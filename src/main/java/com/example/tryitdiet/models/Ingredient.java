@@ -12,17 +12,10 @@ public class Ingredient {
     @Column(nullable = false)
     private String name;
 
-    // Many to Many Relationships
     // Set relationship between Recipes and Ingredients
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name="recipes_ingredients",
-            joinColumns = {@JoinColumn(name="recipe_id")},
-            inverseJoinColumns = {@JoinColumn(name="ingredient_id")}
-    )
+    @ManyToMany(mappedBy = "ingredients")
     private List<Recipe> recipes;
 
-    // Set relationship between Ingredients and Recipes
 //    @ManyToMany(mappedBy = "ingredients")
 //    @JoinTable(
 //            name="ingredients_foodgroups",
@@ -54,5 +47,13 @@ public class Ingredient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }

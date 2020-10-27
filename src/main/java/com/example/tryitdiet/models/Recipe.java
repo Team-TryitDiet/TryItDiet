@@ -23,8 +23,15 @@ public class Recipe {
     private Post post;
 
     // Many to Many Relationships
-    // Set relationship between Ingredients and Recipes
-    @ManyToMany(mappedBy = "recipes")
+    // Set relationship between
+    // Many to Many Relationships
+    // Set relationship between Recipes and Ingredients
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="recipes_ingredients",
+            joinColumns = {@JoinColumn(name="recipe_id")},
+            inverseJoinColumns = {@JoinColumn(name="ingredient_id")}
+    )
     private List<Ingredient> ingredients;
 
 
@@ -69,5 +76,13 @@ public class Recipe {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
