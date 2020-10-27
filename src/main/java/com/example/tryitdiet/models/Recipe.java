@@ -22,15 +22,13 @@ public class Recipe {
     @OneToOne(mappedBy = "recipe")
     private Post post;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name="recipes_diets",
             joinColumns={@JoinColumn(name="recipe_id")},
             inverseJoinColumns={@JoinColumn(name="diet_id")}
     )
     private List<Diet> diets;
-
-
 
     // Default Constructor
     public Recipe() {}
