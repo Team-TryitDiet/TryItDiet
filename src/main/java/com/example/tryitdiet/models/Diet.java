@@ -20,7 +20,6 @@ public class Diet {
     @ManyToMany(mappedBy = "diets")
     private List<Recipe> recipes;
 
-
 //    @ManyToMany(mappedBy = "ingredients")
 //    private List<Ingredient> ingredients;
 

@@ -24,16 +24,11 @@ import java.util.List;
 public class RecipeController {
 
 
-    private final DietRepository dietRepo;
     // Dependency Injection
+    private final DietRepository dietRepo;
     private final RecipeRepository recipeRepo;
     private final PostRepository postRepo;
 
-    //    // RecipeController Constructor
-//    public RecipeController(RecipeRepository recipeRepo, PostRepository postRepo) {
-//        this.recipeRepo = recipeRepo;
-//        this.postRepo = postRepo;
-//    }
     public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo) {
         this.dietRepo = dietRepo;
         this.recipeRepo = recipeRepo;
@@ -54,9 +49,9 @@ public class RecipeController {
     // Create Recipe and diets Post Method
     @PostMapping("/posts/recipe")
     public String saveRecipe(
-            @ModelAttribute Post post,
             @ModelAttribute Recipe recipe,
-            @ModelAttribute List<Diet> diets
+            @ModelAttribute Post post,
+            @RequestParam List<Diet> diets
     ) throws ParseException {
         // Get the currently logged in user
         User author = (User) SecurityContextHolder
@@ -64,9 +59,6 @@ public class RecipeController {
                 .getAuthentication()
                 .getPrincipal();
 
-//        for (Diet diet:diets) {
-//            System.out.println(diet);
-//        }
         // Set the currently logged in user to the newly created post/recipe
 
         post.setUser(author);
@@ -81,9 +73,10 @@ public class RecipeController {
         // save the post and set to recipe post property
         Post postRecipe = postRepo.saveAndFlush(post); // grab the newly saved post/recipe
 
-            recipe.setDiets(diets);
-
-        recipe.setPost(postRecipe);
+        // set diet(s) to the recipe
+        if (!diets.isEmpty()) {
+            recipe.setPost(postRecipe);
+        }
 
         // save the recipe and set the post recipe property
         Recipe savedRecipe = recipeRepo.saveAndFlush(recipe); // grab the newly saved recipe
@@ -100,7 +93,6 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
-//        Recipe recipe = recipeRepo.findById(post.getRecipe().getId()).orElse(null);
         model.addAttribute("post", post);
         return "recipes/edit";
     }

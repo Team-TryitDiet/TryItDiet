@@ -26,7 +26,6 @@
         <table>
             <div class="card" th:each="diet : ${dietsList}">
                 <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
-                <input type="hidden" name="diet" th:value="${diet.id}"/>
                 <br>
             </div>
         </table>
