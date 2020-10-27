@@ -23,41 +23,17 @@
         <br>
         <textarea th:value="${recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
         <br>
-        <form th:action="@{/posts/diets}" method="post">
-        <input type="checkbox" id="dairy-free" name="df" value="dairy-free">
-        <label for="dairy-free"> dairy-free</label>
-        <br>
-        <input type="checkbox" id="gluten-free" name="gf" th:value="gluten-free">
-        <label for="gluten-free"> gluten-free </label>
-        <br>
-        <input type="checkbox" id="high-protein" name="hp" value="high-protein">
-        <label for="high-protein"> high-protein </label>
-        <br>
-        <input type="checkbox" id="keto" name="ke" value="keto">
-        <label for="keto"> keto </label>
-        <br>
-        <input type="checkbox" id="paleo" name="pa" value="paleo">
-        <label for="paleo"> paleo </label>
-        <br>
-        <input type="checkbox" id="pescatarian" name="pe" value="pescatarian">
-        <label for="pescatarian"> pescatarian </label>
-        <br>
-        <input type="checkbox" id="mediterranean" name="me" value="mediterranean">
-        <label for="mediterranean"> mediterranean </label>
-        <br>
-        <input type="checkbox" id="vegan" name="ve" value="vegan">
-        <label for="vegan"> vegan</label>
-        <br>
-        <input type="checkbox" id="vegetarian" name="veg" value="vegetarian">
-        <label for="vegetarian"> vegetarian </label>
-        <br>
-        <input type="checkbox" id="others" name="others" value="ot">
-        <label for="others"> others </label>
-        <br>
-
+        <form th:action="@{/recipe/diets/create}" method="post">
+            <div class="card" th:each="diet : ${dietsList}">
+                    <input type="checkbox" id="diet" name="diet" th:text="${diet.title}"
+                           checked="checked">
+                    <br>
+            </div>
         <button type="submit">Create</button>
     </form>
+    </form>
 </div>
+
 
 <footer th:replace="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"/>
