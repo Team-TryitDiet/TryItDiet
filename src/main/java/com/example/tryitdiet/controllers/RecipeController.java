@@ -1,12 +1,8 @@
 package com.example.tryitdiet.controllers;
 
 
-import com.example.tryitdiet.models.Diet;
-import com.example.tryitdiet.models.Post;
-import com.example.tryitdiet.models.Recipe;
-import com.example.tryitdiet.models.User;
+import com.example.tryitdiet.models.*;
 import com.example.tryitdiet.repositories.DietRepository;
-import com.example.tryitdiet.models.Ingredient;
 import com.example.tryitdiet.repositories.IngredientRepository;
 import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.RecipeRepository;
@@ -32,6 +28,7 @@ public class RecipeController {
     private final RecipeRepository recipeRepo;
     private final PostRepository postRepo;
     private final IngredientRepository ingredientRepo;
+    private final Foodgroup foodgroupRepo;
 
 
     public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo) {
@@ -67,10 +64,6 @@ public class RecipeController {
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
-
-        for(Ingredient ingredient : ingredients) {
-            System.out.println(ingredient.getName());
-        }
 
         // Set the currently logged in user to the newly created post/recipe
 
@@ -119,6 +112,4 @@ public class RecipeController {
         postRepo.save(post);
         return "redirect:/posts";
     }
-
-
 }
