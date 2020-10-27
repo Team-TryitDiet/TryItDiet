@@ -1,7 +1,6 @@
 body, html {
-    height: 100%;
+    height: 100vh;
     width: 100%;
-
 }
 
 .bg2 {
@@ -12,11 +11,24 @@ body, html {
 }
 
 .footdf {
-    /*background-color: #784B92;*/
-    background-color: #aa00aa;
+    background-color: var(--cp-dair);
     color: #FFECDB;
+    opacity: .9;
+}
+
+.noop {
+    opacity: 1;
+}
+
+.cardop {
+    opacity: .8;
+    width: 50%;
 }
 
 a:link  {
     color: #360036;
+}
+
+nav a:hover {
+    background-color: var(--cp-dair);
 }

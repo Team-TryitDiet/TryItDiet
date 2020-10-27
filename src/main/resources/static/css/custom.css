@@ -1,15 +1,30 @@
+:root {
+    --cp-dair: #aa00aa;
+    --cp-glut: #784B92;
+    --cp-hp: #0F4880;
+    --cp-ket: #008040;
+    --cp-pal: #76cb55;
+    --cp-pesc: #feed00;
+    --cp-medit: #ffa600;
+    --cp-vega: #fd8626;
+    --cp-vegit: #f63b3f;
+    --cp-hfc: #360036;
+    --cp-navc: #E5B3C0;
+}
+
 .site-footer
 {
-    position: fixed;
     bottom: 0;
-    width: 100%;
-    height: 20%;
+    position: fixed;
+    width: 100vw;
+    /*height: 25%;*/
     background-color:#26272b;
-    padding:45px 0 20px;
+    /*padding:45px 0 20px;*/
     font-size:15px;
-    line-height:24px;
+    /*line-height:24px;*/
     color:#737373;
 }
+
 .site-footer hr
 {
     border-top-color:#bbb;
@@ -168,39 +183,39 @@
 }
 
 .dair {
-    color: #aa00aa;
+    color: var(--cp-dair);
 }
 
 .glut {
-    color: #784B92;
+    color: var(--cp-glut);
 }
 
 .hp {
-    color: #0F4880;
+    color: var(--cp-hp);
 }
 
 .ket {
-    color: #008040;
+    color: var(--cp-ket);
 }
 
 .pal {
-    color: #76cb55;
+    color: var(--cp-pal);
 }
 
 .pesc {
-    color: #feed00;
+    color: var(--cp-pesc);
 }
 
 .medit {
-    color: #ffa600;
+    color: var(--cp-medit);
 }
 
 .vega {
-    color:  #fd8626;
+    color:  var(--cp-vega);
 }
 
 .vegit {
-    color: #f63b3f;
+    color: var(--cp-vegit);
 }
 
 @media (max-width:767px)

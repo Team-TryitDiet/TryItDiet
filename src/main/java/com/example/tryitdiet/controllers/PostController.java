@@ -33,14 +33,18 @@ public class PostController {
 
     // Create Post Get Method
     @GetMapping("/create")
-    public String createPost(Model model) {
+    public String createPost(
+            Model model
+    ) {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     // Create Post Method
     @PostMapping("/create")
-    public String savePost(@ModelAttribute Post post) throws ParseException {
+    public String savePost(
+            @ModelAttribute Post post
+    ) throws ParseException {
 
         if (post.getId() == 0) {
             // New Post
@@ -68,14 +72,19 @@ public class PostController {
 
     // Read Posts Method
     @GetMapping("/posts")
-    public String showAllPosts(Model model) {
+    public String showAllPosts(
+            Model model
+    ) {
         model.addAttribute("posts", postRepo.findAll());
         return "posts/index";
     }
 
     // Show individual Post and all the comments for this post Method
     @GetMapping("/posts/{id}")
-    public String showSinglePost(@PathVariable(name = "id") long id, Model model) {
+    public String showSinglePost(
+            @PathVariable(name = "id") long id,
+            Model model
+    ) {
         Post post = postRepo.findById(id).orElse(null);
         List <Comment> comments = post.getComments();
         model.addAttribute("allComments",comments);
@@ -87,7 +96,10 @@ public class PostController {
 
     // Edit Post Method
     @GetMapping("/posts/{id}/edit")
-    public String editPost(@PathVariable(name = "id") long id, Model model) {
+    public String editPost(
+            @PathVariable(name = "id") long id,
+            Model model
+    ) {
         // Get the currently selected post
         Post post = postRepo.findById(id).orElse(null);
 
@@ -99,7 +111,9 @@ public class PostController {
 
     // Delete Post Method
     @GetMapping("/posts/delete/{id}")
-    public String deletePost(@PathVariable(name = "id") long id) {
+    public String deletePost(
+            @PathVariable(name = "id") long id
+    ) {
         // remove the currently selected post
         Post post = postRepo.findById(id).orElse(null);
         postRepo.delete(post);
@@ -108,7 +122,10 @@ public class PostController {
 
     // Create new comment
     @PostMapping("posts/comment")
-    public String createComment(@RequestParam(name = "postId") long postId, @ModelAttribute Comment newComment){
+    public String createComment(
+            @RequestParam(name = "postId") long postId,
+            @ModelAttribute Comment newComment
+    ){
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -123,8 +140,10 @@ public class PostController {
 
 //    edit the comment
     @GetMapping("/comments/edit")
-    public String passingInfoEditComment(@RequestParam(name="commentId")long commentId,
-                                         @RequestParam(name="postId") long postId, Model model){
+    public String passingInfoEditComment(
+            @RequestParam(name="commentId")long commentId,
+            @RequestParam(name="postId") long postId, Model model
+    ){
         Post post = postRepo.getOne(postId);
         Comment comment = commentRepo.getOne(commentId);
         model.addAttribute("post",post);
@@ -133,9 +152,9 @@ public class PostController {
     }
 
     @PostMapping("/comments/edit")
-    public String editComment(@ModelAttribute Comment comment,
-                              @RequestParam(name="body") String body){
-        comment.setBody(body);
+    public String editComment(
+            @ModelAttribute Comment comment
+    ){
         commentRepo.save(comment);
         return "redirect:/posts/" + comment.getPost().getId();
 

@@ -5,31 +5,58 @@
     <meta charset="UTF-8">
     <title>Sign-up</title>
     <div th:replace="partials/head :: head"/>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+
 </head>
-<body>
-<!--<header th:replace="partials/header :: header"/>-->
+<body class="bg3">
 <nav th:replace="partials/navbar :: navbar"/>
+<div class="container-fluid">
+    <div class="d-flex justify-content-end">
+        <div class="column pr-5 h-100">
+            <form th:action="@{/register}" method="POST" th:object="${user}" class="forbg2 borcol">
+                <div class="containpad">
+                    <h1 class="justify-content-center cent">Try it!</h1>
+                    <p>Please fill out this form to create an account</p>
+                    <hr>
 
-<h1>Create an account</h1>
-<form th:action="@{/register}" method="POST" th:object="${user}">
-    <input type="text" th:field="*{id}" style="display: none;">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+                    <div class="form-group">
+                        <input type="text" th:field="*{id}" style="display: none;" class="form-control">
+                        <label for="username">Username</label>
+                        <input id="username" th:field="*{username}" class="form-control"
+                               placeholder="Please enter a username"/>
+                    </div>
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" th:field="*{email}" class="form-control" placeholder="Please enter an email"/>
+                    </div>
 
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" th:field="*{password}" />
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" th:field="*{password}" class="form-control"
+                               placeholder="Please enter a password"/>
+                    </div>
 
-    <label for="confirmPassword">Confirm the Password</label>
-    <input id="confirmPassword" name="confirmPassword" type="password"/>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm the Password</label>
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control"
+                               placeholder="Confirm password"/>
+                    </div>
 
-    <label for="phone_number">Phone Number:(optional) ***-***-****</label>
-    <input id="phone_number"  th:field="*{phone_number}" />
-
-    <input value="Sign me up!" type="submit" />
-</form>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input id="phone_number" th:field="*{phone_number}" class="form-control"
+                               placeholder="(optional) ***-***-****"/>
+                    </div>
+                    <div class="justify-content-center">
+                    <button type="submit" value="Sign me up!" class="btn btn-secondary">Sign me up!</button>
+                    </div>
+<!--                    <input value="Sign me up!" type="submit" class="justify-content-center"/>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <footer th:replace="partials/footer :: footer"/>
 <div th:replace="partials/scripts :: scripts"/>
 </body>

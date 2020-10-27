@@ -1,10 +1,13 @@
 package com.example.tryitdiet.controllers;
 
+
 import com.example.tryitdiet.models.Diet;
 import com.example.tryitdiet.models.Post;
 import com.example.tryitdiet.models.Recipe;
 import com.example.tryitdiet.models.User;
 import com.example.tryitdiet.repositories.DietRepository;
+import com.example.tryitdiet.models.Ingredient;
+import com.example.tryitdiet.repositories.IngredientRepository;
 import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.RecipeRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,12 +31,17 @@ public class RecipeController {
     private final DietRepository dietRepo;
     private final RecipeRepository recipeRepo;
     private final PostRepository postRepo;
+    private final IngredientRepository ingredientRepo;
 
-    public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo) {
+
+
+    public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo) {
         this.dietRepo = dietRepo;
         this.recipeRepo = recipeRepo;
         this.postRepo = postRepo;
+        this.ingredientRepo = ingredientRepo;
     }
+
 
     // Create Recipe and diets Get Method
     @GetMapping("/posts/recipe")
@@ -43,6 +51,7 @@ public class RecipeController {
         model.addAttribute("recipe", new Recipe());
         List<Diet> dietsList = dietRepo.findAll();
         model.addAttribute("dietsList", dietsList);
+        model.addAttribute("ingredientsList", ingredientRepo.findAll());
         return "recipes/create";
     }
 
@@ -51,13 +60,18 @@ public class RecipeController {
     public String saveRecipe(
             @ModelAttribute Recipe recipe,
             @ModelAttribute Post post,
-            @RequestParam List<Diet> diets
+            @RequestParam List<Diet> diets,
+            @RequestParam(value = "ingredients") List<Ingredient> ingredients
     ) throws ParseException {
         // Get the currently logged in user
         User author = (User) SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
+
+        for(Ingredient ingredient : ingredients) {
+            System.out.println(ingredient.getName());
+        }
 
         // Set the currently logged in user to the newly created post/recipe
 

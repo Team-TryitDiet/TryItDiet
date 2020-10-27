@@ -1,0 +1,34 @@
+body, html {
+    height: 100vh;
+    width: 100%;
+
+}
+
+.bg3 {
+    background-image: url("../img/mocha.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.forbg2 {
+    background-color: darkolivegreen;
+    opacity: .8;
+    height: 100vh;
+}
+
+.morewidth {
+    width: 125%;
+}
+
+.borcol {
+    border-color: saddlebrown;
+}
+
+.containpad {
+    padding: 16px;
+}
+
+.cent {
+    text-align: center;
+}
