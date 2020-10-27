@@ -56,4 +56,4 @@ VALUES
        ('garlic'),
        ('onion'),
        ('rice');
->>>>>>> ingredients
+
