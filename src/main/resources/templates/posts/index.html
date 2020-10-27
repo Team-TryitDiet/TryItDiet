@@ -2,11 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <links th:include="partials/head :: head"></links>
+    <link th:include="partials/head :: head"/>
+    <link rel="stylesheet" th:href="@{/css/post-index.css}">
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 
+
+<div class="container bootstrap snippets bootdey">
+    <div class="col-sm-4">
+        <div class="widget single-news">
+            <div class="image">
+                <img src="https://via.placeholder.com/300x200/FFB6C1/000000" class="img-responsive" alt="image">
+                <span class="gradient"></span>
+            </div>
+            <div class="details">
+                <div class="category"><a href="">Dairy-Free</a></div>
+                <h3><a href="">Say bye bye to the moo cows</a></h3>
+                <time>Today, 27 October</time>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Original post style-->
 <div class="container">
     <div class="card w-75 mb-3" th:each="post : ${posts}">
         <div class="card-body">
@@ -28,6 +46,7 @@
         </div>
     </div>
 </div>
+<!--End of original post style-->
 
 <footer th:replace="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"/>
