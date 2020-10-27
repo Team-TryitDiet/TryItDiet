@@ -68,6 +68,7 @@ public class RecipeController {
 //            System.out.println(diet);
 //        }
         // Set the currently logged in user to the newly created post/recipe
+
         post.setUser(author);
 
         // Get the current date/time and set in to the post
