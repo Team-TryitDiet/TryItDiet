@@ -2,10 +2,7 @@ package com.example.tryitdiet.controllers;
 
 
 import com.example.tryitdiet.models.*;
-import com.example.tryitdiet.repositories.DietRepository;
-import com.example.tryitdiet.repositories.IngredientRepository;
-import com.example.tryitdiet.repositories.PostRepository;
-import com.example.tryitdiet.repositories.RecipeRepository;
+import com.example.tryitdiet.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +25,15 @@ public class RecipeController {
     private final RecipeRepository recipeRepo;
     private final PostRepository postRepo;
     private final IngredientRepository ingredientRepo;
-    private final Foodgroup foodgroupRepo;
+    private final FoodgroupRepository foodgroupRepo;
 
 
-    public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo) {
+    public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo, FoodgroupRepository foodgroupRepo) {
         this.dietRepo = dietRepo;
         this.recipeRepo = recipeRepo;
         this.postRepo = postRepo;
         this.ingredientRepo = ingredientRepo;
+        this.foodgroupRepo = foodgroupRepo;
     }
 
 
