@@ -92,7 +92,6 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
-//        Recipe recipe = recipeRepo.findById(post.getRecipe().getId()).orElse(null);
         model.addAttribute("post", post);
         return "recipes/edit";
     }
