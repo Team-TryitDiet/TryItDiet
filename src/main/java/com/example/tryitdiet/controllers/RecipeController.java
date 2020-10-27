@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,22 +24,21 @@ import java.util.List;
 public class RecipeController {
 
 
-
     private final DietRepository dietRepo;
     // Dependency Injection
     private final RecipeRepository recipeRepo;
     private final PostRepository postRepo;
 
-//    // RecipeController Constructor
+    //    // RecipeController Constructor
 //    public RecipeController(RecipeRepository recipeRepo, PostRepository postRepo) {
 //        this.recipeRepo = recipeRepo;
 //        this.postRepo = postRepo;
 //    }
-public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo) {
-    this.dietRepo = dietRepo;
-    this.recipeRepo = recipeRepo;
-    this.postRepo = postRepo;
-}
+    public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo) {
+        this.dietRepo = dietRepo;
+        this.recipeRepo = recipeRepo;
+        this.postRepo = postRepo;
+    }
 
     // Create Recipe and diets Get Method
     @GetMapping("/posts/recipe")
@@ -49,37 +47,26 @@ public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, Po
         model.addAttribute("post", new Post());
         model.addAttribute("recipe", new Recipe());
         List<Diet> dietsList = dietRepo.findAll();
-        model.addAttribute("dietsList",dietsList);
-        return "recipes/create";
-    }
-    //create Diets for recipe Post Method
-    @PostMapping("/recipe/diets/create")
-    public String createDiets(@RequestParam(name = "diet") List<Diet> diets,
-                              @RequestParam(name = "checked") List<Boolean> checked,@ModelAttribute Recipe recipe){
-        List<Diet> diets1 = new ArrayList<>();
-        for(int i =0; i < diets.size();i++){
-            if(checked.get(i)){
-                diets1.add(diets.get(i));
-            }
-        }
-        recipe.setDiets(diets1);
-        recipeRepo.save(recipe);
+        model.addAttribute("dietsList", dietsList);
         return "recipes/create";
     }
 
-    // Create Recipe Post Method
+    // Create Recipe and diets Post Method
     @PostMapping("/posts/recipe")
     public String saveRecipe(
             @ModelAttribute Post post,
-            @ModelAttribute Recipe recipe
+            @ModelAttribute Recipe recipe,
+            @ModelAttribute List<Diet> diets
     ) throws ParseException {
-
         // Get the currently logged in user
         User author = (User) SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
 
+//        for (Diet diet:diets) {
+//            System.out.println(diet);
+//        }
         // Set the currently logged in user to the newly created post/recipe
         post.setUser(author);
 
@@ -92,6 +79,9 @@ public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, Po
 
         // save the post and set to recipe post property
         Post postRecipe = postRepo.saveAndFlush(post); // grab the newly saved post/recipe
+
+            recipe.setDiets(diets);
+
         recipe.setPost(postRecipe);
 
         // save the recipe and set the post recipe property

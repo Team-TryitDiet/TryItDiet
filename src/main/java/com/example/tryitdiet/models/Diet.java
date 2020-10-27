@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 @Table(name="diets")
 public class Diet {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -13,7 +14,7 @@ public class Diet {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column
     private String description;
 
     @ManyToMany(mappedBy = "diets")

@@ -14,7 +14,7 @@
 
         <label for="prep">Enter Recipe Title: </label>
         <br>
-        <input th:value="${post.title}" name="title" />
+        <input th:value="${post.title}" name="title"/>
         <label for="prep">Enter Recipe preparation: </label>
         <br>
         <textarea th:value="${recipe.preparation}" name="preparation" id="prep" cols="72" rows="4"></textarea>
@@ -23,14 +23,15 @@
         <br>
         <textarea th:value="${recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
         <br>
-        <form th:action="@{/recipe/diets/create}" method="post">
+        <table>
             <div class="card" th:each="diet : ${dietsList}">
-                    <input type="checkbox" id="diet" name="diet" th:text="${diet.title}"
-                           checked="checked">
-                    <br>
+                <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
+                <input type="hidden" name="diet" th:value="${diet.id}"/>
+                <br>
             </div>
+        </table>
         <button type="submit">Create</button>
-    </form>
+
     </form>
 </div>
 
