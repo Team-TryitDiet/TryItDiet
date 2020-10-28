@@ -4,9 +4,9 @@ CREATE DATABASE tryit_diet_db;
 USE tryit_diet_db;
 
 INSERT INTO diets (title)
-VALUES ('diet1'),
-       ('diet2'),
-       ('diet3');
+VALUES ('keto'),
+       ('vegan'),
+       ('high-protein');
 
 INSERT INTO posts (title, date, user_id, recipe_id)
 VALUES ('chicken alfredo', CURDATE(), 1, 1),
@@ -37,6 +37,12 @@ VALUES (1, 3),
        (3, 14),
        (3, 15),
        (3, 16);
+INSERT INTO recipes_diets(recipe_id, diet_id)
+    VALUES (1, 2),
+    (2, 2),
+    (2, 3),
+    (3, 1);
+
 
 INSERT INTO ingredients (name)
 VALUES

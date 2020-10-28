@@ -19,7 +19,7 @@
                             <div class="card-text"><p th:text="${post.recipe.notes}"></p></div>
                             <div class="card-text"><p th:text="${post.recipe.preparation}"></p></div>
                             <div class="card" th:each="diet:${post.recipe.diets}">
-                            <div class="card-text"><p th:text="${diet.title}"></p></div>
+                                <div class="card-text"><p th:text="${diet.title}"></p></div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-1">Edit</button>
                         </form>
