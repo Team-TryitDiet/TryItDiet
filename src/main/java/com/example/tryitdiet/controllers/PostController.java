@@ -40,6 +40,7 @@ public class PostController {
         return "posts/create";
     }
 
+
     // Create Post Method
     @PostMapping("/create")
     public String savePost(

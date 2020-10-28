@@ -34,7 +34,6 @@ public class RecipeController {
     private final IngredientRepository ingredientRepo;
 
 
-
     public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo) {
         this.dietRepo = dietRepo;
         this.recipeRepo = recipeRepo;
