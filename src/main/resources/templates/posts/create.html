@@ -9,8 +9,11 @@
 <div th:replace="partials/navbar :: navbar"></div>
 <!--<div th:replace="partials/header :: header"></div>-->
 
+
+<!--file picker here-->
 <div class="container">
     <form th:action="@{/create}" th:object="${post}" method="post">
+        <div class="p-5"><img class="rounded-circle img-fluid" id="uploadedImage" th:src="${photoUrl}"></div>
 
         <label for="title">Enter Post Title: </label>
         <br>
@@ -26,5 +29,18 @@
 
 <footer th:replace="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"/>
+<script src="keys.js"></script>
+<script src="https://static.filestackapi.com/v3/filestack.js"></script>
+<script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
+
+<div th:replace="partials/scripts :: scripts"/>
+
+
+<script th:src="@{/js/keys.js}"></script>
+
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+<script th:src="@{/js/filestack.js}"></script>
+
 </body>
 </html>

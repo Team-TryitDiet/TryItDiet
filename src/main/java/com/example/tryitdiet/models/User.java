@@ -7,17 +7,17 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100,unique = true)
+    @Column(nullable = false, length = 100, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 255,unique = true)
+    @Column(nullable = false, length = 255, unique = true)
     private String email;
 
     @Column(nullable = false, length = 255)
@@ -33,6 +33,10 @@ public class User {
     @Column(nullable = false)
     @ColumnDefault("false")
     private boolean is_banned;
+
+    @Column
+    private String profilePic;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
@@ -65,9 +69,11 @@ public class User {
         this.is_banned = is_banned;
         this.posts = posts;
     }
+
     public User(long id, String username, String email, String password, String phone_number, boolean is_admin, boolean is_banned, List<Post> posts, List<Comment> comments) {
         this.id = id;
         this.username = username;
+
         this.email = email;
         this.password = password;
         this.phone_number = phone_number;
@@ -148,5 +154,14 @@ public class User {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+
 }
 
