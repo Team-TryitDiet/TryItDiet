@@ -10,6 +10,7 @@ import com.example.tryitdiet.models.Ingredient;
 import com.example.tryitdiet.repositories.IngredientRepository;
 import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.RecipeRepository;
+import com.example.tryitdiet.utils.DietByIdConverter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -106,9 +108,11 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
+        List<Diet> diets = post.getRecipe().getDiets();
         List<Diet> dietsList =dietRepo.findAll();
         model.addAttribute("post", post);
         model.addAttribute("dietsList", dietsList);
+        model.addAttribute("diets",diets);
         return "recipes/edit";
     }
 
@@ -116,16 +120,19 @@ public class RecipeController {
     @PostMapping("/posts/recipe/edit")
     public String updateRecipe(
             @ModelAttribute Post post,
-            @RequestParam List<Diet> diets
+            @RequestParam List<Long> diets
     ) {
         // update post and recipe
-
-        postRepo.saveAndFlush(post);
-        if (!diets.isEmpty()) {
-            post.getRecipe().setDiets(diets);
+        List<Diet> recipeDiets = new ArrayList<>();
+        for(int i= 0; i< diets.size(); i++){
+            Diet thisDiet = dietRepo.getOne(diets.get(i));
+            recipeDiets.add(thisDiet);
         }
+//        System.out.println(recipeDiets);
+        post.getRecipe().setDiets(recipeDiets);
+        //this is saving the changes in our database
+        postRepo.save(post);
         return "redirect:/posts";
     }
-
 
 }

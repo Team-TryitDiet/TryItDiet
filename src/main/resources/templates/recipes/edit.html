@@ -15,7 +15,7 @@
         <input type="hidden" th:field="${post.user.id}" name="userId">
         <label for="prep">Recipe Title: </label>
         <br>
-        <input th:field="${post.title}" name="title" />
+        <input th:field="${post.title}" name="title"/>
         <label for="prep">Recipe preparation: </label>
         <br>
         <textarea th:field="${post.recipe.preparation}" name="preparation" id="prep" cols="72" rows="4"></textarea>
@@ -26,8 +26,22 @@
         <br>
         <table>
             <div class="card" th:each="diet : ${dietsList}">
-                <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
-                <br>
+                <!-- We want to also loop through the ${diets} to see if any of those are already selected -->
+                <!-- start the loop here -->
+                <span th:switch="${post.recipe.diets.contains(diet)}">
+                    <span th:case="${true}">
+                        <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"
+                               checked="checked"/>
+                    </span>
+                    <span th:case="*">
+                        <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
+                    </span>
+                    <!--
+             change  it to
+             checked if it already is selected for this recipe -->
+                    <!-- end the loop here -->
+                    <br>
+                </span>
             </div>
         </table>
         <button type="submit">Save</button>
