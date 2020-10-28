@@ -24,6 +24,12 @@
         <br>
         <textarea th:field="${post.recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
         <br>
+        <table>
+            <div class="card" th:each="diet : ${dietsList}">
+                <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
+                <br>
+            </div>
+        </table>
         <button type="submit">Save</button>
     </form>
 </div>

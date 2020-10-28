@@ -106,17 +106,24 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
+        List<Diet> dietsList =dietRepo.findAll();
         model.addAttribute("post", post);
+        model.addAttribute("dietsList", dietsList);
         return "recipes/edit";
     }
 
     // Update Recipe Post method
     @PostMapping("/posts/recipe/edit")
     public String updateRecipe(
-            @ModelAttribute Post post
+            @ModelAttribute Post post,
+            @RequestParam List<Diet> diets
     ) {
         // update post and recipe
-        postRepo.save(post);
+
+        postRepo.saveAndFlush(post);
+        if (!diets.isEmpty()) {
+            post.getRecipe().setDiets(diets);
+        }
         return "redirect:/posts";
     }
 

@@ -104,9 +104,11 @@ public class PostController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postRepo.findById(id).orElse(null);
         List <Comment> comments = post.getComments();
+        List<Diet> diets = post.getRecipe().getDiets();
         model.addAttribute("allComments",comments);
         model.addAttribute("post", post);
         model.addAttribute("user",user);
+        model.addAttribute("diets",diets);
         // add a new comment object to the model
         model.addAttribute("newComment", new Comment());
         return "posts/show";
