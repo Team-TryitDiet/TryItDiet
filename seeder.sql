@@ -2,11 +2,10 @@ DROP DATABASE tryit_diet_db;
 CREATE DATABASE tryit_diet_db;
 
 USE tryit_diet_db;
-
 INSERT INTO diets (title)
 VALUES ('keto'),
        ('vegan'),
-       ('high-protein');
+       ('highProtein');
 
 INSERT INTO posts (title, date, user_id, recipe_id)
 VALUES ('chicken alfredo', CURDATE(), 1, 1),

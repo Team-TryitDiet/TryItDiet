@@ -21,64 +21,81 @@
                             <div class="card" th:each="diet:${post.recipe.diets}">
                                 <div class="card-text"><p th:text="${diet.title}"></p></div>
                             </div>
-                            <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                            <div th:switch="${post.user.username.equals(user.username)}">
+                                <div th:case="${true}">
+                                    <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div th:case="*">
-                        <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
-                            <button type="submit" class="btn btn-primary mr-1">Edit</button>
-                        </form>
+                        <div th:switch="${post.user.username.equals(user.username)}">
+                            <div th:case="${true}">
+                                <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
+                                    <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div th:switch="${post.user.username.equals(user.username)}">
+                            <div th:case="${true}">
+                                <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-text" th:text="${post.getUser().getUsername()}"></div>
+                </div>
+            </div>
+
+            <!--    Create a comment-->
+            <div class="d-flex">
+                <div class="content">
+                    <h3>Create a Comment</h3>
+                    <form th:action="@{'/posts/comment'}" th:object="${newComment}" method="post">
+                        <input type="hidden" th:value="${post.id}" name="postId">
+                        <label for="body">Comment Body</label>
+                        <textarea id="body" name="body"></textarea>
+                        <button type="submit" value="submit"> Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <!--    post all comments-->
+            <div class="card" th:each="comment : ${allComments}">
+                <div class="card-body">
+                    <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
+                    <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
+
+                    <div th:switch="${comment.user.username.equals(user.username)}">
+                        <div th:case="${true}">
+                            <!--edit the comment-->
+                            <div class="d-flex">
+                                <form th:action="@{'/comments/edit'}" method="get">
+                                    <input type="hidden" name="commentId" th:value="${comment.id}"/>
+                                    <input type="hidden" name="postId" th:value="${post.id}"/>
+                                    <button type="submit" class="btn btn-primary">Edit the comment</button>
+                                </form>
+                            </div>
+
+                            <!--delete the comment-->
+                            <div class="d-flex">
+                                <form th:action="@{'/comments/delete'}" method="post">
+                                    <input type="hidden" name="commentId" th:value="${comment.id}"/>
+                                    <input type="hidden" name="postId" th:value="${post.id}"/>
+                                    <button type="submit" class="btn btn-primary">Delete the comment</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card-text" th:text="${post.getUser().getEmail()}"></div>
-                <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
-                    <button type="submit" class="btn btn-primary">Delete</button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-
-    <!--    post all comments-->
-    <div class="card" th:each="comment : ${allComments}">
-        <div class="card-body">
-            <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
-            <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
-            <!--delete the comment-->
-            <div class="d-flex">
-                <form th:action="@{'/comments/delete'}" method="post">
-                    <input type="hidden" name="commentId" th:value="${comment.id}"/>
-                    <input type="hidden" name="postId" th:value="${post.id}"/>
-                    <button type="submit" class="btn btn-primary">Delete the comment</button>
-                </form>
             </div>
 
-            <!--edit the comment-->
-            <div class="d-flex">
-                <form th:action="@{'/comments/edit'}" method="get">
-                    <input type="hidden" name="commentId" th:value="${comment.id}"/>
-                    <input type="hidden" name="postId" th:value="${post.id}"/>
-                    <button type="submit" class="btn btn-primary">Edit the comment</button>
-                </form>
-            </div>
         </div>
-    </div>
 
-    <!--    Create a comment-->
-    <div class="d-flex">
-        <div class="content">
-            <h3>Create a Comment</h3>
-            <form th:action="@{'/posts/comment'}" th:object="${newComment}" method="post">
-                <input type="hidden" th:value="${post.id}" name="postId">
-                <label for="body">Comment Body</label>
-                <textarea id="body" name="body"></textarea>
-                <button type="submit" value="submit"> Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<footer th:replace="partials/footer :: footer"></footer>
-<scripts th:replace="partials/scripts :: scripts"/>
+        <footer th:replace="partials/footer :: footer"></footer>
+        <scripts th:replace="partials/scripts :: scripts"/>
 </body>
 </html>

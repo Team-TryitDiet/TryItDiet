@@ -89,7 +89,9 @@ public class PostController {
     public String showAllPosts(
             Model model
     ) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("posts", postRepo.findAll());
+        model.addAttribute("user",user);
         return "posts/index";
     }
 
@@ -99,10 +101,12 @@ public class PostController {
             @PathVariable(name = "id") long id,
             Model model
     ) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postRepo.findById(id).orElse(null);
         List <Comment> comments = post.getComments();
         model.addAttribute("allComments",comments);
         model.addAttribute("post", post);
+        model.addAttribute("user",user);
         // add a new comment object to the model
         model.addAttribute("newComment", new Comment());
         return "posts/show";
