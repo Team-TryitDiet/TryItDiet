@@ -37,3 +37,17 @@ nav a:hover {
     height: 100vh;
     width: 100vw;
 }
+
+p {
+    color: black;
+}
+
+.cardbg {
+    background-color: #252525;
+    opacity: .8;
+
+}
+
+.halfsiz {
+    width: 25%;
+}
