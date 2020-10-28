@@ -65,14 +65,29 @@ form.addEventListener('submit', function (e) {
     alert('Submitting: ' + fileInput.value);
 });
 
+$(document).ready(function () {
+
+    //filestack
+    console.log(url);
+    $("#profile-btn").click(function () {
+        stackClient.picker(options).open();
+    });
+
+})
+
+
 // Helper to overwrite the field input value
 
 function updateForm (result) {
     const fileData = result.filesUploaded[0];
-    fileInput.value = fileData.url;
+    console.log(fileData);
+    $("#profileUrl").val(fileData.url);
+    //const photoUrl = fileData.url;
 
     // Some ugly DOM code to show some data.
     const name = document.createTextNode('Selected: ' + fileData.filename);
+    $("#uploadedImage").src(fileData.url);
+    $("#fileupload").val(fileData.url);
     const url = document.createElement('a');
     url.href = fileData.url;
     url.appendChild(document.createTextNode(fileData.url));

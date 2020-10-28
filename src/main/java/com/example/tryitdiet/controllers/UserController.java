@@ -17,22 +17,23 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+
     @GetMapping("/")
     public String welcome() {
         return "index";
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute User user,@RequestParam(name="confirmPassword") String confirmPassword, @RequestParam(name="password") String password) {
+    public String register(@ModelAttribute User user, @RequestParam(name = "confirmPassword") String confirmPassword, @RequestParam(name = "password") String password) {
         if (!password.equals(confirmPassword)) {
             return "users/register";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        if(user.getId()==0){
+        if (user.getId() == 0) {
             userRepo.save(user);
             return "redirect:/login";
-        }else {
+        } else {
             userRepo.save(user);
             return "users/profile";
         }
@@ -50,17 +51,39 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profilePage( Model model){
-        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    public String profilePage(Model model) {
+User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser =  userRepo.getOne(getUser.getId());
+        model.addAttribute("user", currentUser);
+
+        model.addAttribute("photoUrl", currentUser.getProfilePic());
         return "users/profile";
     }
 
-
-    @GetMapping("/user/edit")
-    public String editUserInformation(@ModelAttribute User user,Model model){
-        model.addAttribute("user",(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        return "users/register";
+    @PostMapping("/profile/pic")
+    public String saveUserProfile(@RequestParam long userId, @RequestParam String url, @ModelAttribute User user) {
+        User saveUserProfile = userRepo.getOne(userId);
+        saveUserProfile.setPosts(user.getPosts());
+        saveUserProfile.setProfilePic(url);
+        userRepo.save(saveUserProfile);
+        return "redirect:/profile";
     }
 
+    @GetMapping("/user/edit")
+    public String editUserInformation(@ModelAttribute User user, Model model) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userRepo.findById(currentUser.getId()).orElse(null));
+        return "users/register";
 
+    }
+
+//    @PostMapping("/user/edit")
+//    public String saveUserInformation(@RequestParam String avatarurl) {
+//        //instantiate a user repo and save url as user's photo
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User currentUser = userRepo.findById(user.getId()).orElse(null);
+//        currentUser.setProfilePic(avatarurl);
+//        userRepo.save(currentUser);
+//        return "redirect:/profile";
+//    }
 }

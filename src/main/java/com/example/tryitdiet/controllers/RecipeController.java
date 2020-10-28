@@ -95,4 +95,5 @@ public class RecipeController {
         postRepo.save(post);
         return "redirect:/posts";
     }
+
 }
