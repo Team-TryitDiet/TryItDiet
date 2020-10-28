@@ -10,7 +10,6 @@ import com.example.tryitdiet.models.Ingredient;
 import com.example.tryitdiet.repositories.IngredientRepository;
 import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.RecipeRepository;
-import com.example.tryitdiet.utils.DietByIdConverter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
