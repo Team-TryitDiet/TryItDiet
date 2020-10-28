@@ -1,6 +1,7 @@
 package com.example.tryitdiet.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "recipes")
@@ -8,7 +9,7 @@ public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private long id;
 
     @Column
@@ -21,8 +22,31 @@ public class Recipe {
     @OneToOne(mappedBy = "recipe")
     private Post post;
 
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "recipes_diets",
+            joinColumns = {@JoinColumn(name = "recipe_id")},
+            inverseJoinColumns = {@JoinColumn(name = "diet_id")}
+    )
+    private List<Diet> diets;
+
+    // Many to Many Relationships
+    // Set relationship between
+    // Many to Many Relationships
+    // Set relationship between Recipes and Ingredients
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "recipes_ingredients",
+            joinColumns = {@JoinColumn(name = "recipe_id")},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id")}
+    )
+    private List<Ingredient> ingredients;
+
+
     // Default Constructor
-    public Recipe() {}
+    public Recipe() {
+    }
 
     // Constructor
     public Recipe(long id, String preparation, String notes) {
@@ -31,8 +55,15 @@ public class Recipe {
         this.notes = notes;
     }
 
-    // Getters and Setters
+    public Recipe(long id, String preparation, String notes, Post post, List<Diet> diets) {
+        this.id = id;
+        this.preparation = preparation;
+        this.notes = notes;
+        this.post = post;
+        this.diets = diets;
+    }
 
+    // Getters and Setters
     public long getId() {
         return id;
     }
@@ -64,4 +95,23 @@ public class Recipe {
     public void setPost(Post post) {
         this.post = post;
     }
+
+
+    public List<Diet> getDiets() {
+        return diets;
+    }
+
+    public void setDiets(List<Diet> diets) {
+        this.diets = diets;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+
+    }
+
 }

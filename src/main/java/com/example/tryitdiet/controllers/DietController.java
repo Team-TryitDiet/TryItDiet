@@ -1,11 +1,19 @@
 package com.example.tryitdiet.controllers;
 
+import com.example.tryitdiet.models.Diet;
+import com.example.tryitdiet.repositories.DietRepository;
+import com.example.tryitdiet.repositories.PostRepository;
+import com.example.tryitdiet.repositories.RecipeRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class DietController {
-
 
     @GetMapping("/diets/dairy-free")
     public String showDairyFreePage() {

@@ -14,7 +14,7 @@
 
         <label for="prep">Enter Recipe Title: </label>
         <br>
-        <input th:value="${post.title}" name="title" />
+        <input th:value="${post.title}" name="title"/>
         <label for="prep">Enter Recipe preparation: </label>
         <br>
         <textarea th:value="${recipe.preparation}" name="preparation" id="prep" cols="72" rows="4"></textarea>
@@ -22,10 +22,24 @@
         <label for="body">Enter your Recipe Notes: </label>
         <br>
         <textarea th:value="${recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
+        <div class="d-flex justify-content-between">
+            <div th:each="ingredient : ${ingredientsList}">
+                    <input type="checkbox" th:id="${ingredient.name}" name="ingredients" th:value="${ingredient.id}" />
+                    <label th:for="${ingredient.name}"  th:text="${ingredient.name}"></label>
+            </div>
+        </div>
         <br>
+        <table>
+            <div class="card" th:each="diet : ${dietsList}">
+                <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
+                <br>
+            </div>
+        </table>
         <button type="submit">Create</button>
+
     </form>
 </div>
+
 
 <footer th:replace="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"/>
