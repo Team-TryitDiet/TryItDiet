@@ -1,11 +1,7 @@
 package com.example.tryitdiet.controllers;
 
-import com.example.tryitdiet.models.Comment;
-import com.example.tryitdiet.models.Post;
-import com.example.tryitdiet.models.User;
-import com.example.tryitdiet.repositories.CommentRepository;
-import com.example.tryitdiet.repositories.PostRepository;
-import com.example.tryitdiet.repositories.UserRepository;
+import com.example.tryitdiet.models.*;
+import com.example.tryitdiet.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +19,30 @@ public class PostController {
     private final PostRepository postRepo;
     private final UserRepository userRepo;
     private final CommentRepository commentRepo;
+    private final RecipeRepository recipeRepo;
+    private final DietRepository dietRepo;
 
-    // PostController Constructor
-    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo) {
+    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, RecipeRepository recipeRepo, DietRepository dietRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
+        this.recipeRepo = recipeRepo;
+        this.dietRepo = dietRepo;
     }
+
+//    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, RecipeRepository recipeRepo) {
+//        this.postRepo = postRepo;
+//        this.userRepo = userRepo;
+//        this.commentRepo = commentRepo;
+//        this.recipeRepo = recipeRepo;
+//    }
+
+    // PostController Constructor
+//    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo) {
+//        this.postRepo = postRepo;
+//        this.userRepo = userRepo;
+//        this.commentRepo = commentRepo;
+//    }
 
     // Create Post Get Method
     @GetMapping("/create")
@@ -76,7 +89,9 @@ public class PostController {
     public String showAllPosts(
             Model model
     ) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("posts", postRepo.findAll());
+        model.addAttribute("user",user);
         return "posts/index";
     }
 
@@ -86,10 +101,14 @@ public class PostController {
             @PathVariable(name = "id") long id,
             Model model
     ) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postRepo.findById(id).orElse(null);
         List <Comment> comments = post.getComments();
+        List<Diet> diets = post.getRecipe().getDiets();
         model.addAttribute("allComments",comments);
         model.addAttribute("post", post);
+        model.addAttribute("user",user);
+        model.addAttribute("diets",diets);
         // add a new comment object to the model
         model.addAttribute("newComment", new Comment());
         return "posts/show";
