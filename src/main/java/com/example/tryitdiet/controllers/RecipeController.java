@@ -107,7 +107,9 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
+        //this is from the template
         List<Diet> diets = post.getRecipe().getDiets();
+        //this is from database
         List<Diet> dietsList =dietRepo.findAll();
         model.addAttribute("post", post);
         model.addAttribute("dietsList", dietsList);
@@ -133,5 +135,6 @@ public class RecipeController {
         postRepo.save(post);
         return "redirect:/posts";
     }
+
 
 }
