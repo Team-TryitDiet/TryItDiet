@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 
-    public List<Ingredient> findIngreientByName
+    // Add in the query method to help with the posts search functionality
+    List<Ingredient> findByNameContaining(String name);
 }
