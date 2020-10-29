@@ -111,5 +111,4 @@ public class Recipe {
         this.ingredients = ingredients;
 
     }
-
 }

@@ -53,7 +53,6 @@ public class PostController {
         return "posts/create";
     }
 
-
     // Create Post Method
     @PostMapping("/create")
     public String savePost(
@@ -87,11 +86,21 @@ public class PostController {
     // Read Posts Method
     @GetMapping("/posts")
     public String showAllPosts(
-            Model model
+            Model model,
+            @RequestParam(value = "search", required = false) String search
     ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("posts", postRepo.findAll());
         model.addAttribute("user",user);
+
+         List<Post> allPost = postRepo.findAll();
+
+        // if search is not empty
+        if (search != null) {
+            allPost = postRepo.findByTitleContaining(search);
+        }
+
+        model.addAttribute("posts", allPost);
         return "posts/index";
     }
 
@@ -186,7 +195,7 @@ public class PostController {
             @RequestParam(name = "commentId") long commentId,
             @RequestParam(name = "postId") long postId
     ){
-        System.out.println(commentId);
+//        System.out.println(commentId);
         commentRepo.deleteById(commentId);
         return "redirect:/posts/" + postId ;
     }
