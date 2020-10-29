@@ -36,7 +36,7 @@ public class RecipeController {
     }
 
 
-    // Create Recipe and diets Get Method
+    // Create  Get Method for Recipe && Diets and Recipe && Ingredients
     @GetMapping("/posts/recipe")
     public String createRecipe(Model model) {
         // add a brand new post and a brand new recipe to the model
@@ -48,12 +48,11 @@ public class RecipeController {
         return "recipes/create";
     }
 
-    // Create Recipe and diets Post Method
+    // Create Post Method for Recipe && diets and Recipe && Ingredients
     @PostMapping("/posts/recipe")
     public String saveRecipe(
             @ModelAttribute Recipe recipe,
             @ModelAttribute Post post,
-            @RequestParam List<Diet> diets,
             @RequestParam(value = "ingredients") List<Ingredient> ingredients
     ) throws ParseException {
         // Get the currently logged in user
@@ -72,20 +71,8 @@ public class RecipeController {
         Date date = format.parse(createDate);
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         post.setDate(sqlDate);
-
-        // save the post and set to recipe post property
-        Post postRecipe = postRepo.saveAndFlush(post); // grab the newly saved post/recipe
-
-        // set diet(s) to the recipe
-        if (!diets.isEmpty()) {
-            recipe.setPost(postRecipe);
-        }
-
-        // save the recipe and set the post recipe property
-        Recipe savedRecipe = recipeRepo.saveAndFlush(recipe); // grab the newly saved recipe
-        postRecipe.setRecipe(savedRecipe);
-        postRepo.save(postRecipe); // update post with recipe information
-
+        post.setRecipe(recipe);
+        postRepo.save(post);
         return "redirect:/posts";
     }
 

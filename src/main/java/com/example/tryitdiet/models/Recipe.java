@@ -22,7 +22,7 @@ public class Recipe {
     @OneToOne(mappedBy = "recipe")
     private Post post;
 
-    //set relationship between Recipe and Diet
+    // set relationship between Recipes and Diets
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "recipes_diets",
@@ -59,6 +59,15 @@ public class Recipe {
         this.notes = notes;
         this.post = post;
         this.diets = diets;
+    }
+
+    public Recipe(long id, String preparation, String notes, Post post, List<Diet> diets, List<Ingredient> ingredients) {
+        this.id = id;
+        this.preparation = preparation;
+        this.notes = notes;
+        this.post = post;
+        this.diets = diets;
+        this.ingredients = ingredients;
     }
 
     // Getters and Setters

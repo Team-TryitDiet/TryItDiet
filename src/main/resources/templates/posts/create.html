@@ -7,7 +7,6 @@
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
-<!--<div th:replace="partials/header :: header"></div>-->
 
 
 <!--file picker here-->
@@ -22,7 +21,14 @@
         <label for="body">Enter your Post: </label>
         <br>
         <textarea th:field="*{description}" id="body" cols="72" rows="4"></textarea>
+        <table>
+            <div class="card" th:each="diet : ${dietsList}">
+                <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
+                <br>
+            </div>
+        </table>
         <br>
+
         <button type="submit">Create</button>
     </form>
 </div>

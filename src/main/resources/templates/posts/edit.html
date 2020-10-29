@@ -22,6 +22,22 @@
         <br>
         <textarea id="body" col="72" rows="4" th:field="*{description}"></textarea>
         <br>
+        <table>
+            <div class="card" th:each="diet : ${dietsList1}">
+                <!-- We want to also loop through the ${diets} to see if any of those are already selected -->
+                <!-- start the loop here -->
+                <span th:switch="${post.diets.contains(diet)}">
+                    <span th:case="${true}">
+                        <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"
+                               checked="checked"/>
+                    </span>
+                    <span th:case="*">
+                        <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
+                    </span>
+                    <br>
+                </span>
+            </div>
+        </table>
         <button type="submit">Done!</button>
     </form>
 </div>
