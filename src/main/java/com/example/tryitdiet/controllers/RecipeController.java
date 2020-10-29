@@ -38,13 +38,22 @@ public class RecipeController {
 
     // Create  Get Method for Recipe && Diets and Recipe && Ingredients
     @GetMapping("/posts/recipe")
-    public String createRecipe(Model model) {
+    public String createRecipe(
+            Model model,
+            @RequestParam(value = "search", required = false) String search
+    ) {
         // add a brand new post and a brand new recipe to the model
         model.addAttribute("post", new Post());
         model.addAttribute("recipe", new Recipe());
         List<Diet> dietsList = dietRepo.findAll();
         model.addAttribute("dietsList", dietsList);
-        model.addAttribute("ingredientsList", ingredientRepo.findAll());
+        List<Ingredient> ingredientsList = ingredientRepo.findAll();
+
+        if (search != null) {
+            ingredientsList = ingredientRepo.findByNameContaining(search);
+        }
+
+        model.addAttribute("ingredientsList", ingredientsList);
         return "recipes/create";
     }
 

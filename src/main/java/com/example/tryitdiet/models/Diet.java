@@ -25,8 +25,6 @@ public class Diet {
     @ManyToMany(mappedBy = "diets")
     private List<Post> posts;
 
-//    @ManyToMany(mappedBy = "ingredients")
-//    private List<Ingredient> ingredients;
 
     public Diet() {
     }
@@ -79,11 +77,4 @@ public class Diet {
         this.recipes = recipes;
     }
 
-//    public List<Ingredient> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(List<Ingredient> ingredients) {
-//        this.ingredients = ingredients;
-//    }
 }

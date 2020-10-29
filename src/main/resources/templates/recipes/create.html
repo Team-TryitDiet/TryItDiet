@@ -10,6 +10,12 @@
 <!--<div th:replace="partials/header :: header"></div>-->
 
 <div class="container">
+    <form action="/posts/recipe" method="GET">
+        <label for="search">Search for Ingredient By Name</label>
+        <input type="search" name="search" id="search" />
+        <input type="submit" />Submit
+    </form>
+
     <form th:action="@{/posts/recipe}" method="post">
 
         <label for="prep">Enter Recipe Title: </label>
@@ -23,6 +29,7 @@
         <br>
         <textarea th:value="${recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
         <div class="d-flex justify-content-between">
+
             <div th:each="ingredient : ${ingredientsList}">
                     <input type="checkbox" th:id="${ingredient.name}" name="ingredients" th:value="${ingredient.id}" />
                     <label th:for="${ingredient.name}"  th:text="${ingredient.name}"></label>
