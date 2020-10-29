@@ -57,3 +57,31 @@ VALUES
        ('onion'),
        ('rice');
 
+# Build the relationship between ingredients and foodgroups manually
+# INSERT INTO ingredients_foodgroups (ingredient_id, foodgroup_id)
+# VALUES (1, 1),
+#        (2, 5),
+#        (3, 5),
+#        (4, 1),
+#        (4, 5),
+#        (5, ),
+#        (6, ),
+#        (7, ),
+#        (8, ),
+#        (9, ),
+#        (10, ),
+#        (11, ),
+#        (12, ),
+#        (13, ),
+#        (14, ),
+#        (15, ),
+#        (16, 1);
+#
+# INSERT INTO foodgroups (name)
+# VALUES
+# ('vegetable'),
+# ('grain'),
+# ('diary'),
+# ('fruit'),
+# ('protein'),
+# ('oils');

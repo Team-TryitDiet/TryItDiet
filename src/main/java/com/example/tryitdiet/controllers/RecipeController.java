@@ -25,15 +25,13 @@ public class RecipeController {
     private final RecipeRepository recipeRepo;
     private final PostRepository postRepo;
     private final IngredientRepository ingredientRepo;
-    private final FoodgroupRepository foodgroupRepo;
 
 
-    public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo, FoodgroupRepository foodgroupRepo) {
+    public RecipeController(DietRepository dietRepo, RecipeRepository recipeRepo, PostRepository postRepo, IngredientRepository ingredientRepo) {
         this.dietRepo = dietRepo;
         this.recipeRepo = recipeRepo;
         this.postRepo = postRepo;
         this.ingredientRepo = ingredientRepo;
-        this.foodgroupRepo = foodgroupRepo;
     }
 
 
