@@ -9,4 +9,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     // Add in the query method to help with the posts search functionality
     List<Post> findByTitleContaining(String name);
+    List<Post> findByTitleStartsWith(String name);
+
 }

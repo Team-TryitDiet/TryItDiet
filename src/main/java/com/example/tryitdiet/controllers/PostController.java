@@ -80,7 +80,9 @@ public class PostController {
 
         // if search is not empty
         if (search != null) {
-            allPost = postRepo.findByTitleContaining(search);
+//            allPost = postRepo.findByTitleContaining(search);
+            allPost = postRepo.findByTitleStartsWith(search);
+
         }
 
         model.addAttribute("posts", allPost);
