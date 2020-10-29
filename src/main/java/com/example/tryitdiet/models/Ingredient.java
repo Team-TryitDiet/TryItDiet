@@ -16,13 +16,13 @@ public class Ingredient {
     @ManyToMany(mappedBy = "ingredients")
     private List<Recipe> recipes;
 
-//    @ManyToMany(mappedBy = "ingredients")
-//    @JoinTable(
-//            name="ingredients_foodgroups",
-//            joinColumns = {@JoinColumn(name="recipe_id")},
-//            inverseJoinColumns = {@JoinColumn(name="ingredient_id")}
-//    )
-//    private List<Ingredient> foodgroups;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="ingredients_foodgroups",
+            joinColumns = {@JoinColumn(name="ingredient_id")},
+            inverseJoinColumns = {@JoinColumn(name="foodgroup_id")}
+    )
+    private List<Ingredient> foodgroups;
 
     // Constructors
     public Ingredient() {}

@@ -1,15 +1,8 @@
 package com.example.tryitdiet.controllers;
 
 
-import com.example.tryitdiet.models.Diet;
-import com.example.tryitdiet.models.Post;
-import com.example.tryitdiet.models.Recipe;
-import com.example.tryitdiet.models.User;
-import com.example.tryitdiet.repositories.DietRepository;
-import com.example.tryitdiet.models.Ingredient;
-import com.example.tryitdiet.repositories.IngredientRepository;
-import com.example.tryitdiet.repositories.PostRepository;
-import com.example.tryitdiet.repositories.RecipeRepository;
+import com.example.tryitdiet.models.*;
+import com.example.tryitdiet.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,13 +38,22 @@ public class RecipeController {
 
     // Create Recipe and diets Get Method
     @GetMapping("/posts/recipe")
-    public String createRecipe(Model model) {
+    public String createRecipe(
+            Model model,
+            @RequestParam(value = "search", required = false) String search
+    ) {
         // add a brand new post and a brand new recipe to the model
         model.addAttribute("post", new Post());
         model.addAttribute("recipe", new Recipe());
         List<Diet> dietsList = dietRepo.findAll();
         model.addAttribute("dietsList", dietsList);
-        model.addAttribute("ingredientsList", ingredientRepo.findAll());
+        List<Ingredient> ingredientsList = ingredientRepo.findAll();
+
+        if (search != null) {
+            ingredientsList = ingredientRepo.findByNameContaining(search);
+        }
+
+        model.addAttribute("ingredientsList", ingredientsList);
         return "recipes/create";
     }
 
@@ -68,10 +70,6 @@ public class RecipeController {
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
-
-        for(Ingredient ingredient : ingredients) {
-            System.out.println(ingredient.getName());
-        }
 
         // Set the currently logged in user to the newly created post/recipe
 
@@ -135,6 +133,4 @@ public class RecipeController {
         postRepo.save(post);
         return "redirect:/posts";
     }
-
-
 }
