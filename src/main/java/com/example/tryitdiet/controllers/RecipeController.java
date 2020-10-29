@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -106,16 +107,31 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
+        //this is from the template
+        List<Diet> diets = post.getRecipe().getDiets();
+        //this is from database
+        List<Diet> dietsList =dietRepo.findAll();
         model.addAttribute("post", post);
+        model.addAttribute("dietsList", dietsList);
+        model.addAttribute("diets",diets);
         return "recipes/edit";
     }
 
     // Update Recipe Post method
     @PostMapping("/posts/recipe/edit")
     public String updateRecipe(
-            @ModelAttribute Post post
+            @ModelAttribute Post post,
+            @RequestParam List<Long> diets
     ) {
         // update post and recipe
+        List<Diet> recipeDiets = new ArrayList<>();
+        for(int i= 0; i< diets.size(); i++){
+            Diet thisDiet = dietRepo.getOne(diets.get(i));
+            recipeDiets.add(thisDiet);
+        }
+//        System.out.println(recipeDiets);
+        post.getRecipe().setDiets(recipeDiets);
+        //this is saving the changes in our database
         postRepo.save(post);
         return "redirect:/posts";
     }
