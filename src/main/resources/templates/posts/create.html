@@ -28,12 +28,12 @@
 </div>
 
 <footer th:replace="partials/footer :: footer"></footer>
-<scripts th:replace="partials/scripts :: scripts"/>
-<script src="keys.js"></script>
+<scripts th:replace="partials/scripts :: scripts"></scripts>
+<script src="/static/js/keys.js"></script>
 <script src="https://static.filestackapi.com/v3/filestack.js"></script>
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
 
-<div th:replace="partials/scripts :: scripts"/>
+<div th:replace="partials/scripts :: scripts"></div>
 
 
 <script th:src="@{/js/keys.js}"></script>

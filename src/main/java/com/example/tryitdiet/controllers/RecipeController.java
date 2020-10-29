@@ -120,8 +120,4 @@ public class RecipeController {
         return "redirect:/posts";
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2cd6408cee9150d5da6c92e3eefb75af707eedc0
 }
