@@ -11,6 +11,13 @@
         <div class="card-body">
             <div class="card-title" th:text="${post.title}"></div>
             <div class="card-text" th:text="${post.description}"></div>
+            <div th:switch="${post.recipe == null}">
+                <div th:case="${true}">
+                    <div class="card" th:each="diet:${post.diets}">
+                        <div class="card-text"><p th:text="${diet.title}"></p></div>
+                    </div>
+                </div>
+            </div>
             <div class="d-flex">
                 <div th:switch="${post.recipe != null}">
                     <div th:case="${true}">

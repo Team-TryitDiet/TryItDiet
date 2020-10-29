@@ -17,29 +17,33 @@ public class Diet {
     @Column
     private String description;
 
+    //relationship between recipe and diet
     @ManyToMany(mappedBy = "diets")
     private List<Recipe> recipes;
 
-//    @ManyToMany(mappedBy = "ingredients")
-//    private List<Ingredient> ingredients;
+    //relationship between post and diet
+    @ManyToMany(mappedBy = "diets")
+    private List<Post> posts;
+
 
     public Diet() {
     }
 
-    public Diet(long id, String title, String description, List<Recipe> recipes) {
+    public Diet(long id, String title, String description, List<Recipe> recipes, List<Post> posts) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.recipes = recipes;
+        this.posts = posts;
     }
 
-//    public Diet(long id, String title, String description, List<Recipe> recipes, List<Ingredient> ingredients) {
-//        this.id = id;
-//        this.title = title;
-//        this.description = description;
-//        this.recipes = recipes;
-//        this.ingredients = ingredients;
-//    }
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     public long getId() {
         return id;
@@ -73,11 +77,4 @@ public class Diet {
         this.recipes = recipes;
     }
 
-//    public List<Ingredient> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(List<Ingredient> ingredients) {
-//        this.ingredients = ingredients;
-//    }
 }

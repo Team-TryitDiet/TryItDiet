@@ -9,78 +9,51 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 
-<!--Form Prototype 1-->
-<!--file picker here-->
-<!--<div class="container">
-    <form th:action="@{/create}" th:object="${post}" method="post">
-        <div class="p-5"><img class="rounded-circle img-fluid" id="uploadedImage" th:src="${photoUrl}"></div>
-        <label for="title">Enter Post Title: </label>
-        <br>
-        <input type="text" id="title" th:field="*{title}" />
-        <br>
-        <label for="body">Enter your Post: </label>
-        <br>
-        <textarea th:field="*{description}" id="body" cols="72" rows="4"></textarea>
-        <br>
-        <button type="submit">Create</button>
-    </form>
-</div>-->
 
 <!--Form prototype 2 for create a post-->
 
 <div class="container-fluid w-50">
-<h1>Create a post</h1>
-<form th:action="@{/create}" th:object="${post}" method="post">
-    <div class="form-group">
-        <label for="title">Enter Post Title: </label>
-        <input class="form-control" type="text" id="title" th:field="*{title}" placeholder="Important Title">
-    </div>
-   <!-- <div class="form-group">
-        <label for="diet-categor">Please Choose the Post Diet Category</label>
-        <select class="form-control" id="diet-categor">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-    </div>-->
-    <div class="form-group">
-        <label for="diet-categor">Please Choose the Post Diet Category</label>
-        <select multiple class="form-control" id="diet-categor">
-            <option>Dairy-Free</option>
-            <option>Gluten-Free</option>
-            <option>High-Protein</option>
-            <option>Keto</option>
-            <option>Paleo</option>
-            <option>Pescatarian</option>
-            <option>Mediterranean</option>
-            <option>Vegan</option>
-            <option>Vegetarian</option>
-            <option>Other</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="body">Please enter information about your post: </label>
-        <textarea class="form-control" th:field="*{description}" id="body" cols="72" rows="4"></textarea>
-    </div>
-    <button type="submit" class="btn btn-secondary">Create</button>
-</form>
+    <h1>Create a post</h1>
+    <form th:action="@{/create}" th:object="${post}" method="post">
+        <div class="form-group">
+            <label for="title">Enter Post Title: </label>
+            <input class="form-control" type="text" id="title" th:field="*{title}" placeholder="Important Title">
+        </div>
+        <table>
+            <div class="card" th:each="diet : ${dietsList}">
+                <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>
+                <br>
+            </div>
+        </table>
+        <!--<div class="form-group">
+            <label for="diet-categor">Please Choose the Post Diet Category</label>
+            <select multiple class="form-control" id="diet-categor">
+                <option>Dairy-Free</option>
+                <option>Gluten-Free</option>
+                <option>High-Protein</option>
+                <option>Keto</option>
+                <option>Paleo</option>
+                <option>Pescatarian</option>
+                <option>Mediterranean</option>
+                <option>Vegan</option>
+                <option>Vegetarian</option>
+                <option>Other</option>
+            </select>
+        </div>-->
+        <div class="form-group">
+            <label for="body">Please enter information about your post: </label>
+            <textarea class="form-control" th:field="*{description}" id="body" cols="72" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-secondary">Create</button>
+    </form>
 </div>
+
 <footer th:replace="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"/>
-<script src="keys.js"></script>
 <script src="https://static.filestackapi.com/v3/filestack.js"></script>
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
-
-<div th:replace="partials/scripts :: scripts"/>
-
-
 <script th:src="@{/js/keys.js}"></script>
-
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-
 <script th:src="@{/js/filestack.js}"></script>
-
 </body>
 </html>

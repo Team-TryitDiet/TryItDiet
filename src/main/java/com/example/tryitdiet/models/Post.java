@@ -22,12 +22,12 @@ public class Post {
     @Column(nullable = false)
     private Date date;
 
-    // Set relationship between Post and user
+    // Set relationship between Posts and user
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-
+    //set relationship between Post and Comments
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<Comment> comments;
 
@@ -36,12 +36,21 @@ public class Post {
     private Recipe recipe;
 
 
+    //set relationship between Posts and Diets
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "posts_diets",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "diet_id")}
+    )
+    private List<Diet> diets;
+
     // Default Constructor
     public Post() {
     }
 
 
-    // Constructor
+    // Constructors
     public Post(long id, String title, Date date, String description) {
         this.id = id;
         this.title = title;
@@ -56,6 +65,27 @@ public class Post {
         this.date = date;
         this.user = user;
         this.comments = comments;
+    }
+
+    public Post(long id, String title, String description, Date date, User user, List<Comment> comments, Recipe recipe, List<Diet> diets) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.user = user;
+        this.comments = comments;
+        this.recipe = recipe;
+        this.diets = diets;
+    }
+
+    // getter and setter
+
+    public List<Diet> getDiets() {
+        return diets;
+    }
+
+    public void setDiets(List<Diet> diets) {
+        this.diets = diets;
     }
 
     public List<Comment> getComments() {

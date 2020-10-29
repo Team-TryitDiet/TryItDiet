@@ -19,48 +19,33 @@ public class PostController {
     private final PostRepository postRepo;
     private final UserRepository userRepo;
     private final CommentRepository commentRepo;
-    private final RecipeRepository recipeRepo;
     private final DietRepository dietRepo;
 
     public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, RecipeRepository recipeRepo, DietRepository dietRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
-        this.recipeRepo = recipeRepo;
         this.dietRepo = dietRepo;
     }
 
-//    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, RecipeRepository recipeRepo) {
-//        this.postRepo = postRepo;
-//        this.userRepo = userRepo;
-//        this.commentRepo = commentRepo;
-//        this.recipeRepo = recipeRepo;
-//    }
-
-    // PostController Constructor
-//    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo) {
-//        this.postRepo = postRepo;
-//        this.userRepo = userRepo;
-//        this.commentRepo = commentRepo;
-//    }
-
-    // Create Post Get Method
+    // Get Method to create New Post and Diets
     @GetMapping("/create")
     public String createPost(
             Model model
     ) {
+        List<Diet> dietsList = dietRepo.findAll();
         model.addAttribute("post", new Post());
+        model.addAttribute("dietsList", dietsList);
         return "posts/create";
     }
 
-    // Create Post Method
+    // Create Post Method for Creating/Editing Post && Diets
     @PostMapping("/create")
     public String savePost(
             @ModelAttribute Post post
     ) throws ParseException {
-
+        //set the User in the Post for the New Post
         if (post.getId() == 0) {
-            // New Post
             User author = (User) SecurityContextHolder
                     .getContext()
                     .getAuthentication()
@@ -76,7 +61,6 @@ public class PostController {
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
             post.setDate(sqlDate);
         }
-
         // save Post in the database
         postRepo.save(post);
 
@@ -93,6 +77,7 @@ public class PostController {
         model.addAttribute("user",user);
          List<Post> allPost = postRepo.findAll();
 
+
         // if search is not empty
         if (search != null) {
             allPost = postRepo.findByTitleContaining(search);
@@ -102,6 +87,7 @@ public class PostController {
         return "posts/index";
     }
 
+
     // Show individual Post and all the comments for this post Method
     @GetMapping("/posts/{id}")
     public String showSinglePost(
@@ -110,18 +96,26 @@ public class PostController {
     ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postRepo.findById(id).orElse(null);
-        List <Comment> comments = post.getComments();
-        List<Diet> diets = post.getRecipe().getDiets();
-        model.addAttribute("allComments",comments);
+        List<Comment> comments = post.getComments();
+
+        //check the post is from Regular Post or Recipe Post
+        if(post.getRecipe() != null) {
+            List<Diet> diets = post.getRecipe().getDiets();
+            model.addAttribute("diets", diets);
+        } else{
+            List<Diet> diets = post.getDiets();
+            model.addAttribute("diets", diets);
+        }
+        model.addAttribute("allComments", comments);
         model.addAttribute("post", post);
-        model.addAttribute("user",user);
-        model.addAttribute("diets",diets);
+        model.addAttribute("user", user);
+
         // add a new comment object to the model
         model.addAttribute("newComment", new Comment());
         return "posts/show";
     }
 
-    // Edit Post Method
+    // Edit Post Method the view button on Post index page
     @GetMapping("/posts/{id}/edit")
     public String editPost(
             @PathVariable(name = "id") long id,
@@ -129,10 +123,11 @@ public class PostController {
     ) {
         // Get the currently selected post
         Post post = postRepo.findById(id).orElse(null);
-
+        List<Diet> dietsList1 = dietRepo.findAll();
         // Add the selected post to the model to allow us to
         // put the post's content onto the page
         model.addAttribute("post", post);
+        model.addAttribute("dietsList1", dietsList1);
         return "posts/edit";
     }
 
@@ -152,7 +147,7 @@ public class PostController {
     public String createComment(
             @RequestParam(name = "postId") long postId,
             @ModelAttribute Comment newComment
-    ){
+    ) {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -165,23 +160,23 @@ public class PostController {
         return "redirect:/posts/" + postId;
     }
 
-//    edit the comment
+    //    edit the comment
     @GetMapping("/comments/edit")
     public String passingInfoEditComment(
-            @RequestParam(name="commentId")long commentId,
-            @RequestParam(name="postId") long postId, Model model
-    ){
+            @RequestParam(name = "commentId") long commentId,
+            @RequestParam(name = "postId") long postId, Model model
+    ) {
         Post post = postRepo.getOne(postId);
         Comment comment = commentRepo.getOne(commentId);
-        model.addAttribute("post",post);
-        model.addAttribute("comment",comment);
+        model.addAttribute("post", post);
+        model.addAttribute("comment", comment);
         return "comments/editComment";
     }
 
     @PostMapping("/comments/edit")
     public String editComment(
             @ModelAttribute Comment comment
-    ){
+    ) {
         commentRepo.save(comment);
         return "redirect:/posts/" + comment.getPost().getId();
 
@@ -192,10 +187,10 @@ public class PostController {
     public String deleteComment(
             @RequestParam(name = "commentId") long commentId,
             @RequestParam(name = "postId") long postId
-    ){
+    ) {
 //        System.out.println(commentId);
         commentRepo.deleteById(commentId);
-        return "redirect:/posts/" + postId ;
+        return "redirect:/posts/" + postId;
     }
 
 
