@@ -10,6 +10,7 @@
 
 <div class="container">
     <form th:action="@{'/create'}" th:object="${post}" method="post">
+<!-- file picker-->
         <input type="text" id="id" class="d-none" th:field="*{id}"/>
         <input type="text" name="userId" class="d-none" th:field="*{user.id}"/>
         <input type="text" name="date" class="d-none" th:field="*{date}"/>

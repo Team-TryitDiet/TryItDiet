@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /** Login Configuration **/
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/") // when they successfully log in, redirect to /posts
+                .defaultSuccessUrl("/profile") // when they successfully log in, redirect to /posts
                 .permitAll()
                 /** Logout Configuration **/
                 .and()
@@ -57,6 +57,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/posts/create") // pages that we DO want users to be logged in to view/access
-                .authenticated(); // for the previously mentioned Another Neat Tool Matched URL patterns, users should be authenticated to access them
+                .authenticated() // for the previously mentioned Another Neat Tool Matched URL patterns, users should be authenticated to access them
+                .and()
+                .cors()
+                .and()
+                .csrf()
+                .disable();
     }
 }
