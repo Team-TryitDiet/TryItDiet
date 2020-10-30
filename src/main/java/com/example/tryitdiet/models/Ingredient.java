@@ -1,5 +1,7 @@
 package com.example.tryitdiet.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Ingredient {
 
     // Set relationship between Recipes and Ingredients
     @ManyToMany(mappedBy = "ingredients")
+    @JsonManagedReference
     private List<Recipe> recipes;
 
     @ManyToMany(cascade = CascadeType.PERSIST)

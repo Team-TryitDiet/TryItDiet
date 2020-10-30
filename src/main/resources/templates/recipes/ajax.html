@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>View all Ingredients using AJAX</title>
+    <div th:replace="partials/head :: head"/>
+</head>
+<body>
+<table id="ingredients">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+<!--        <th>Post Content</th>-->
+<!--        <th>User ID</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
+<div th:replace="partials/scripts :: scripts"/>
+<!-- include the JS file with the AJAX request -->
+<script type="text/javascript">
+    (function($) {
+        var request = $.ajax({'url': '/ingredients.json'});
+        request.done(function (ingredients) {
+            var html = '';
+            ingredients.forEach(function(ingredient) {
+                html += '<tr>';
+                html += '<td>' + ingredient.id + '</td>';
+                html += '<td>' + ingredient.name + '</td>';
+                // html += '<td>' + ingredient.body + '</td>';
+                // html += '<td>' + ingredient.user.email + '</td>'
+                html += '</tr>';
+            });
+            $('#ingredients tbody').html(html);
+        });
+
+
+        $('#ingredients').DataTable({
+            ajax: {
+                url: '/ingredients.json'
+            },
+            processing: true,
+            serverSide: true
+        });
+    })(jQuery);
+</script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.example.tryitdiet.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class Recipe {
     // Many to Many Relationships
     // Set relationship between Recipes and Ingredients
     @ManyToMany(cascade = CascadeType.PERSIST)
+    @JsonBackReference
     @JoinTable(
             name = "recipes_ingredients",
             joinColumns = {@JoinColumn(name = "recipe_id")},

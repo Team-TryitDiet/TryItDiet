@@ -6,10 +6,7 @@ import com.example.tryitdiet.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -116,5 +113,16 @@ public class RecipeController {
         // update post and recipe
         postRepo.save(post);
         return "redirect:/posts";
+    }
+
+    @GetMapping("/ingredients.json")
+    public @ResponseBody
+    List<Ingredient> viewAllIngredientsInJSONFormat() {
+        return ingredientRepo.findAll();
+    }
+
+    @GetMapping("/recipes/ajax")
+    public String viewAllIngredientsWithAjax() {
+        return "recipes/ajax";
     }
 }
