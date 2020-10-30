@@ -61,6 +61,12 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        ...
+        <skipTests>true</skipTests>
+        ...
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -71,3 +77,4 @@
     </build>
 
 </project>
+
