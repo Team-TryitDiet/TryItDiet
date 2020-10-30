@@ -32,3 +32,27 @@ a:link  {
 nav a:hover {
     background-color: var(--cp-medit);
 }
+
+/*CSS properties for sidebar icons*/
+.icon-bar {
+    width: 5%; /* Set a specific width */
+    height: 50%; /* set a specific height*/
+    background-color: #555; /* Dark-grey background */
+}
+
+.icon-bar a {
+    display: block; /* Make the links appear below each other instead of side-by-side */
+    text-align: center; /* Center-align text */
+    padding: 16px; /* Add some padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36px; /* Increased font-size */
+}
+
+.icon-bar a:hover {
+    background-color: var(--cp-medit); /* Add a color to icon hover */
+}
+
+.activesb {
+    background-color: var(--cp-medit); /* Add a color to active icon */
+}
