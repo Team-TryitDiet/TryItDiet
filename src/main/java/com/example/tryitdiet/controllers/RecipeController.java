@@ -121,7 +121,7 @@ public class RecipeController {
         return ingredientRepo.findAll();
     }
 
-    @GetMapping("/recipes/ajax")
+    @GetMapping("/ingredients/ajax")
     public String viewAllIngredientsWithAjax() {
         return "recipes/ajax";
     }
