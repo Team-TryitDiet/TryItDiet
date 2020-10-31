@@ -4,47 +4,25 @@
     <meta charset="UTF-8"/>
     <title>View all Ingredients using AJAX</title>
     <div th:replace="partials/head :: head"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 </head>
+
 <body>
-<table id="ingredients">
+<table id="ingredients" class="display" style="width:100%">
     <thead>
-    <tr>
         <th>ID</th>
         <th>Name</th>
-<!--        <th>Post Content</th>-->
-<!--        <th>User ID</th>-->
-    </tr>
     </thead>
-    <tbody>
-    </tbody>
+    <tfoot>
+    <th>ID</th>
+    <th>Name</th>
+    </tfoot>
 </table>
 
-
-<div th:replace="partials/scripts :: scripts"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 <!-- include the JS file with the AJAX request -->
-<script type="text/javascript">
-    (function($) {
-        var request = $.ajax({'url': '/ingredients.json'});
-        request.done(function (ingredients) {
-            var html = '';
-            ingredients.forEach(function(ingredient) {
-                html += '<tr>';
-                html += '<td>' + ingredient.id + '</td>';
-                html += '<td>' + ingredient.name + '</td>';
-                html += '</tr>';
-            });
-            $('#ingredients tbody').html(html);
-        });
-
-
-        $('#ingredients').DataTable({
-            ajax: {
-                url: '/ingredients.json'
-            },
-            processing: true,
-            serverSide: true
-        });
-    })(jQuery);
-</script>
+<script type="text/javascript" th:src="@{/js/ingredients.js}"></script>
 </body>
+
 </html>
