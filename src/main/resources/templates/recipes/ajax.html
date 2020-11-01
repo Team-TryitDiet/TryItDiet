@@ -11,16 +11,22 @@
 </head>
 
 <body>
-<table id="ingredients" class="display" style="width:100%">
-    <thead>
-    <th>ID</th>
-    <th>Name</th>
-    </thead>
-    <tfoot>
-    <th>ID</th>
-    <th>Name</th>
-    </tfoot>
-</table>
+
+<form th:action="@{/ingredient/test}" method="POST">
+    <table id="ingredients" class="display" style="width:100%">
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        </thead>
+        <tfoot>
+        <th>ID</th>
+        <th>Name</th>
+        </tfoot>
+    </table>
+    <div id="hiddenIngredients" class="d-none"></div>
+    <input type="submit">
+</form>
+
 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>

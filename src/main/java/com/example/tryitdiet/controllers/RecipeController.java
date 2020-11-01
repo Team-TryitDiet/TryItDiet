@@ -129,9 +129,15 @@ public class RecipeController {
         return "recipes/ajax";
     }
 
-    @PostMapping("/ingredients/submit")
-    public String createIngredient(@ModelAttribute Ingredient ingredient){
-        ingredientRepo.save(ingredient);
-        return "recipes/ajax";
+
+    // test the datatable
+    @PostMapping("/ingredients/test")
+    public String ingredientSelection(
+            @RequestParam List<Ingredient> list
+    ) {
+        for(Ingredient item : list) {
+            System.out.println(item);
+        }
+        return "redirect:/ingredients.json";
     }
 }
