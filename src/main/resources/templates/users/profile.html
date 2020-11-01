@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Profile</title>
     <div th:replace="partials/head :: head"/>
+    <link rel="stylesheet" th:href="@{/css/Styles.css}">
 </head>
 <body>
 <!--<header th:replace="partials/header :: header"/>-->
@@ -35,14 +36,28 @@
 
             <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-2">
                 <div class="p-5">
-                    <h1 class="display-4">lalala profile&nbsp;</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                    <h1 class="display-4"><span th:text="${user.username}"></span></h1>
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>-->
                 </div>
             </div>
         </div>
         </div>
     </div>
 </section>
+
+
+<div class="profile-card">
+    <div class="profile-back"></div><img class="rounded-circle profile-pic" src="${photoUrl}">
+    <h3 class="profile-name">UsernameDisplay</h3>
+    <h3 class="profile-name">Create Post</h3>
+    <h3 class="profile-name">Create Recipe</h3>
+    <ul class="social-list">
+        <li> </li>
+        <li> </li>
+    </ul>
+</div>
+<div class="w-50 justify-content-center"></div>
+<div></div>
 
 
 <!--uploading an image-->
@@ -79,12 +94,12 @@
 <button value="button" type="submit" form="editProfile">add profile pic</button>
 </form>
 
-<!--<footer th:replace="partials/footer :: footer"/>-->
+<footer th:replace="partials/footer :: footer"/>
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
 
 <div th:replace="partials/scripts :: scripts"/>
 
-
+<scripts th:replace="partials/scripts :: scripts"></scripts>
 <script th:src="@{/js/keys.js}"></script>
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
