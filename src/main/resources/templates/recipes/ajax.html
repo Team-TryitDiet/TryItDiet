@@ -9,8 +9,8 @@
 </head>
 
 <body>
-<form th:action="@{/ingredient/test}" method="POST">
-    <table id="ingredients" class="display" style="width:100%">
+<form th:action="@{/ingredients/test}" method="POST">
+    <table id="ingredientTable" class="display" style="width:100%">
         <thead>
         <th>ID</th>
         <th>Name</th>
@@ -20,8 +20,9 @@
         <th>Name</th>
         </tfoot>
     </table>
-    <div id="hiddenIngredients" class="d-none"></div>
-    <input type="submit">
+    <!-- DataTable selections go here -->
+    <div id="hiddenIngredients"></div>
+    <input id="submitBtn" type="submit">
 </form>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>

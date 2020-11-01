@@ -129,10 +129,10 @@ public class RecipeController {
     // test the datatable
     @PostMapping("/ingredients/test")
     public String ingredientSelection(
-            @RequestParam List<Ingredient> list
+            @RequestParam List<Ingredient> ingredients
     ) {
-        for(Ingredient item : list) {
-            System.out.println(item);
+        for(Ingredient item : ingredients) {
+            System.out.println(item.getName());
         }
         return "redirect:/ingredients.json";
     }
