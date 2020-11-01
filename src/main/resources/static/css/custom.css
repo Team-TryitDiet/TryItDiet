@@ -15,7 +15,7 @@
 .site-footer
 {
     bottom: 0;
-    position: fixed;
+    position: absolute;
     width: 100vw;
     /*height: 25%;*/
     background-color:#26272b;

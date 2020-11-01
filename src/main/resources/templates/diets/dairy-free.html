@@ -17,8 +17,11 @@
         </div>
         <div class="card-body">
             <h5 class="card-title">No more moo cows? No problem!</h5>
-            <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of not consuming any dairy products. Some of the most common dairy foods are cream, cheese, butter, ice cream, mok, and yogurt. Be cautious however because many
-                products may have dairy ingredients in their product. One of the best ways to identify if there is any dairy products, is to refer to the food label if possible.</p>
+            <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of not
+                consuming any dairy products. Some of the most common dairy foods are cream, cheese, butter, ice cream,
+                mok, and yogurt. Be cautious however because many
+                products may have dairy ingredients in their product. One of the best ways to identify if there is any
+                dairy products, is to refer to the food label if possible.</p>
             <p></p>
             <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
         </div>
@@ -26,18 +29,14 @@
     <div class="container">
         <div class="card w-75 mb-3" th:each="diet : ${diets}">
             <div class="card-body">
-                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>
-<!--                <div class="d-flex">-->
-<!--                    <form th:action="@{'/posts/' + ${post.id}}" method="get">-->
-<!--                        <button type="submit" class="btn btn-primary mr-1">View</button>-->
-<!--                    </form>-->
-<!--                    <div th:switch="${post.user.username.equals(user.username)}">-->
-<!--                        <div th:case="${true}">-->
-<!--                            <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">-->
-<!--                                <button type="submit" class="btn btn-primary">Delete</button>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
+<!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
+                <div class="d-flex">
+                    <div class="card w-75 mb-3" th:each="post:${diet.posts}">
+                        <div class="card-title"><h2 th:text="${post.title}"></h2></div>
+                        <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                            <button type="submit" class="btn btn-primary mr-1">View</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
