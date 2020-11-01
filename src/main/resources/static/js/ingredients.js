@@ -1,7 +1,9 @@
 $(document).ready( async function () {
+    // Fetch ingredient info from ingredients.json and return result/response in json format
     const data = await fetch("/ingredients.json").then(result => result.json());
 
-    const table = $('#ingredients').DataTable({
+    // Build table based off of fetch call above
+    const table = $('#ingredientTable').DataTable({
         scrollY: 250,
         select: {
             style: "multi"
@@ -37,5 +39,16 @@ $(document).ready( async function () {
             mySet.delete(data[0]);
         }
     } );
+
+    // Event Listener for the submit button when clicked
+    const submitBtn = document.getElementById('submitBtn');
+    const ingredients = document.getElementById('hiddenIngredients');
+    submitBtn.addEventListener('click',() => {
+        let html = "";
+        mySet.forEach((elem) => {
+            html += `<input type="hidden" name="ingredients" value="${elem}" >`
+        });
+        ingredients.innerHTML = html;
+    })
 } );
 
