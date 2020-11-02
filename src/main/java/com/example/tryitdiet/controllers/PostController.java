@@ -5,8 +5,10 @@ import com.example.tryitdiet.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -42,8 +44,24 @@ public class PostController {
     // Create Post Method for Creating/Editing Post && Diets
     @PostMapping("/create")
     public String savePost(
-            @ModelAttribute Post post
+            @ModelAttribute @Valid Post post,
+            Errors validation,
+            Model model
     ) throws ParseException {
+
+
+        if(post.getDescription().equals("")){
+            validation.rejectValue(
+                    "description",
+                    "post.description",
+                    "Description cannot be empty"
+            );
+        }
+        if(validation.hasErrors()){
+            model.addAttribute("error", validation);
+            model.addAttribute("post",post);
+            return "posts/create";
+        }
         //set the User in the Post for the New Post
         if (post.getId() == 0) {
             User author = (User) SecurityContextHolder
