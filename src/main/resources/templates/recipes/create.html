@@ -28,13 +28,13 @@
         <label for="body">Enter your Recipe Notes: </label>
         <br>
         <textarea th:value="${recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
-        <div class="d-flex justify-content-between">
+<!--        <div class="d-flex justify-content-between">-->
 
-            <div th:each="ingredient : ${ingredientsList}">
-                    <input type="checkbox" th:id="${ingredient.name}" name="ingredients" th:value="${ingredient.id}" />
-                    <label th:for="${ingredient.name}"  th:text="${ingredient.name}"></label>
-            </div>
-        </div>
+<!--            <div th:each="ingredient : ${ingredientsList}">-->
+<!--                    <input type="checkbox" th:id="${ingredient.name}" name="ingredients" th:value="${ingredient.id}" />-->
+<!--                    <label th:for="${ingredient.name}"  th:text="${ingredient.name}"></label>-->
+<!--            </div>-->
+<!--        </div>-->
         <br>
         <table>
             <div class="card" th:each="diet : ${dietsList}">
