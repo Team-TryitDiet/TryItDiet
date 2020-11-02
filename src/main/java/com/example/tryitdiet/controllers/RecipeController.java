@@ -101,6 +101,9 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
+
+        System.out.println(post.getRecipe().getIngredients());
+        model.addAttribute("recipeIngredients", post.getRecipe().getIngredients());
         model.addAttribute("post", post);
         return "recipes/edit";
     }
@@ -108,8 +111,12 @@ public class RecipeController {
     // Update Recipe Post method
     @PostMapping("/posts/recipe/edit")
     public String updateRecipe(
-            @ModelAttribute Post post
+            @ModelAttribute Post post,
+            @RequestParam List<Ingredient> ingredients
     ) {
+        for(Ingredient item : ingredients) {
+            System.out.println(item.getId());
+        }
         // update post and recipe
         postRepo.save(post);
         return "redirect:/posts";
