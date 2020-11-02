@@ -35,8 +35,10 @@
 
             <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-2">
                 <div class="p-5">
-                    <h1 class="display-4">lalala profile&nbsp;</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                    <h1 class="display-4"><span th:text="${user.username}"></span></h1>
+                    <p> <span th:text="${user.email}"></span></p>
+                    <p> <span th:text="${user.phone_number}"></span></p>
+
                 </div>
             </div>
         </div>
