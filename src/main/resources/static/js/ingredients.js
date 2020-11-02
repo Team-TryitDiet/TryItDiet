@@ -21,29 +21,35 @@ $(document).ready( async function () {
             { data: "name" }
         ],
         "initComplete": () => {
-            const ingredientsList = recipeIngredients.children;
-            data.forEach(obj => {
-                for(let i = 0; i < ingredientsList.length; i++) {
-                    if (ingredientsList[i].value == obj.id) {
-                        selectIngredients.push(obj.id);
+            if (recipeIngredients != null) {
+                const ingredientsList = recipeIngredients.children;
+                data.forEach(obj => {
+                    for(let i = 0; i < ingredientsList.length; i++) {
+                        if (ingredientsList[i].value == obj.id) {
+                            selectIngredients.push(obj.id);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
-    });
-
-    selectIngredients.forEach((elem) => {
-        table.row( `${elem - 1}` ).select();
     });
 
     // Declared a Set to store the id(s) of the selected ingredient from the DataTable
     const mySet = new Set();
+
+    if (selectIngredients.length != 0) {
+        selectIngredients.forEach((elem) => {
+            table.row( `${elem - 1}` ).select();
+            mySet.add(elem);
+        });
+    }
 
     // Event Listener for the DataTable select event which stores the currently selected
     // ingredient id into the Set
     table.on( 'select', function ( e, dt, type, indexes ) {
         if ( type === 'row' ) {
             const data = table.rows( indexes ).data().pluck( 'id' );
+            console.log(data[0]);
 
             // add ingredient id to the set
             mySet.add(data[0]);
