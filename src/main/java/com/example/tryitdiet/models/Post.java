@@ -1,6 +1,7 @@
 package com.example.tryitdiet.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Post {
     private long id;
 
     @Column(nullable = false, length = 250)
+    @NotBlank(message = "Posts must have a title!")
     private String title;
 
     @Column

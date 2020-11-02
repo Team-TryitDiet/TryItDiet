@@ -78,25 +78,7 @@
                 </div>
             </div> <!-- end of post section -->
         </div>
-
     </div>
-    <!--    Beginning of post section-->
-   <!-- <div class="container">
-        <div class="card w-75 mb-3" th:each="diet : ${diets}">
-            <div class="card-body">
-                &lt;!&ndash;                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>&ndash;&gt;
-                <div class="d-flex">
-                    <div class="card w-75 mb-3" th:each="post:${diet.posts}">
-                        <div class="card-title"><h2 th:text="${post.title}"></h2></div>
-                        <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                            <button type="submit" class="btn btn-primary mr-1">View</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> &lt;!&ndash; end of post section &ndash;&gt;-->
-
 </main>
 <footer th:include="partials/footer :: footer"></footer>
 <script>
