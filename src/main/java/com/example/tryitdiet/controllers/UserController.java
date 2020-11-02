@@ -61,11 +61,13 @@ User getUser = (User) SecurityContextHolder.getContext().getAuthentication().get
     }
 
     @PostMapping("/profile/pic")
-    public String saveUserProfile(@RequestParam long userId, @RequestParam String url, @ModelAttribute User user) {
-        User saveUserProfile = userRepo.getOne(userId);
-        saveUserProfile.setPosts(user.getPosts());
-        saveUserProfile.setProfilePic(url);
-        userRepo.save(saveUserProfile);
+    public String saveUserProfile(@RequestParam String url, @ModelAttribute User user) {
+        User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser =  userRepo.getOne(getUser.getId());
+
+
+        currentUser.setProfilePic(url);
+        userRepo.save(currentUser);
         return "redirect:/profile";
     }
 

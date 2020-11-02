@@ -47,21 +47,24 @@
 
 <!--uploading an image-->
 <div class="box">
-    <form id="pick-form" method="POST" action="/user/edit">
-        <div class="field">
-            <div class="control">
-                <button class="button" type="button" id="picker">Pick file</button>
-                <input type="hidden" id="fileupload" name="avatarurl">
-            </div>
-            <div class="control" id="nameBox"></div>
-            <div class="control" id="urlBox"></div>
-        </div>
-        <div class="field">
-            <div class="control">
-                <input class="button" type="submit" value="Submit">
-            </div>
-        </div>
-    </form>
+
+    <button class="button" type="button" id="picker">Pick file</button>
+
+<!--    <form id="pick-form" method="POST" action="/user/edit">-->
+<!--        <div class="field">-->
+<!--            <div class="control">-->
+<!--                <button class="button" type="button" id="picker">Pick file</button>-->
+<!--                <input type="hidden" id="fileupload" name="avatarurl">-->
+<!--            </div>-->
+<!--            <div class="control" id="nameBox"></div>-->
+<!--            <div class="control" id="urlBox"></div>-->
+<!--        </div>-->
+<!--        <div class="field">-->
+<!--            <div class="control">-->
+<!--                <input class="button" type="submit" value="Submit">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
 </div>
 
 
@@ -73,11 +76,11 @@
 
 <!--checkin for diets -->
 
-<form action="/profile/pic" id="editProfile" method="POST" >
-    <input type="hidden" name="userId" th:value="${user.id}">
-    <input type="hidden" name="url" id="profileUrl" th:value="${photoUrl}">
-<button value="button" type="submit" form="editProfile">add profile pic</button>
-</form>
+<!--<form action="/profile/pic" id="editProfile" method="POST" >-->
+<!--    <input type="hidden" name="userId" th:value="${user.id}">-->
+<!--    <input type="hidden" name="url" id="profileUrl" th:value="${photoUrl}">-->
+<!--<button value="button" type="submit" form="editProfile">add profile pic</button>-->
+<!--</form>-->
 
 <!--<footer th:replace="partials/footer :: footer"/>-->
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>

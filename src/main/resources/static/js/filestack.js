@@ -46,31 +46,31 @@ const options = {
 const picker = client.picker(options);
 
 // Get references to the DOM elements
-
-const form = document.getElementById('pick-form');
-const fileInput = document.getElementById('fileupload');
-const btn = document.getElementById('picker');
-const nameBox = document.getElementById('nameBox');
-const urlBox = document.getElementById('urlBox');
+//
+// const form = document.getElementById('pick-form');
+// const fileInput = document.getElementById('fileupload');
+// const btn = document.getElementById('picker');
+// const nameBox = document.getElementById('nameBox');
+// const urlBox = document.getElementById('urlBox');
 
 // Add our event listeners
-
-btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    picker.open();
-});
-
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    alert('Submitting: ' + fileInput.value);
-});
+//
+// btn.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     picker.open();
+// });
+//
+// form.addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     alert('Submitting: ' + fileInput.value);
+// });
 
 $(document).ready(function () {
 
     //filestack
     console.log(url);
-    $("#profile-btn").click(function () {
-        stackClient.picker(options).open();
+    $("#picker").click(function () {
+        client.picker(options).open();
     });
 
 })
@@ -81,17 +81,11 @@ $(document).ready(function () {
 function updateForm (result) {
     const fileData = result.filesUploaded[0];
     console.log(fileData);
-    $("#profileUrl").val(fileData.url);
-    //const photoUrl = fileData.url;
 
-    // Some ugly DOM code to show some data.
-    const name = document.createTextNode('Selected: ' + fileData.filename);
-    $("#uploadedImage").src(fileData.url);
-    $("#fileupload").val(fileData.url);
-    const url = document.createElement('a');
-    url.href = fileData.url;
-    url.appendChild(document.createTextNode(fileData.url));
-    nameBox.appendChild(name);
-    urlBox.appendChild(document.createTextNode('Uploaded to: '));
-    urlBox.appendChild(url);
+    const formData = new FormData();
+
+    formData.append('url', fileData.url)
+    fetch('/profile/pic', { method: 'POST', body: formData }).catch((err) => { console.log(err); })
+
+    $("#uploadedImage").attr("src", fileData.url)
 };
