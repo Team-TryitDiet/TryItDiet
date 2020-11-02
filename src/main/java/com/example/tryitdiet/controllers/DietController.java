@@ -25,6 +25,11 @@ public class DietController {
 
     }
 
+    @GetMapping("/diets/diet-index")
+    public String showDietIndexPage() {
+        return "diets/diet-index";
+    }
+
     @GetMapping("/diets/dairy-free")
     public String showDairyFreePage(Model model) {
         if ("dairy-free" != null) {

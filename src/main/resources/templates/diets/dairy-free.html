@@ -5,49 +5,94 @@
     <title>Home</title>
     <link th:replace="partials/head :: head"/>
     <link rel="stylesheet" th:href="@{/css/dairy-free.css}">
-    <link th:href="@{/css/footer.css}" type="text/css">
 </head>
 <body class="bg2">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<main class="container-fluid d-flex justify-content-center align-items-center">
-    <br>
-    <div class="card text-center justify-content-center align-items-center cardop">
-        <div class="card-header">
-            Dairy-Free
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">No more moo cows? No problem!</h5>
-            <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of not
-                consuming any dairy products. Some of the most common dairy foods are cream, cheese, butter, ice cream,
-                mok, and yogurt. Be cautious however because many
-                products may have dairy ingredients in their product. One of the best ways to identify if there is any
-                dairy products, is to refer to the food label if possible.</p>
-            <p></p>
-            <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
-        </div>
+<main class="container-fluid">
+    <div class="d-flex justify-content-start">
+        <!--        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >&gt;</button>-->
+        <div th:replace="partials/sidebar :: sidebar"></div>
+
+        <!--        Beginning of card container-->
+        <div class="card text-center justify-content-center cardop">
+            <div class="card-header">
+                Dairy-Free
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">No more moo cows? No problem!</h5>
+                <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of
+                    not consuming any dairy products containing milk, milk proteins (whey/casein), and/or milk
+                    sugar(lactose).</p>
+                <div>
+                    <h3>Why Choose a Dairy-Free Diet?</h3>
+                    <p>Approximately 65% of the general population have a dairy allergen, and/or are lactose intolerant.
+                        These individuals have difficulty digesting lactose, and experience symptoms such as abdominal
+                        pain, bloating,
+                        nausea, and/or diarrhea if they consume lactose.</p>
+                </div>
+                <div>
+                    <h3>Some common dairy items</h3>
+                    <ul class="row">
+                        <div class="col-4">
+                            <li>butter</li>
+                            <li>cheese</li>
+                        </div>
+                        <div class="col-4">
+                            <li>cream</li>
+                            <li>ice cream</li>
+                        </div>
+                        <div class="col-4">
+                            <li>milk</li>
+                            <li>yogurt</li>
+                        </div>
+                    </ul>
+                </div>
+                <p>
+                    Be cautious however because many products may have hidden dairy ingredients in their product.
+                    One of the best ways to identify if the product contains dairy, is to refer to the food label if
+                    possible.</p>
+                <hr>
+
+                <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+            </div>
+        </div> <!-- End of Card container -->
     </div>
 
-    <div class="container">
-        <div class="card w-75 mb-3" th:each="diet : ${diets}">
-            <div class="card-body">
-<!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
-                <div class="d-flex">
-                    <div class="card w-75 mb-3" th:each="post:${diet.posts}">
-                        <div class="card-title"><h2 th:text="${post.title}"></h2></div>
-                        <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                            <button type="submit" class="btn btn-primary mr-1">View</button>
-                        </form>
+<!--    beginning of container with scroll-->
+    <div id="container" class="d-flex">
+        <div id = "information" class="column">
+            <!--    Beginning of post section-->
+            <div class="container col-12">
+                <div class="card w-75 mb-3" th:each="diet : ${diets}">
+                    <div class="card-body">
+                        <!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
+                        <div class="d-flex">
+                            <div class="card w-75 mb-3" th:each="post:${diet.posts}">
+                                <div class="card-title"><h2 th:text="${post.title}"></h2></div>
+                                <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                    <button type="submit" class="btn btn-primary mr-1">View</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div> <!-- end of post section -->
         </div>
     </div>
-
-
-    <div th:replace="partials/sidebar :: sidebar"></div>
-
 </main>
 <footer th:include="partials/footer :: footer"></footer>
+<script>
+    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }</script>
 <scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>
