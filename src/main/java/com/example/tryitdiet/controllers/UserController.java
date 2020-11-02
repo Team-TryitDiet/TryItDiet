@@ -1,4 +1,5 @@
 package com.example.tryitdiet.controllers;
+
 import com.example.tryitdiet.models.User;
 import com.example.tryitdiet.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,23 +30,22 @@ public class UserController {
         return "index";
     }
 
-//    get method for register an account
+    //    get method for register an account
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
         model.addAttribute("user", new User());
         return "users/register";
     }
 
-//  post method for register an account
+    //  post method for register an account
     @PostMapping("/register")
-    public String register(@ModelAttribute  User user,
+    public String register(@ModelAttribute User user,
                            Model model,
                            @RequestParam(name = "confirmPassword") String confirmPassword
             , @RequestParam(name = "password") String password
-                           )
-    {
+    ) {
 
-        if(userRepo.findAllByUsername(user.getUsername()).size()>0){
+        if (userRepo.findAllByUsername(user.getUsername()).size() > 0) {
             model.addAttribute("errorUserName", "Please choose another username");
             return "users/register";
         }
@@ -61,7 +61,7 @@ public class UserController {
         } else {
             userRepo.save(user);
             return "users/profile";
-    }
+        }
     }
 
 
@@ -72,8 +72,8 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profilePage(Model model) {
-User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser =  userRepo.getOne(getUser.getId());
+        User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userRepo.getOne(getUser.getId());
         model.addAttribute("user", currentUser);
 
         model.addAttribute("photoUrl", currentUser.getProfilePic());
@@ -83,7 +83,7 @@ User getUser = (User) SecurityContextHolder.getContext().getAuthentication().get
     @PostMapping("/profile/pic")
     public String saveUserProfile(@RequestParam String url, @ModelAttribute User user) {
         User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser =  userRepo.getOne(getUser.getId());
+        User currentUser = userRepo.getOne(getUser.getId());
 
 
         currentUser.setProfilePic(url);

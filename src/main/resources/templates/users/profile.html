@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Profile</title>
     <div th:replace="partials/head :: head"/>
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
 <!--<header th:replace="partials/header :: header"/>-->
@@ -16,6 +17,14 @@
 <!--    <label for="password">Password</label>-->
 <!--    <input id="password" type="password" name="password" />-->
 
+<div class="profile-card">
+    <div class="profile-back"></div><img class="rounded-circle profile-pic" th:src="${photoUrl}">
+    <h3 class="profile-name"><span th:text="${user.username}"></span></h3>
+    <h3 class="profile-name"><span th:text="${user.email}"></span></h3>
+    <h3 class="profile-name"><span th:text="${user.phone_number}"></span></h3>
+
+    <ul class="social-list"></ul>
+</div>
 <section>
     <div class="container">
         <div class="row align-items-center">
@@ -30,19 +39,7 @@
 <!--                    <input type="file" id="">-->
 <!--                    <input type="submit" value="Submit">-->
 <!--                </form>-->
-                <div class="p-5"><img class="rounded-circle img-fluid" id="uploadedImage" th:src="${photoUrl}"></div>
-            </div>
 
-            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-2">
-                <div class="p-5">
-                    <h1 class="display-4">lalala profile&nbsp;</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</section>
 
 
 <!--uploading an image-->
@@ -93,5 +90,10 @@
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 <script th:src="@{/js/filestack.js}"></script>
+                <footer th:replace="partials/footer :: footer"></footer>
+                <scripts th:replace="partials/scripts :: scripts"></scripts>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
