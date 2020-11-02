@@ -5,7 +5,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.nio.channels.ScatteringByteChannel;
+import java.sql.SQLException;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -17,14 +23,33 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-
+    // Welcome page
     @GetMapping("/")
     public String welcome() {
         return "index";
     }
 
+//    get method for register an account
+    @GetMapping("/register")
+    public String showRegisterPage(Model model) {
+        model.addAttribute("user", new User());
+        return "users/register";
+    }
+
+//  post method for register an account
     @PostMapping("/register")
-    public String register(@ModelAttribute User user, @RequestParam(name = "confirmPassword") String confirmPassword, @RequestParam(name = "password") String password) {
+    public String register(@ModelAttribute  User user,
+                           Model model,
+                           @RequestParam(name = "confirmPassword") String confirmPassword
+            , @RequestParam(name = "password") String password
+                           )
+    {
+
+        if(userRepo.findAllByUsername(user.getUsername()).size()>0){
+            model.addAttribute("errorUserName", "Please choose another username");
+            return "users/register";
+        }
+
         if (!password.equals(confirmPassword)) {
             return "users/register";
         }
@@ -36,14 +61,9 @@ public class UserController {
         } else {
             userRepo.save(user);
             return "users/profile";
-        }
+    }
     }
 
-    @GetMapping("/register")
-    public String showRegisterPage(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
-    }
 
     @GetMapping("/login")
     public String showLoginPage() {

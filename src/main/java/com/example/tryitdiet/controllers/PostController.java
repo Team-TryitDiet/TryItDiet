@@ -5,8 +5,10 @@ import com.example.tryitdiet.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -42,8 +44,24 @@ public class PostController {
     // Create Post Method for Creating/Editing Post && Diets
     @PostMapping("/create")
     public String savePost(
-            @ModelAttribute Post post
+            @ModelAttribute @Valid Post post,
+            Errors validation,
+            Model model
     ) throws ParseException {
+
+
+        if(post.getDescription().equals("")){
+            validation.rejectValue(
+                    "description",
+                    "post.description",
+                    "Description cannot be empty"
+            );
+        }
+        if(validation.hasErrors()){
+            model.addAttribute("error", validation);
+            model.addAttribute("post",post);
+            return "posts/create";
+        }
         //set the User in the Post for the New Post
         if (post.getId() == 0) {
             User author = (User) SecurityContextHolder
@@ -74,14 +92,15 @@ public class PostController {
             @RequestParam(value = "search", required = false) String search
     ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("posts", postRepo.findAll());
-        model.addAttribute("user", user);
+        model.addAttribute("user",user);
+         List<Post> allPost = postRepo.findAll();
 
-        List<Post> allPost = postRepo.findAll();
 
         // if search is not empty
         if (search != null) {
-            allPost = postRepo.findByTitleContaining(search);
+//            allPost = postRepo.findByTitleContaining(search);
+            allPost = postRepo.findByTitleStartsWith(search);
+
         }
 
         model.addAttribute("posts", allPost);

@@ -18,6 +18,7 @@
             <p>Then feast your eyes on the pescatarian diet! The pescatarian diet, is a diet that consists of only </p>
         </div>
     </div>
+
     <div class="container">
         <div class="card w-75 mb-3" th:each="diet : ${diets}">
             <div class="card-body">
@@ -33,6 +34,9 @@
             </div>
         </div>
     </div>
+
+    <div th:replace="partials/sidebar :: sidebar"></div>
+
 </main>
 <footer th:replace="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"></scripts>

@@ -24,6 +24,7 @@
                         <label for="username">Username</label>
                         <input id="username" th:field="*{username}" class="form-control"
                                placeholder="Please enter a username"/>
+                        <p th:if="${errorUserName}" th:text="${errorUserName}" />
                     </div>
 
                     <div class="form-group">
