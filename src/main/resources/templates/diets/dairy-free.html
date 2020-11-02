@@ -9,7 +9,11 @@
 <body class="bg2">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <main class="container-fluid">
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-start">
+<!--        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >&gt;</button>-->
+        <div th:replace="partials/sidebar :: sidebar"></div>
+
+        <!--        Beginning of card container-->
         <div class="card text-center justify-content-center cardop">
             <div class="card-header">
                 Dairy-Free
@@ -17,7 +21,15 @@
             <div class="card-body">
                 <h5 class="card-title">No more moo cows? No problem!</h5>
                 <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of
-                    not consuming any dairy products containing milk, milk proteins (whey/casein), and/or milk sugar(lactose).</p>
+                    not consuming any dairy products containing milk, milk proteins (whey/casein), and/or milk
+                    sugar(lactose).</p>
+                <div>
+                    <h3>Why Choose a Dairy-Free Diet?</h3>
+                    <p>Approximately 65% of the general population have a dairy allergen, and/or are lactose intolerant.
+                        These individuals have difficulty digesting lactose, and experience symptoms such as abdominal
+                        pain, bloating,
+                        nausea, and/or diarrhea if they consume lactose.</p>
+                </div>
                 <div>
                     <h3>Some common dairy items</h3>
                     <ul>
@@ -47,19 +59,34 @@
                         <h3>Cons</h3>
                         <ul>
                             <li>Alternatives to getting supplemental nutrients are often more expensive</li>
-                            <li>Can be very difficult to avoid dairy, as it is used in many products, including chewing gum</li>
-                            <li>You may not absorb all of the nutrients that you can receive from actual dairy products, versus alternatives</li>
+                            <li>Can be very difficult to avoid dairy, as it is used in many products, including chewing
+                                gum
+                            </li>
+                            <li>You may not absorb all of the nutrients that you can receive from actual dairy products,
+                                versus alternatives
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>
-        </div>
-    </div>
-    <div th:replace="partials/sidebar :: sidebar"></div>
+        </div> <!-- End of Card container -->
 
+    </div>
 </main>
 <footer th:include="partials/footer :: footer"></footer>
+<script>
+    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}</script>
 <scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>

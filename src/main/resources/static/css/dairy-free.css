@@ -22,7 +22,7 @@ body, html {
 }
 
 .cardop {
-    opacity: .8;
+    opacity: .9;
     width: 50%;
 }
 
@@ -40,4 +40,10 @@ nav a:hover {
 
 .activesb {
     background-color: var(--cp-dair); /* Add a color to active icon */
+}
+
+.over{
+    position: absolute;
+    left: 0px;
+    top: 0px;
 }
