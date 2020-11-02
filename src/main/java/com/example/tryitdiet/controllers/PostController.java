@@ -74,14 +74,15 @@ public class PostController {
             @RequestParam(value = "search", required = false) String search
     ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("posts", postRepo.findAll());
-        model.addAttribute("user", user);
+        model.addAttribute("user",user);
+         List<Post> allPost = postRepo.findAll();
 
-        List<Post> allPost = postRepo.findAll();
 
         // if search is not empty
         if (search != null) {
-            allPost = postRepo.findByTitleContaining(search);
+//            allPost = postRepo.findByTitleContaining(search);
+            allPost = postRepo.findByTitleStartsWith(search);
+
         }
 
         model.addAttribute("posts", allPost);
