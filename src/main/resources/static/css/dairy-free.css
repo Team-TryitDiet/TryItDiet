@@ -1,5 +1,5 @@
 body, html {
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -8,6 +8,7 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .footdf {
@@ -31,4 +32,12 @@ a:link  {
 
 nav a:hover {
     background-color: var(--cp-dair);
+}
+
+.icon-bar a:hover {
+    background-color: var(--cp-dair); /* Add a color to icon hover */
+}
+
+.activesb {
+    background-color: var(--cp-dair); /* Add a color to active icon */
 }

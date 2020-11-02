@@ -11,6 +11,44 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <main class="container-fluid">
     <h1 class="justify-content-center">Select a diet to learn more about it!</h1>
+    <div class="row">
+<!--    start of first card in first row-->
+    <div class="flip-box col">
+        <div class="flip-box-inner">
+            <div class="flip-box-front cbg1">
+<!--                <img src="../../static/img/milk.jpg" alt="Milk" style="width:300px;height:200px">-->
+            </div>
+            <div class="flip-box-back">
+                <h2>Dairy-Free</h2>
+                <p>Find out more about the pros and cons to saying no to dairy!</p>
+            </div>
+        </div>
+    </div>
+<!--Start of second card first row-->
+    <div class="flip-box col">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="img_paris.jpg" alt="Paris" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <h2>Paris</h2>
+                <p>What an amazing city</p>
+            </div>
+        </div>
+    </div>
+<!--    Start of third card first row-->
+    <div class="flip-box col">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="img_paris.jpg" alt="Paris" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <h2>Paris</h2>
+                <p>What an amazing city</p>
+            </div>
+        </div>
+    </div>
+    </div>
     <div th:replace="partials/sidebar :: sidebar"></div>
 </main>
 <footer th:replace="partials/footer :: footer"></footer>

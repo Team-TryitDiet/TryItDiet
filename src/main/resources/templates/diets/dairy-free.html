@@ -5,25 +5,59 @@
     <title>Home</title>
     <link th:replace="partials/head :: head"/>
     <link rel="stylesheet" th:href="@{/css/dairy-free.css}">
-    <link th:href="@{/css/footer.css}" type="text/css">
 </head>
 <body class="bg2">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<main class="container-fluid d-flex justify-content-center align-items-center">
-    <br>
-    <div class="card text-center justify-content-center align-items-center cardop">
-        <div class="card-header">
-            Dairy-Free
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">No more moo cows? No problem!</h5>
-            <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of not consuming any dairy products. Some of the most common dairy foods are cream, cheese, butter, ice cream, mok, and yogurt. Be cautious however because many
-                products may have dairy ingredients in their product. One of the best ways to identify if there is any dairy products, is to refer to the food label if possible.</p>
-            <p></p>
-            <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<main class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <div class="card text-center justify-content-center cardop">
+            <div class="card-header">
+                Dairy-Free
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">No more moo cows? No problem!</h5>
+                <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of
+                    not consuming any dairy products containing milk, milk proteins (whey/casein), and/or milk sugar(lactose).</p>
+                <div>
+                    <h3>Some common dairy items</h3>
+                    <ul>
+                        <li>butter</li>
+                        <li>cheese</li>
+                        <li>cream</li>
+                        <li>ice cream</li>
+                        <li>milk</li>
+                        <li>yogurt</li>
+                    </ul>
+                </div>
+                <p>
+                    Be cautious however because many products may have hidden dairy ingredients in their product.
+                    One of the best ways to identify if the product contains dairy, is to refer to the food label if
+                    possible.</p>
+                <hr>
+                <div class="row">
+                    <div class="col-6">
+                        <h3>Pros</h3>
+                        <ul>
+                            <li>Safe and no associated health risks</li>
+                            <li>Alternative products/supplements to dairy are available</li>
+                            <li>May reduce chances of developing a coronary heart disease</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <h3>Cons</h3>
+                        <ul>
+                            <li>Alternatives to getting supplemental nutrients are often more expensive</li>
+                            <li>Can be very difficult to avoid dairy, as it is used in many products, including chewing gum</li>
+                            <li>You may not absorb all of the nutrients that you can receive from actual dairy products, versus alternatives</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+            </div>
         </div>
     </div>
     <div th:replace="partials/sidebar :: sidebar"></div>
+
 </main>
 <footer th:include="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"></scripts>

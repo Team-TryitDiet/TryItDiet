@@ -15,6 +15,11 @@ import java.util.List;
 @Controller
 public class DietController {
 
+    @GetMapping("/diets/diet-index")
+    public String showDietIndexPage() {
+        return "diets/diet-index";
+    }
+
     @GetMapping("/diets/dairy-free")
     public String showDairyFreePage() {
         return "diets/dairy-free";
