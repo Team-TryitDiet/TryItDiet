@@ -89,10 +89,16 @@ public class RecipeController {
             Model model
     ) {
         Post post = postRepo.findById(postId).orElse(null);
+
         //this is from the template
         List<Diet> diets = post.getRecipe().getDiets();
         //this is from database
         List<Diet> dietsList =dietRepo.findAll();
+
+
+        System.out.println(post.getRecipe().getIngredients());
+        model.addAttribute("recipeIngredients", post.getRecipe().getIngredients());
+
         model.addAttribute("post", post);
         model.addAttribute("dietsList", dietsList);
         model.addAttribute("diets",diets);
@@ -103,8 +109,15 @@ public class RecipeController {
     @PostMapping("/posts/recipe/edit")
     public String updateRecipe(
             @ModelAttribute Post post,
-            @RequestParam List<Long> diets
+
+            @RequestParam List<Long> diets,
+
+            @RequestParam List<Ingredient> ingredients
+
     ) {
+        for(Ingredient item : ingredients) {
+            System.out.println(item.getId());
+        }
         // update post and recipe
         List<Diet> recipeDiets = new ArrayList<>();
         for(int i= 0; i< diets.size(); i++){
