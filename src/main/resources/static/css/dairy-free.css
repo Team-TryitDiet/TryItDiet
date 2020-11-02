@@ -9,6 +9,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    font-size: smaller;
 }
 
 .footdf {
@@ -23,7 +24,7 @@ body, html {
 
 .cardop {
     opacity: .9;
-    width: 50%;
+    width: 75%;
 }
 
 a:link  {
@@ -47,3 +48,5 @@ nav a:hover {
     left: 0px;
     top: 0px;
 }
+
+#container { overflow: auto; } /* Vertical scrolling only */

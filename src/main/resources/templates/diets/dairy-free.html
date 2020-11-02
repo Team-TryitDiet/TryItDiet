@@ -32,13 +32,19 @@
                 </div>
                 <div>
                     <h3>Some common dairy items</h3>
-                    <ul>
-                        <li>butter</li>
-                        <li>cheese</li>
-                        <li>cream</li>
-                        <li>ice cream</li>
-                        <li>milk</li>
-                        <li>yogurt</li>
+                    <ul class="row">
+                        <div class="col-4">
+                            <li>butter</li>
+                            <li>cheese</li>
+                        </div>
+                        <div class="col-4">
+                            <li>cream</li>
+                            <li>ice cream</li>
+                        </div>
+                        <div class="col-4">
+                            <li>milk</li>
+                            <li>yogurt</li>
+                        </div>
                     </ul>
                 </div>
                 <p>
@@ -46,38 +52,39 @@
                     One of the best ways to identify if the product contains dairy, is to refer to the food label if
                     possible.</p>
                 <hr>
-                <div class="row">
-                    <div class="col-6">
-                        <h3>Pros</h3>
-                        <ul>
-                            <li>Safe and no associated health risks</li>
-                            <li>Alternative products/supplements to dairy are available</li>
-                            <li>May reduce chances of developing a coronary heart disease</li>
-                        </ul>
-                    </div>
-                    <div class="col-6">
-                        <h3>Cons</h3>
-                        <ul>
-                            <li>Alternatives to getting supplemental nutrients are often more expensive</li>
-                            <li>Can be very difficult to avoid dairy, as it is used in many products, including chewing
-                                gum
-                            </li>
-                            <li>You may not absorb all of the nutrients that you can receive from actual dairy products,
-                                versus alternatives
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
                 <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>
         </div> <!-- End of Card container -->
     </div>
 
-<!--    Beginning of post section-->
-    <div class="container">
+<!--    beginning of container with scroll-->
+    <div id="container" class="d-flex">
+        <div id = "information" class="column">
+            <!--    Beginning of post section-->
+            <div class="container col-12">
+                <div class="card w-75 mb-3" th:each="diet : ${diets}">
+                    <div class="card-body">
+                        <!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
+                        <div class="d-flex">
+                            <div class="card w-75 mb-3" th:each="post:${diet.posts}">
+                                <div class="card-title"><h2 th:text="${post.title}"></h2></div>
+                                <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                    <button type="submit" class="btn btn-primary mr-1">View</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end of post section -->
+        </div>
+
+    </div>
+    <!--    Beginning of post section-->
+   <!-- <div class="container">
         <div class="card w-75 mb-3" th:each="diet : ${diets}">
             <div class="card-body">
-                <!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
+                &lt;!&ndash;                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>&ndash;&gt;
                 <div class="d-flex">
                     <div class="card w-75 mb-3" th:each="post:${diet.posts}">
                         <div class="card-title"><h2 th:text="${post.title}"></h2></div>
@@ -88,7 +95,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- end of post section -->
+    </div> &lt;!&ndash; end of post section &ndash;&gt;-->
 
 </main>
 <footer th:include="partials/footer :: footer"></footer>
