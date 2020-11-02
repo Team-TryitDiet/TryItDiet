@@ -36,8 +36,7 @@ public class RecipeController {
     // Create  Get Method for Recipe && Diets and Recipe && Ingredients
     @GetMapping("/posts/recipe")
     public String createRecipe(
-            Model model,
-            @RequestParam(value = "search", required = false) String search
+            Model model
     ) {
         // add a brand new post and a brand new recipe to the model
         model.addAttribute("post", new Post());
@@ -45,10 +44,6 @@ public class RecipeController {
         List<Diet> dietsList = dietRepo.findAll();
         model.addAttribute("dietsList", dietsList);
         List<Ingredient> ingredientsList = ingredientRepo.findAll();
-
-        if (search != null) {
-            ingredientsList = ingredientRepo.findByNameContaining(search);
-        }
 
         model.addAttribute("ingredientsList", ingredientsList);
         return "recipes/create";
@@ -59,7 +54,7 @@ public class RecipeController {
     public String saveRecipe(
             @ModelAttribute Recipe recipe,
             @ModelAttribute Post post,
-            @RequestParam(value = "ingredients") List<Ingredient> ingredients
+            @RequestParam List<Ingredient> ingredients
     ) throws ParseException {
         // Get the currently logged in user
         User author = (User) SecurityContextHolder
@@ -68,8 +63,8 @@ public class RecipeController {
                 .getPrincipal();
 
         // Set the currently logged in user to the newly created post/recipe
-
         post.setUser(author);
+        recipe.setIngredients(ingredients);
 
         // Get the current date/time and set in to the post
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -90,10 +85,10 @@ public class RecipeController {
     ) {
         Post post = postRepo.findById(postId).orElse(null);
 
-        //this is from the template
+        // This is from the template
         List<Diet> diets = post.getRecipe().getDiets();
-        //this is from database
-        List<Diet> dietsList =dietRepo.findAll();
+        // This is from the database
+        List<Diet> dietsList = dietRepo.findAll();
 
 
         System.out.println(post.getRecipe().getIngredients());
@@ -109,24 +104,24 @@ public class RecipeController {
     @PostMapping("/posts/recipe/edit")
     public String updateRecipe(
             @ModelAttribute Post post,
-
             @RequestParam List<Long> diets,
-
             @RequestParam List<Ingredient> ingredients
-
     ) {
         for(Ingredient item : ingredients) {
             System.out.println(item.getId());
         }
+
+
         // update post and recipe
         List<Diet> recipeDiets = new ArrayList<>();
         for(int i= 0; i< diets.size(); i++){
             Diet thisDiet = dietRepo.getOne(diets.get(i));
             recipeDiets.add(thisDiet);
         }
-//        System.out.println(recipeDiets);
+        // System.out.println(recipeDiets);
+        post.getRecipe().setIngredients(ingredients);
         post.getRecipe().setDiets(recipeDiets);
-        //this is saving the changes in our database
+        // This is saving the changes in our database
         postRepo.save(post);
         return "redirect:/posts";
     }
