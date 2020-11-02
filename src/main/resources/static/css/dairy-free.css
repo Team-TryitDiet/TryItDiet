@@ -1,5 +1,5 @@
 body, html {
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -8,6 +8,8 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    font-size: smaller;
 }
 
 .footdf {
@@ -21,8 +23,8 @@ body, html {
 }
 
 .cardop {
-    opacity: .8;
-    width: 50%;
+    opacity: .9;
+    width: 75%;
 }
 
 a:link  {
@@ -32,3 +34,19 @@ a:link  {
 nav a:hover {
     background-color: var(--cp-dair);
 }
+
+.icon-bar a:hover {
+    background-color: var(--cp-dair); /* Add a color to icon hover */
+}
+
+.activesb {
+    background-color: var(--cp-dair); /* Add a color to active icon */
+}
+
+.over{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#container { overflow: auto; } /* Vertical scrolling only */
