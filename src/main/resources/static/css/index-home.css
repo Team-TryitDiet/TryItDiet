@@ -4,10 +4,95 @@ body, html {
 
 }
 
-.bg {
-    background-image: url("../img/coconut-art.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+.highlight-blue {
+    color: #fff;
+    background-color: #1e6add;
+    padding: 50px 0;
+}
+
+.highlight-blue p {
+    color: #c4d5ef;
+    line-height: 1.5;
+}
+
+.highlight-blue h2 {
+    font-weight: normal;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    padding-top: 0;
+    margin-top: 0;
+    color: inherit;
+}
+
+.highlight-blue .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto 25px;
+}
+
+.highlight-blue .buttons {
+    text-align: center;
+}
+
+.highlight-blue .buttons .btn {
+    padding: 16px 32px;
+    margin: 6px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    line-height: 1;
+}
+
+.highlight-blue .buttons .btn:hover {
+    opacity: 1;
+}
+
+.highlight-blue .buttons .btn:active {
+    transform: translateY(1px);
+}
+
+.highlight-blue .buttons .btn-primary, .highlight-blue .buttons .btn-primary:active {
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 6px;
+    color: #ebeff1;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 14px 24px;
+    background: transparent;
+    transition: background-color 0.25s;
+}
+
+.social-icons-welcome {
+    color: #313437;
+    background-color: #fff;
+    text-align: center;
+    padding:10em 0;
+
+}
+
+@media (max-width:767px) {
+    .social-icons {
+        padding: 50px 0;
+    }
+}
+
+.social-icons-welcome i {
+    font-size: 32px;
+    display: inline-block;
+    color: #757980;
+    margin: 0 10px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #c8ced7;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 60px;
 }
 

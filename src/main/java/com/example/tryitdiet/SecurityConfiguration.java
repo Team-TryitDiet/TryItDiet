@@ -51,7 +51,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /** Pages that can be viewed by anyone **/
                 .and()
                 .authorizeRequests()
-                .antMatchers("/") // Another Neat Tool matcher - if someone hits these Urls in their browser they are allowed to view
+                .antMatchers("/","/posts") // Another Neat Tool matcher - if someone hits these Urls in their browser
+                // they
+                // are allowed to view
                 .permitAll() // like a catch-all
                 /** Pages that can be viewed by anyone **/
                 .and()
