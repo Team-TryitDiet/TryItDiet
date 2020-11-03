@@ -8,6 +8,7 @@ $(document).ready( async function () {
 
     // Using DOM to target the element of the notes property of the recipe
     const recipeNotes = document.getElementById("notes");
+    const ingredientTags = document.getElementById("tags");
 
     // Declared a Map to store the data from ingredients.json
     const dtSelection = new Map();
@@ -55,12 +56,17 @@ $(document).ready( async function () {
     // Declared a Set to store the id(s) of the selected ingredient from the DataTable
     const mySetIds = new Set();
     const mySetNames = new Set();
+    const mySetTags = new Set();
 
     if (selectedIngredients.length > 0) {
         selectedIngredients.forEach((elem) => {
             table.row( `${elem - 1}` ).select();
-            mySetIds.add(elem);
+            mySetIds.add(elem)
+            mySetNames.add(dtSelection.get(elem));
+            mySetTags.add(`<input class="tagstyle" value="${dtSelection.get(elem)}" />`);
         });
+
+        ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
     }
 
     // Event Listener for the DataTable select event which stores the currently selected
@@ -74,7 +80,11 @@ $(document).ready( async function () {
 
             // add ingredient id and name to the set(s)
             mySetIds.add(dtInfoId[0]);
+
+            // <p>Status: <span class="w3-tag">Done</span></p>
             mySetNames.add(dtInfoName[0]);
+            mySetTags.add(`<input class="tagstyle" value="${dtInfoName[0]}" />`);
+            ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
             recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );
@@ -91,6 +101,8 @@ $(document).ready( async function () {
             // remove ingredient id and name from the set(s)
             mySetIds.delete(dtInfoId[0]);
             mySetNames.delete(dtInfoName[0]);
+            mySetTags.delete(`<input class="tagstyle" value="${dtInfoName[0]}" />`);
+            ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
             recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );

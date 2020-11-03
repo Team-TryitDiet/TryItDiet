@@ -12,6 +12,11 @@
         #ingredientTable_wrapper {
             max-width: 500px;
         }
+
+        .tagstyle {
+            background-color: blue;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -31,6 +36,7 @@
         <label for="notes">Enter your Recipe Notes: </label>
         <br>
         <textarea th:value="${recipe.notes}" name="notes" id="notes" cols="72" rows="4"></textarea>
+        <div name="tags" id="tags" cols="72" rows="4" contenteditable="true"></div>
 
 <!--        <span id="testHiddenIngredients">-->
 <!--            <input type="hidden" th:each="ingredient : ${post.recipe.ingredients}" th:value="${ingredient.id}"/>-->
