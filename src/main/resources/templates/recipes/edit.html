@@ -30,9 +30,9 @@
         <br>
         <textarea th:field="${post.recipe.preparation}" name="preparation" id="prep" cols="72" rows="4"></textarea>
         <br>
-        <label for="body">Recipe Notes: </label>
+        <label for="notes">Recipe Notes: </label>
         <br>
-        <textarea th:field="${post.recipe.notes}" name="notes" id="body" cols="72" rows="4"></textarea>
+        <textarea th:field="${post.recipe.notes}" name="notes" id="notes" cols="72" rows="4"></textarea>
         <br>
 
         <table>
@@ -53,8 +53,11 @@
                 </span>
             </div>
         </table>
-        <span id="testHiddenIngredients">
-            <input type="hidden" th:each="ingredient : ${post.recipe.ingredients}" th:value="${ingredient.id}"/>
+<!--        <span id="testHiddenIngredientIds">-->
+<!--            <input type="hidden" th:each="ingredient : ${post.recipe.ingredients}" th:value="${ingredient.id}"/>-->
+<!--        </span>-->
+        <span id="testHiddenIngredientNames">
+            <input type="hidden" th:each="ingredient : ${post.recipe.ingredients}" th:value="${ingredient.name}"/>
         </span>
         <table id="ingredientTable" class="display" style="width: 500px">
             <thead>

@@ -33,13 +33,13 @@
                 <form th:action="@{'/posts/' + ${post.id}}" method="get">
                     <button type="submit" class="btn btn-primary mr-1">View</button>
                 </form>
-                <div th:switch="${post.user.username.equals(user.username)}">
-                    <div th:case="${true}">
-                        <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
-                            <button type="submit" class="btn btn-primary">Delete</button>
-                        </form>
-                    </div>
-                </div>
+<!--                <div th:switch="${post.user.id == ${user_id}}">-->
+<!--                    <div th:case="${true}">-->
+<!--                        <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">-->
+<!--                            <button type="submit" class="btn btn-primary">Delete</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

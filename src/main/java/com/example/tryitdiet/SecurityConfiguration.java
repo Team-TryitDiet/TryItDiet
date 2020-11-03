@@ -51,12 +51,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /** Pages that can be viewed by anyone **/
                 .and()
                 .authorizeRequests()
-                .antMatchers("/") // Another Neat Tool matcher - if someone hits these Urls in their browser they are allowed to view
+                .antMatchers("/", "/posts") // Another Neat Tool matcher - if someone hits these Urls in their browser they are allowed to view
                 .permitAll() // like a catch-all
-                /** Pages that can be viewed by anyone **/
+                /** Pages that DO require authentication **/
                 .and()
                 .authorizeRequests()
-                .antMatchers("/posts/create") // pages that we DO want users to be logged in to view/access
+                .antMatchers("/posts/create", "/posts/recipe") // pages that we DO want users to be logged in to view/access
                 .authenticated() // for the previously mentioned Another Neat Tool Matched URL patterns, users should be authenticated to access them
                 .and()
                 .cors()

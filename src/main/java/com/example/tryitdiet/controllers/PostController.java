@@ -2,6 +2,7 @@ package com.example.tryitdiet.controllers;
 
 import com.example.tryitdiet.models.*;
 import com.example.tryitdiet.repositories.*;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,8 +92,13 @@ public class PostController {
             Model model,
             @RequestParam(value = "search", required = false) String search
     ) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user",user);
+
+        long currentUserId = 0;
+        if ( !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) ) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            currentUserId = user.getId();
+        }
+        model.addAttribute("user_id", currentUserId);
          List<Post> allPost = postRepo.findAll();
 
 
