@@ -10,7 +10,6 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <main class="container-fluid">
     <div class="d-flex justify-content-start">
-        <!--        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >&gt;</button>-->
         <div th:replace="partials/sidebar :: sidebar"></div>
         <div class="scroll">
             <div class="row">
@@ -38,38 +37,13 @@
                                     pain, bloating,
                                     nausea, and/or diarrhea if they consume lactose.</p>
                             </div>
-                            <!--<div>
-                                <h3>Some common dairy items</h3>
-                                <ul class="row">
-                                    <div class="col-4">
-                                        <li>butter</li>
-                                        <li>cheese</li>
-                                    </div>
-                                    <div class="col-4">
-                                        <li>cream</li>
-                                        <li>ice cream</li>
-                                    </div>
-                                    <div class="col-4">
-                                        <li>milk</li>
-                                        <li>yogurt</li>
-                                    </div>
-                                </ul>
-                            </div>-->
-                            <!--<p>
-                                Be cautious however because many products may have hidden dairy ingredients in their product.
-                                One of the best ways to identify if the product contains dairy, is to refer to the food label if
-                                possible.</p>-->
                             <hr>
-                            <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
                         </div>
                     </div> <!-- End of Card container -->
                     <hr>
                     <!--                    Beginning of the diet post card-->
-                    <!--                    <div class="container">-->
                     <div class="container">
                         <div class="d-flex flex-wrap noop" th:each="diet : ${diets}">
-                            <!--                            <div class="">-->
-                            <!--                                <div class="">-->
                             <div class="card mb-2 col-3" th:each="post:${diet.posts}">
                                 <div class="card-title"><h2 th:text="${post.title}"></h2></div>
                                 <form th:action="@{'/posts/' + ${post.id}}" method="get">
@@ -78,9 +52,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
                 </div> <!-- end of post section -->
             </div>
         </div>
@@ -88,8 +59,9 @@
 
 
 </main>
-<footer th:include="partials/footer :: footer"></footer>
-<script  th:src="@{/js/sidebar.js}" type="text/javascript"></script>
+
+<!--<footer th:include="partials/footer :: footer"></footer>-->
+<script th:src="@{/js/sidebar.js}"></script>
 <scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>

@@ -51,7 +51,7 @@ nav a:hover {
 }
 
 .scroll{
-    background-color: #784B92;
+    background-color: var(--cp-dair); /* Add a color to active icon */
     width: 80%;
     height: 40rem;
     overflow-x: hidden;
