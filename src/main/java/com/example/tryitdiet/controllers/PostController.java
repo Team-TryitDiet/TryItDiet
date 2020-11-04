@@ -166,7 +166,13 @@ public class PostController {
             @PathVariable(name = "id") long id,
             Model model
     ) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        long currentUserId = 0;
+        if ( !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) ) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            currentUserId = user.getId();
+            model.addAttribute("user",userRepo.findById(currentUserId).orElse(null));
+        }
         Post post = postRepo.findById(id).orElse(null);
         List<Comment> comments = post.getComments();
 
@@ -180,7 +186,7 @@ public class PostController {
         }
         model.addAttribute("allComments", comments);
         model.addAttribute("post", post);
-        model.addAttribute("user", user);
+        model.addAttribute("user_id", currentUserId);
 
         // Add a new comment object to the model
         model.addAttribute("newComment", new Comment());
@@ -220,6 +226,7 @@ public class PostController {
             @RequestParam(name = "postId") long postId,
             @ModelAttribute Comment newComment
     ) {
+
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

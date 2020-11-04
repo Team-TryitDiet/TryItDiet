@@ -4,45 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
     <div th:replace="partials/head :: head"/>
 </head>
 <body>
 <!--<header th:replace="partials/header :: header"/>-->
 <nav th:replace="partials/navbar :: navbar"/>
 
-<!--<h1>Welcome to <span th:text="${user.username}"></span>'s Profile Page</h1>-->
-<!--    <label for="username">Username</label>-->
-<!--    <input id="username" name="username" />-->
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" type="password" name="password" />-->
+<div class="text-center profile-card" style="margin:15px;background-color:#ffffff;"></div><div class="profile-card">
+<!--    <div class="profile-back" style="background: rgb(102,215,215);"></div><img class="rounded-circle profile-pic" src="assets/img/2.jpg" />-->
+    <div class="profile-back" style="background: rgb(102,215,215);"></div><img class="rounded-circle profile-pic" id="uploadedImage" th:src="${photoUrl}" />
+    <h3 class="profile-name" style="background: rgb(102,215,215);">UserName:</h3>
+    <h3 class="profile-name" style="background: rgb(102,215,215);">Email:</h3>
+    <h3 class="profile-name" style="background: rgb(102,215,215);">Phone Number:</h3>
 
-<section>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-1">
+<!--<section>-->
+<!--    <div class="container">-->
+<!--        <div class="row align-items-center">-->
+<!--            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-1">-->
+<!--                <div class="p-5"><img class="rounded-circle img-fluid" id="uploadedImage" th:src="${photoUrl}"></div>-->
+<!--            </div>-->
 
-<!--                <button id="open">Open Picker</button>-->
-
-<!--&lt;!&ndash;                <button id="close">Close Picker</button>&ndash;&gt;-->
-<!--<div id="inline" style="height: 500px; width: 500px;" ></div>-->
-<!--                <form>-->
-<!--                    <label for="fileupload">Select a file to upload</label>-->
-<!--                    <input type="file" id="">-->
-<!--                    <input type="submit" value="Submit">-->
-<!--                </form>-->
-                <div class="p-5"><img class="rounded-circle img-fluid" id="uploadedImage" th:src="${photoUrl}"></div>
-            </div>
-
-            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-2">
-                <div class="p-5">
-                    <h1 class="display-4">lalala profile&nbsp;</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</section>
+<!--            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-2">-->
+<!--                <div class="p-5">-->
+<!--                    <h1 class="display-4">lalala profile&nbsp;</h1>-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 
 <!--uploading an image-->

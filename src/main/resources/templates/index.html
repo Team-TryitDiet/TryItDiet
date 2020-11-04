@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link th:replace="partials/head :: head"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>welcome-page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/index-home.css}">
 </head>
-<body class="bg">
-<nav th:replace="partials/navbar :: navbar"></nav>
-<main class="container-fluid d-flex contsiz">
-    <h1 class="cfont">Have you ever wanted to try a diet, but just didn't know where to start?</h1>
-    <section class="justify-content-end pill-nav justify-content-center">
-        <a href="/diets/mediterranean" >Let's tryit!</a>
-    </section>
-</main>
-<footer th:replace="partials/footer :: footer"></footer>
-<scripts th:replace="partials/scripts :: scripts"></scripts>
+<body>
+
+<section class="d-flex flex-column justify-content-center">
+    <div class="d-inline-flex justify-content-center align-content-center justify-content-xl-center align-items-xl-end container" id="welcome-page">
+        <div class="jumbotron">
+            <h1>Have You Ever Wanted to Try A Diet, But Just Didn't Know Where to Start?</h1>
+            <div id="button-div"><a class="btn btn-primary" role="button" href="/posts">Try It Now</a></div>
+        </div>
+    </div>
+</section><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
