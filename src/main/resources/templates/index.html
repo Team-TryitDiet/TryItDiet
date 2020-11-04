@@ -5,27 +5,22 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>welcome-page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/index-home.css}">
-
-
 </head>
 <body>
-<div>
-<div class="social-icons-welcome"></div>
-<div class="text-right highlight-blue" style="background: rgba(207,112,197,0.58);margin:0;padding: 91px;">
-    <div class="container">
-        <div class="intro">
-            <h2 class="text-justify"
-                style="width: 537px;height: 135px;text-align: center;font-size: 34px;color: rgb(86,134,190);">Have You
-                Ever Wanted to Try A Diet, But Just Didn't Know Where to Start?</h2>
-        </div>
-        <div class="buttons"><a class="btn btn-primary" role="button" href="/register"
-                                style="color: rgb(85,143,197);">Try
-            it</a>
+
+<div id="container-all">
+    <div id="welcome-page" class="container">
+        <div class="jumbotron">
+            <h1>Have You Ever Wanted to Try A Diet, But Just Didn't Know Where to Start?</h1>
+            <div id="button-div"><a class="btn btn-primary" role="button" href="/register">Try It Now</a></div>
         </div>
     </div>
 </div>
-</div>
-<scripts th:replace="partials/scripts :: scripts"></scripts>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!--<scripts th:replace="partials/scripts :: scripts"></scripts>-->
 </body>
 </html>
