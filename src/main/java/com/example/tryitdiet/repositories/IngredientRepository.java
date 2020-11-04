@@ -10,6 +10,6 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
     // Add in the query method to help with the posts search functionality
 //    List<Ingredient> findByNameContaining(String name);
 //    List<Ingredient> findByNameStartingWith(String name);
-    Ingredient findByName(String name);
+    Ingredient findIngredientByName(String name);
 
 }

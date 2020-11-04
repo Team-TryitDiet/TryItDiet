@@ -108,20 +108,50 @@ public class PostController {
 
         // If search is not empty
         if (search != null) {
-
             // check to see if search term(s) is/has:
             // 1. ingredients
             // 2. diets
             // 3. title
-            // declare aa Ingredient List collection for
-            List<Ingredient> recipeIngredients = new ArrayList<>();
-            List<Diet> postDiets = new ArrayList<>();
             String[] splitSearch = search.split("[,.?!\\t\\n ]+");
-            for (int i = 0; i < splitSearch.length; i++) {
-                if (ingredientRepo.findByName(splitSearch[i]) != null) {
-                    recipeIngredients.add(ingredientRepo.findByName(splitSearch[i]));
+
+            // if search string is not just empty spaces, commas, etc.
+            if (splitSearch.length > 0) {
+
+                // declare aa Ingredient List collection for
+                List<Ingredient> ingredients = new ArrayList<>();
+                List<Diet> diets = new ArrayList<>();
+                List<Recipe> recipes = new ArrayList<>();
+                allPost.clear();
+
+                // Build list of ingredients and/or diets and
+                for (int i = 0; i < splitSearch.length; i++) {
+                    if (ingredientRepo.findIngredientByName(splitSearch[i]) != null) {
+                        ingredients.add(ingredientRepo.findIngredientByName(splitSearch[i]));
+                    }
+                    if (dietRepo.findDietByTitle(splitSearch[i]) != null) {
+                        diets.add(dietRepo.findDietByTitle(splitSearch[i]));
+                    }
+                    if (!postRepo.findByTitleContaining(splitSearch[i]).isEmpty()) {
+                        allPost.addAll(postRepo.findByTitleContaining(splitSearch[i]));
+                    }
                 }
-                if () {}
+
+                // if ingredients is not empty
+                if (!ingredients.isEmpty()) {
+                    recipes.addAll(recipeRepo.findAllByIngredients(ingredients));
+                }
+                // if diets is not empty
+                if (!diets.isEmpty()) {
+                    allPost.addAll(postRepo.findAllByDiets(diets));
+                    recipes.addAll(recipeRepo.findAllByDiets(diets));
+                }
+
+                // loop through recipes if it is not empty
+                if (!recipes.isEmpty()) {
+                    for (Recipe recipe : recipes) {
+                        allPost.add(recipe.getPost());
+                    }
+                }
             }
         }
 
