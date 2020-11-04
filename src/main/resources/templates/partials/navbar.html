@@ -1,15 +1,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <standard_links th:fragment="navbar">
+<!--    Prototype navbar 1-->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-<!--            This is the TryIt diet logo-->
+            <!--            This is the TryIt diet logo-->
             <a class="navbar-brand navfont navsiz" href="/">
                 <span class="dair">T</span><span class="glut">r</span><span class="hp">y</span><span
                     class="ket">i</span><span class="pal">t</span>
                 <span class="pesc"> D</span><span class="medit">i</span><span class="vega">e</span><span
                     class="vegit">t</span></a>
-<!--            End of logo-->
+            <!--            End of logo-->
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +43,8 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item navsiz"><a class="nav-link active" aria-current="page" href="/posts">Posts</a></li>
+                    <li class="nav-item navsiz"><a class="nav-link active" aria-current="page" href="/posts">Posts</a>
+                    </li>
 
                     <!-- If the user is not logged in (anonymous to the site), display the login form and register button -->
                     <li sec:authorize="isAnonymous()" class="nav-item navsiz">
@@ -87,5 +91,9 @@
             </div>
         </div>
     </nav>
+
+
+<!--    prototype navbar 2-->
+
 
 </standard_links>

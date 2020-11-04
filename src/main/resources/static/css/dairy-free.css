@@ -5,6 +5,7 @@ body, html {
 
 .bg2 {
     background-image: url("../img/violet.jpg");
+    opacity: .9;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,12 +20,12 @@ body, html {
 }
 
 .noop {
-    opacity: 1;
+    opacity: .75;
 }
 
 .cardop {
-    opacity: .9;
-    width: 75%;
+    width: 100%;
+    opacity: .75;
 }
 
 a:link  {
@@ -49,4 +50,14 @@ nav a:hover {
     top: 0px;
 }
 
-#container { overflow: auto; } /* Vertical scrolling only */
+.scroll{
+    background-color: #784B92;
+    width: 80%;
+    height: 40rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+#container { overflow:scroll; } /* Vertical scrolling only */
+
