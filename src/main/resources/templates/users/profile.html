@@ -24,6 +24,9 @@
         </div>
         <div class="box">
             <button class="btn button" id="picker" type="button">Upload the Profile Picture</button>
+            <form th:action="@{/user/edit}"  method="get">
+            <button class="btn button" id="profile-info" type="submit" >Upload the Profile Info</button>
+            </form>
         </div>
     </div>
     <div class="container">

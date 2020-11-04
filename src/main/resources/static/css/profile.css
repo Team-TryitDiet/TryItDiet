@@ -165,3 +165,9 @@ body {
     color: rgb(9,14,10);
     padding: 6px;
 }
+#profile-info{
+    background-color: rgb(98, 119, 60);
+    opacity: 0.75;
+    color: rgb(9,14,10);
+    padding: 6px;
+}
