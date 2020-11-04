@@ -24,7 +24,7 @@ body, html {
 
 .cardop {
     opacity: .9;
-    width: 75%;
+    width: 100%;
 }
 
 a:link  {
@@ -49,4 +49,14 @@ nav a:hover {
     top: 0px;
 }
 
+.scroll{
+    background-color: #fed9ff;
+    width: 75%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
 #container { overflow:scroll; } /* Vertical scrolling only */
+

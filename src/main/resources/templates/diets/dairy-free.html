@@ -12,73 +12,79 @@
     <div class="d-flex justify-content-start">
         <!--        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >&gt;</button>-->
         <div th:replace="partials/sidebar :: sidebar"></div>
-
-        <!--        Beginning of card container-->
-        <div class="card text-center justify-content-center cardop">
-            <div class="card-header">
-                Dairy-Free
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">No more moo cows? No problem!</h5>
-                <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that consists of
-                    not consuming any dairy products containing milk, milk proteins (whey/casein), and/or milk
-                    sugar(lactose).</p>
-                <div>
-                    <h3>Why Choose a Dairy-Free Diet?</h3>
-                    <p>Approximately 65% of the general population have a dairy allergen, and/or are lactose intolerant.
-                        These individuals have difficulty digesting lactose, and experience symptoms such as abdominal
-                        pain, bloating,
-                        nausea, and/or diarrhea if they consume lactose.</p>
-                </div>
-                <!--<div>
-                    <h3>Some common dairy items</h3>
-                    <ul class="row">
-                        <div class="col-4">
-                            <li>butter</li>
-                            <li>cheese</li>
+        <div class="row">
+            <div class="scroll">
+                <!--    Beginning of post section-->
+                <div class="container">
+                    <!--        Beginning of card container-->
+                    <div class="card text-center justify-content-center cardop col-12">
+                        <div class="card-header">
+                            Dairy-Free
                         </div>
-                        <div class="col-4">
-                            <li>cream</li>
-                            <li>ice cream</li>
+                        <div class="card-body">
+                            <h5 class="card-title">No more moo cows? No problem!</h5>
+                            <p class="card-text">What is a dairy free diet? A dairy free diet is an eating pattern that
+                                consists
+                                of
+                                not consuming any dairy products containing milk, milk proteins (whey/casein), and/or
+                                milk
+                                sugar(lactose).</p>
+                            <div>
+                                <h3>Why Choose a Dairy-Free Diet?</h3>
+                                <p>Approximately 65% of the general population have a dairy allergen, and/or are lactose
+                                    intolerant.
+                                    These individuals have difficulty digesting lactose, and experience symptoms such as
+                                    abdominal
+                                    pain, bloating,
+                                    nausea, and/or diarrhea if they consume lactose.</p>
+                            </div>
+                            <!--<div>
+                                <h3>Some common dairy items</h3>
+                                <ul class="row">
+                                    <div class="col-4">
+                                        <li>butter</li>
+                                        <li>cheese</li>
+                                    </div>
+                                    <div class="col-4">
+                                        <li>cream</li>
+                                        <li>ice cream</li>
+                                    </div>
+                                    <div class="col-4">
+                                        <li>milk</li>
+                                        <li>yogurt</li>
+                                    </div>
+                                </ul>
+                            </div>-->
+                            <!--<p>
+                                Be cautious however because many products may have hidden dairy ingredients in their product.
+                                One of the best ways to identify if the product contains dairy, is to refer to the food label if
+                                possible.</p>-->
+                            <hr>
+                            <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
                         </div>
-                        <div class="col-4">
-                            <li>milk</li>
-                            <li>yogurt</li>
-                        </div>
-                    </ul>
-                </div>-->
-                <!--<p>
-                    Be cautious however because many products may have hidden dairy ingredients in their product.
-                    One of the best ways to identify if the product contains dairy, is to refer to the food label if
-                    possible.</p>-->
-                <hr>
-
-                <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
-            </div>
-        </div> <!-- End of Card container -->
-    </div>
-
-<!--    beginning of container with scroll-->
-    <div id="container" class="">
-        <div id = "information" class="">
-            <!--    Beginning of post section-->
-            <div class="container">
-                <div class="card w-75 mb-3" th:each="diet : ${diets}">
-                    <div class="card-body">
-                        <!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
-                        <div class="d-flex">
-                            <div class="card w-75 mb-3" th:each="post:${diet.posts}">
+                    </div> <!-- End of Card container -->
+                    <hr>
+                    <!--                    Beginning of the diet post card-->
+                    <div class="container">
+                        <div class="mb-3" th:each="diet : ${diets}">
+                            <!--                            <div class="">-->
+                            <!--                                <div class="">-->
+                            <div class="card mb-3 col-3 mr-0" th:each="post:${diet.posts}">
                                 <div class="card-title"><h2 th:text="${post.title}"></h2></div>
                                 <form th:action="@{'/posts/' + ${post.id}}" method="get">
                                     <button type="submit" class="btn btn-primary mr-1">View</button>
                                 </form>
                             </div>
                         </div>
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                     </div>
-                </div>
-            </div> <!-- end of post section -->
+                </div> <!-- end of post section -->
+            </div>
         </div>
     </div>
+
+
 </main>
 <footer th:include="partials/footer :: footer"></footer>
 <script>
