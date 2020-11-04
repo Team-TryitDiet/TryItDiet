@@ -8,6 +8,16 @@ body{
     background-color: #eee;
 }
 
+.bg20 {
+    background-image: url("../img/cutting-board.jpg");
+    opacity: .9;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: smaller;
+}
+
 a:hover{
     text-decoration:none;
 }
@@ -325,5 +335,17 @@ p.small {
 }
 
 
+
+
+.scroll{
+    /*background-color: #784B92;*/
+    width: 80%;
+    height: 40rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+#container { overflow:scroll; } /* Vertical scrolling only */
 
 
