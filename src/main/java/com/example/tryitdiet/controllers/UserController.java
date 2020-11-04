@@ -1,11 +1,9 @@
 package com.example.tryitdiet.controllers;
 
-<<<<<<<HEAD
 
-        =======
 import com.example.tryitdiet.models.Post;
 import com.example.tryitdiet.models.Recipe;
->>>>>>>diets
+
 import com.example.tryitdiet.models.User;
 import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.UserRepository;
