@@ -12,8 +12,8 @@
     <div class="d-flex justify-content-start">
         <!--        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >&gt;</button>-->
         <div th:replace="partials/sidebar :: sidebar"></div>
-        <div class="row">
-            <div class="scroll">
+        <div class="scroll">
+            <div class="row">
                 <!--    Beginning of post section-->
                 <div class="container">
                     <!--        Beginning of card container-->
@@ -65,20 +65,22 @@
                     </div> <!-- End of Card container -->
                     <hr>
                     <!--                    Beginning of the diet post card-->
+                    <!--                    <div class="container">-->
                     <div class="container">
-                        <div class="mb-3" th:each="diet : ${diets}">
+                        <div class="d-flex flex-wrap noop" th:each="diet : ${diets}">
                             <!--                            <div class="">-->
                             <!--                                <div class="">-->
-                            <div class="card mb-3 col-3 mr-0" th:each="post:${diet.posts}">
+                            <div class="card mb-2 col-3" th:each="post:${diet.posts}">
                                 <div class="card-title"><h2 th:text="${post.title}"></h2></div>
                                 <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                                    <button type="submit" class="btn btn-primary mr-1">View</button>
+                                    <button type="submit" class="btn btn-dark mr-1">View</button>
                                 </form>
                             </div>
                         </div>
-                        <!--                            </div>-->
-                        <!--                        </div>-->
                     </div>
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                 </div> <!-- end of post section -->
             </div>
         </div>
