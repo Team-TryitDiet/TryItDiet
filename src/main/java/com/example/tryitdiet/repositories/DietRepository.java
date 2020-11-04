@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface DietRepository extends JpaRepository<Diet, Long>{
     List<Diet> findByTitleContaining(String title);
+    Diet findDietByTitle(String title);
 }
 
