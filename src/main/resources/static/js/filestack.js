@@ -1,38 +1,3 @@
-// const client = filestack.init(FS_KEYS);
-// const options = {
-//
-//     displayMode: 'inline',
-//
-//     container: '#inline',
-//
-// };
-
-// client.picker(options).open();
-//
-// const openBtn = document.getElementById('open');
-//
-// const closeBtn = document.getElementById('close');
-
-//filepicker.setKey(FS_KEYS);
-// function show(){
-//     document.getElementById('uploadedImage').src = event.fpfile.url;
-// }
-
-
-//add event listner
-//
-// openBtn.addEventListener("click", () => {
-//
-//     client.picker(options).open();
-//
-// });
-//
-// closeBtn.addEventListener("click", () => {
-//
-//
-//     client.picker(options).close();
-//
-// })
 
 
 // Set up the picker
@@ -45,25 +10,6 @@ const options = {
 };
 const picker = client.picker(options);
 
-// Get references to the DOM elements
-//
-// const form = document.getElementById('pick-form');
-// const fileInput = document.getElementById('fileupload');
-// const btn = document.getElementById('picker');
-// const nameBox = document.getElementById('nameBox');
-// const urlBox = document.getElementById('urlBox');
-
-// Add our event listeners
-//
-// btn.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     picker.open();
-// });
-//
-// form.addEventListener('submit', function (e) {
-//     e.preventDefault();
-//     alert('Submitting: ' + fileInput.value);
-// });
 
 $(document).ready(function () {
 
@@ -89,3 +35,5 @@ function updateForm (result) {
 
     $("#uploadedImage").attr("src", fileData.url)
 };
+
+

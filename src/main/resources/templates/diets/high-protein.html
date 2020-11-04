@@ -11,7 +11,20 @@
 <main class="container-fluid">
     <h1 class="justify-content-center">High Protein</h1>
     <div th:replace="partials/sidebar :: sidebar"></div>
+
     <div class="container">
+        <div class="card text-center justify-content-center cardop">
+            <div class="card-header">
+                <h1>Dairy-Free</h1>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">No more moo cows? No problem!</h5>
+
+
+                <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+            </div>
+        </div> <!-- End of Card container -->
+    </div>
         <div class="card w-75 mb-3" th:each="diet : ${diets}">
             <div class="card-body">
                 <!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->

@@ -14,10 +14,23 @@
 
 <div class="container-fluid w-50">
     <h1>Create a post</h1>
+
+
     <form th:action="@{/create}" th:object="${post}" method="post">
         <div class="form-group">
-            <label for="title">Enter Post Title: </label>
-            <input class="form-control" type="text" id="title" th:field="*{title}" placeholder="Important Title">
+<!--            <label for="title">Enter Post Title: </label>-->
+
+            <div class="box">
+
+
+                <button class="button" type="button" id="picker">Pick file</button>
+
+
+                <img src="" alt="" id="uploadedImg">
+                <input type="hidden" th:field="*{}">
+
+
+                <input class="form-control" type="text" id="title" th:field="*{title}" placeholder="Important Title">
             <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
             <br/>
         </div>

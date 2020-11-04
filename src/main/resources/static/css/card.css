@@ -7,7 +7,7 @@
     color: #ffffff;
     float: left;
     font-family: 'Lato', Arial, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     margin: 10px 1%;
     max-width: 310px;
     min-width: 250px;
@@ -46,17 +46,20 @@
     background: #096b92;
     content: '';
     background: -moz-linear-gradient(90deg, #126daa 0%, #27ffbe 100%, #73faff 100%);
-    background: -webkit-linear-gradient(90deg, #126daa 0%, #27ffbe 100%, #73faff 100%);
-    background: linear-gradient(90deg, #126daa 0%, #27ffbe 100%, #73faff 100%);
+    background: -webkit-linear-gradient(90deg, #126daa 0%, #ff6b27 100%, #73faff 100%);
+    background: linear-gradient(90deg, #126daa 0%, #ff4027 100%, #73faff 100%);
+    background-size: cover;
+
     opacity: 0.8;
     z-index: -1;
+
 }
 
 .snip1527 .date {
     background-color: #fff;
     border-radius: 50%;
     color: #126daa;
-    font-size: 18px;
+    font-size: px;
     font-weight: 700;
     min-height: 48px;
     min-width: 48px;
