@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +24,16 @@ public class PostController {
     private final UserRepository userRepo;
     private final CommentRepository commentRepo;
     private final DietRepository dietRepo;
+    private final RecipeRepository recipeRepo;
+    private final IngredientRepository ingredientRepo;
 
-    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, RecipeRepository recipeRepo, DietRepository dietRepo) {
+    public PostController(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, RecipeRepository recipeRepo, DietRepository dietRepo, RecipeRepository recipeRepo1, IngredientRepository ingredientRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
         this.dietRepo = dietRepo;
+        this.recipeRepo = recipeRepo1;
+        this.ingredientRepo = ingredientRepo;
     }
 
     // Get Method to create New Post and Diets
@@ -63,7 +68,7 @@ public class PostController {
             model.addAttribute("post",post);
             return "posts/create";
         }
-        //set the User in the Post for the New Post
+        // Set the User in the Post for the New Post
         if (post.getId() == 0) {
             User author = (User) SecurityContextHolder
                     .getContext()
@@ -80,7 +85,7 @@ public class PostController {
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
             post.setDate(sqlDate);
         }
-        // save Post in the database
+        // Save Post in the database
         postRepo.save(post);
 
         return "redirect:/posts";
@@ -101,10 +106,23 @@ public class PostController {
         model.addAttribute("user_id", currentUserId);
          List<Post> allPost = postRepo.findAll();
 
-        // if search is not empty
+        // If search is not empty
         if (search != null) {
-            allPost = postRepo.findByTitleStartsWith(search);
 
+            // check to see if search term(s) is/has:
+            // 1. ingredients
+            // 2. diets
+            // 3. title
+            // declare aa Ingredient List collection for
+            List<Ingredient> recipeIngredients = new ArrayList<>();
+            List<Diet> postDiets = new ArrayList<>();
+            String[] splitSearch = search.split("[,.?!\\t\\n ]+");
+            for (int i = 0; i < splitSearch.length; i++) {
+                if (ingredientRepo.findByName(splitSearch[i]) != null) {
+                    recipeIngredients.add(ingredientRepo.findByName(splitSearch[i]));
+                }
+                if () {}
+            }
         }
 
         model.addAttribute("posts", allPost);
@@ -122,7 +140,7 @@ public class PostController {
         Post post = postRepo.findById(id).orElse(null);
         List<Comment> comments = post.getComments();
 
-        //check the post is from Regular Post or Recipe Post
+        // Check the post is from Regular Post or Recipe Post
         if(post.getRecipe() != null) {
             List<Diet> diets = post.getRecipe().getDiets();
             model.addAttribute("diets", diets);
@@ -134,7 +152,7 @@ public class PostController {
         model.addAttribute("post", post);
         model.addAttribute("user", user);
 
-        // add a new comment object to the model
+        // Add a new comment object to the model
         model.addAttribute("newComment", new Comment());
         return "posts/show";
     }
@@ -160,7 +178,7 @@ public class PostController {
     public String deletePost(
             @PathVariable(name = "id") long id
     ) {
-        // remove the currently selected post
+        // Remove the currently selected post
         Post post = postRepo.findById(id).orElse(null);
         postRepo.delete(post);
         return "redirect:/posts";
@@ -184,7 +202,7 @@ public class PostController {
         return "redirect:/posts/" + postId;
     }
 
-    //    edit the comment
+    // Edit the comment
     @GetMapping("/comments/edit")
     public String passingInfoEditComment(
             @RequestParam(name = "commentId") long commentId,
@@ -212,7 +230,6 @@ public class PostController {
             @RequestParam(name = "commentId") long commentId,
             @RequestParam(name = "postId") long postId
     ) {
-//        System.out.println(commentId);
         commentRepo.deleteById(commentId);
         return "redirect:/posts/" + postId;
     }

@@ -136,16 +136,4 @@ public class RecipeController {
     public String viewAllIngredientsWithAjax() {
         return "recipes/ajax";
     }
-
-
-    // test the datatable
-    @PostMapping("/ingredients/test")
-    public String ingredientSelection(
-            @RequestParam List<Ingredient> ingredients
-    ) {
-        for(Ingredient item : ingredients) {
-            System.out.println(item.getName());
-        }
-        return "redirect:/ingredients.json";
-    }
 }
