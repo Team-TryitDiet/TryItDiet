@@ -123,7 +123,7 @@ public class PostController {
         if ( !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) ) {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             currentUserId = user.getId();
-            model.addAttribute("user",user);
+            model.addAttribute("user",userRepo.findById(currentUserId).orElse(null));
         }
         Post post = postRepo.findById(id).orElse(null);
         List<Comment> comments = post.getComments();

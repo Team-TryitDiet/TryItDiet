@@ -23,7 +23,17 @@
                     <div class="card" th:each="diet:${post.diets}">
                         <div class="card-text"><p th:text="${diet.title}"></p></div>
                     </div>
-
+                    <div th:switch="${user_id !=0}">
+                        <div th:case="${true}">
+                            <div th:switch="${post.user.username.equals(user.username)}">
+                                <div th:case="${true}">
+                                    <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
+                                        <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -43,9 +53,8 @@
 
                             <!--                                    check if the user login -->
 
-                            <div th:switch="user_id !=0">
+                            <div th:switch="${user_id !=0}">
                                 <div th:case="${true}">
-
                                     <!--                                    if login check if the current user equals the user who create the recipe -->
                                     <div th:switch="${post.user.username.equals(user.username)}">
                                         <div th:case="${true}">
@@ -57,30 +66,14 @@
                         </form>
                     </div>
                 </div>
-                <!--                       the edit button for regular post -->
-                <div th:case="*">
-                    <div th:switch="user_id !=0">
-                        <div th:case="${true}">
-                            <div th:switch="${post.user.username.equals(user.username)}">
-                                <div th:case="${true}">
-
-                                    <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
-                                        <button type="submit" class="btn btn-primary mr-1">Edit</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
             <!--            delete button only for the user login and who build the post(regular post && recipe post)-->
             <div class="d-flex">
-                <div th:switch="user_id !=0">
+                <div th:switch="${user_id !=0}">
                     <div th:case="${true}">
                         <div th:switch="${post.user.username.equals(user.username)}">
                             <div th:case="${true}">
-
                                 <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
                                     <button type="submit" class="btn btn-primary">Delete</button>
                                 </form>
@@ -97,7 +90,7 @@
 <!--    Create a comment only if the user login-->
 <div class="d-flex">
     <div class="content">
-        <div th:switch="user_id !=0">
+        <div th:switch="${user_id !=0}">
             <div th:case="${true}">
                 <h3>Create a Comment</h3>
                 <form th:action="@{'/posts/comment'}" th:object="${newComment}" method="post">
@@ -117,7 +110,7 @@
         <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
         <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
 
-        <div th:switch="user_id !=0">
+        <div th:switch="${user_id !=0}">
             <div th:case="${true}">
                 <div th:switch="${comment.user.username.equals(user.username)}">
                     <div th:case="${true}">
