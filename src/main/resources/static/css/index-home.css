@@ -24,6 +24,7 @@ h1 {
     border-color: rgb(74,3,3);
 }
 
-#container-all {
-    padding-top: 17%;
+section {
+    width: 100%;
+    height: 100vh;
 }
