@@ -4,82 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
     <div th:replace="partials/head :: head"/>
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
-<!--<header th:replace="partials/header :: header"/>-->
 <nav th:replace="partials/navbar :: navbar"/>
 
-<!--<h1>Welcome to <span th:text="${user.username}"></span>'s Profile Page</h1>-->
-<!--    <label for="username">Username</label>-->
-<!--    <input id="username" name="username" />-->
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" type="password" name="password" />-->
-
-<div class="profile-card">
-    <div class="profile-back"></div><img class="rounded-circle profile-pic" th:src="${photoUrl}">
-    <h3 class="profile-name"><span th:text="${user.username}"></span></h3>
-    <h3 class="profile-name"><span th:text="${user.email}"></span></h3>
-    <h3 class="profile-name"><span th:text="${user.phone_number}"></span></h3>
-
-    <ul class="social-list"></ul>
-</div>
 <section>
+    <div class="profile-card">
+        <div class="profile-back"></div>
+        <img class="rounded-circle profile-pic" th:src="${photoUrl}">
+        <h3 class="profile-name" th:text="'UserName: ' + ${user.username}"></h3>
+        <h3 class="profile-name" th:text="'Email: ' + ${user.email}">email:</h3>
+        <div th:switch="${!user.phone_number.equals('')}">
+            <div th:case="${true}">
+                <h3 class="profile-name" th:text="'Phone Number: ' + ${user.phone_number}">phone number:</h3>
+            </div>
+
+        </div>
+        <div class="box">
+            <button class="btn button" id="picker" type="button">Upload the Profile Picture</button>
+            <form th:action="@{/user/edit}"  method="get">
+            <button class="btn button" id="profile-info" type="submit" >Upload the Profile Info</button>
+            </form>
+        </div>
+    </div>
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-1">
+        <h1 id="heading-profile">see all the post you created</h1>
+        <div th:each="post : ${posts}">
+            <div th:switch="${post.user.username.equals(user.username)}">
+                <div th:case="${true}">
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="text-center d-flex flex-column column-posts" th:text="${post.title}"></h1>
+                            <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                <button class="btn1 text-center d-flex mx-auto" type="submit">View</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<!--                <button id="open">Open Picker</button>-->
-
-<!--&lt;!&ndash;                <button id="close">Close Picker</button>&ndash;&gt;-->
-<!--<div id="inline" style="height: 500px; width: 500px;" ></div>-->
-<!--                <form>-->
-<!--                    <label for="fileupload">Select a file to upload</label>-->
-<!--                    <input type="file" id="">-->
-<!--                    <input type="submit" value="Submit">-->
-<!--                </form>-->
-
-
-
-<!--uploading an image-->
-<div class="box">
-
-    <button class="button" type="button" id="picker">Pick file</button>
-
-<!--    <form id="pick-form" method="POST" action="/user/edit">-->
-<!--        <div class="field">-->
-<!--            <div class="control">-->
-<!--                <button class="button" type="button" id="picker">Pick file</button>-->
-<!--                <input type="hidden" id="fileupload" name="avatarurl">-->
-<!--            </div>-->
-<!--            <div class="control" id="nameBox"></div>-->
-<!--            <div class="control" id="urlBox"></div>-->
-<!--        </div>-->
-<!--        <div class="field">-->
-<!--            <div class="control">-->
-<!--                <input class="button" type="submit" value="Submit">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-</div>
-
-
-<!--creating a post-->
-
-
-<!--adding a recipe-->
-
-
-<!--checkin for diets -->
-
-<!--<form action="/profile/pic" id="editProfile" method="POST" >-->
-<!--    <input type="hidden" name="userId" th:value="${user.id}">-->
-<!--    <input type="hidden" name="url" id="profileUrl" th:value="${photoUrl}">-->
-<!--<button value="button" type="submit" form="editProfile">add profile pic</button>-->
-<!--</form>-->
-
-<!--<footer th:replace="partials/footer :: footer"/>-->
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
 
 <div th:replace="partials/scripts :: scripts"/>
@@ -90,8 +61,6 @@
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 <script th:src="@{/js/filestack.js}"></script>
-                <footer th:replace="partials/footer :: footer"></footer>
-                <scripts th:replace="partials/scripts :: scripts"></scripts>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
