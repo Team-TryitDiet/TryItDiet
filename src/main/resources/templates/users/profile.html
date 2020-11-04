@@ -10,73 +10,41 @@
     <div th:replace="partials/head :: head"/>
 </head>
 <body>
-<!--<header th:replace="partials/header :: header"/>-->
 <nav th:replace="partials/navbar :: navbar"/>
+<section>
+    <div class="profile-card">
+        <div class="profile-back"></div>
+        <img class="rounded-circle profile-pic" th:src="${photoUrl}">
+        <h3 class="profile-name" th:text="'UserName: ' + ${user.username}"></h3>
+        <h3 class="profile-name" th:text="'Email: ' + ${user.email}">email:</h3>
+        <div th:switch="${!user.phone_number.equals('')}">
+            <div th:case="${true}">
+                <h3 class="profile-name" th:text="'Phone Number: ' + ${user.phone_number}">phone number:</h3>
+            </div>
+        </div>
+        <div class="box">
+            <button class="btn button" id="picker" type="button">Upload the Profile Picture</button>
+        </div>
+    </div>
+    <div class="container">
+        <h1 id="heading-profile">see all the post you created</h1>
+        <div th:each="post : ${posts}">
+            <div th:switch="${post.user.username.equals(user.username)}">
+                <div th:case="${true}">
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="text-center d-flex flex-column column-posts" th:text="${post.title}"></h1>
+                            <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                <button class="btn1 text-center d-flex mx-auto" type="submit">View</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="text-center profile-card" style="margin:15px;background-color:#ffffff;"></div><div class="profile-card">
-<!--    <div class="profile-back" style="background: rgb(102,215,215);"></div><img class="rounded-circle profile-pic" src="assets/img/2.jpg" />-->
-    <div class="profile-back" style="background: rgb(102,215,215);"></div><img class="rounded-circle profile-pic" id="uploadedImage" th:src="${photoUrl}" />
-    <h3 class="profile-name" style="background: rgb(102,215,215);">UserName:</h3>
-    <h3 class="profile-name" style="background: rgb(102,215,215);">Email:</h3>
-    <h3 class="profile-name" style="background: rgb(102,215,215);">Phone Number:</h3>
-
-<!--<section>-->
-<!--    <div class="container">-->
-<!--        <div class="row align-items-center">-->
-<!--            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-1">-->
-<!--                <div class="p-5"><img class="rounded-circle img-fluid" id="uploadedImage" th:src="${photoUrl}"></div>-->
-<!--            </div>-->
-
-<!--            <div class="col-lg-6 col-xl-4 offset-lg-6 offset-xl-7 order-lg-2">-->
-<!--                <div class="p-5">-->
-<!--                    <h1 class="display-4">lalala profile&nbsp;</h1>-->
-<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-
-<!--uploading an image-->
-<div class="box">
-
-    <button class="button" type="button" id="picker">Pick file</button>
-
-<!--    <form id="pick-form" method="POST" action="/user/edit">-->
-<!--        <div class="field">-->
-<!--            <div class="control">-->
-<!--                <button class="button" type="button" id="picker">Pick file</button>-->
-<!--                <input type="hidden" id="fileupload" name="avatarurl">-->
-<!--            </div>-->
-<!--            <div class="control" id="nameBox"></div>-->
-<!--            <div class="control" id="urlBox"></div>-->
-<!--        </div>-->
-<!--        <div class="field">-->
-<!--            <div class="control">-->
-<!--                <input class="button" type="submit" value="Submit">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-</div>
-
-
-<!--creating a post-->
-
-
-<!--adding a recipe-->
-
-
-<!--checkin for diets -->
-
-<!--<form action="/profile/pic" id="editProfile" method="POST" >-->
-<!--    <input type="hidden" name="userId" th:value="${user.id}">-->
-<!--    <input type="hidden" name="url" id="profileUrl" th:value="${photoUrl}">-->
-<!--<button value="button" type="submit" form="editProfile">add profile pic</button>-->
-<!--</form>-->
-
-<!--<footer th:replace="partials/footer :: footer"/>-->
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
 
 <div th:replace="partials/scripts :: scripts"/>
@@ -87,5 +55,7 @@
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 <script th:src="@{/js/filestack.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
