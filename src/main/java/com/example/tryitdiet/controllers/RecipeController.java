@@ -91,7 +91,7 @@ public class RecipeController {
         List<Diet> dietsList = dietRepo.findAll();
 
 
-        System.out.println(post.getRecipe().getIngredients());
+//        System.out.println(post.getRecipe().getIngredients());
         model.addAttribute("recipeIngredients", post.getRecipe().getIngredients());
 
         model.addAttribute("post", post);
