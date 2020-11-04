@@ -80,7 +80,6 @@ $(document).ready( async function () {
             // add ingredient id and name to the set(s)
             mySetIds.add(dtInfoId[0]);
 
-            // <p>Status: <span class="w3-tag">Done</span></p>
             mySetNames.add(dtInfoName[0]);
             mySetTags.add(`<input class="tagstyle" value="${dtInfoName[0]}" />`);
             ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
