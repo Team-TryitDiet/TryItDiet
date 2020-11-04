@@ -4,6 +4,10 @@
 <head>
     <link th:include="partials/head :: head"/>
     <link rel="stylesheet" th:href="@{/css/post-index.css}">
+    <link rel="stylesheet" th:href="@{/css/card.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="assets/css/News-Cards-4-Columns-v2.css">-->
+
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
@@ -24,27 +28,62 @@
         </div>
     </div>
 </div>
-<!--Original post style-->
+
+<!--new  post card style -->
 <div class="container">
-    <div class="card w-75 mb-3" th:each="post : ${posts}">
-        <div class="card-body">
-            <div class="card-title"><h2 th:text="${post.title}"></h2></div>
-            <div class="d-flex">
-                <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                    <button type="submit" class="btn btn-primary mr-1">View</button>
-                </form>
-                <div th:switch="${post.user.username.equals(user.username)}">
-                    <div th:case="${true}">
-                        <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
-                            <button type="submit" class="btn btn-primary">Delete</button>
+    <div class="row">
+        <div class="col-md-6 col-lg-4 col-xl-3" th:each="post : ${posts}">
+            <figure class="snip1527">
+                <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample25.jpg"
+                                        alt="pr-sample25" /></div>
+                <figcaption>
+
+                    <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
+
+                    <div class="card-title"><h3 th:text="${post.title}"></h3></div>
+                    <div class="d-flex">
+                        <!--                    <h3>Down with this sort of thing</h3>-->
+
+                        <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                            <button type="submit" class="btn btn-primary mr-1">View</button>
                         </form>
-                    </div>
-                </div>
-            </div>
+                        <div th:switch="${post.user.username.equals(user.username)}">
+                            <div th:case="${true}">
+                                <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
+                </figcaption>
+<!--                <a href="#"></a>-->
+            </figure>
         </div>
-    </div>
-</div>
+
+
+
+<!--Original post style-->
+<!--<div class="container">-->
+<!--    <div class="card w-75 mb-3" th:each="post : ${posts}">-->
+<!--        <div class="card-body">-->
+<!--            <div class="card-title"><h2 th:text="${post.title}"></h2></div>-->
+<!--            <div class="d-flex">-->
+<!--                <form th:action="@{'/posts/' + ${post.id}}" method="get">-->
+<!--                    <button type="submit" class="btn btn-primary mr-1">View</button>-->
+<!--                </form>-->
+<!--                <div th:switch="${post.user.username.equals(user.username)}">-->
+<!--                    <div th:case="${true}">-->
+<!--                        <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">-->
+<!--                            <button type="submit" class="btn btn-primary">Delete</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!--End of original post style-->
+<!--        card scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!--        end of card scripts -->
 
 <footer th:replace="partials/footer :: footer"></footer>
 <scripts th:replace="partials/scripts :: scripts"/>

@@ -8,9 +8,9 @@ body{
     background-color: #eee;
 }
 
-a:hover{
-    text-decoration:none;
-}
+/*a:hover{*/
+/*    text-decoration:none;*/
+/*}*/
 
 .widget.single-news {
     margin-bottom: 20px;
