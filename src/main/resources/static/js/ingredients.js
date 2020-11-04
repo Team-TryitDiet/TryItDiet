@@ -14,6 +14,8 @@ $(document).ready( async function () {
     const dtSelection = new Map();
     // Declared an empty array to store the ids of the ingredients
     const selectedIngredients = [];
+    const mySetNames = new Set();
+    const mySetTags = new Set();
 
     // Build table based off of fetch call above
     const table = $('#ingredientTable').DataTable({
@@ -47,26 +49,23 @@ $(document).ready( async function () {
                     const name = ingredientNames[i].value;
                     if (dtSelection.has(name)) {
                         selectedIngredients.push(dtSelection.get(name));
+                        mySetNames.add(name);
+                        mySetTags.add(`<input class="tagstyle" value="${name}" />`);
                     }
                 }
+                ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
             }
         }
     });
 
     // Declared a Set to store the id(s) of the selected ingredient from the DataTable
     const mySetIds = new Set();
-    const mySetNames = new Set();
-    const mySetTags = new Set();
 
     if (selectedIngredients.length > 0) {
         selectedIngredients.forEach((elem) => {
             table.row( `${elem - 1}` ).select();
             mySetIds.add(elem)
-            mySetNames.add(dtSelection.get(elem));
-            mySetTags.add(`<input class="tagstyle" value="${dtSelection.get(elem)}" />`);
         });
-
-        ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
     }
 
     // Event Listener for the DataTable select event which stores the currently selected
