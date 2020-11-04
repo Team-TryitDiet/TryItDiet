@@ -1,5 +1,8 @@
 package com.example.tryitdiet.controllers;
+import com.example.tryitdiet.models.Post;
+import com.example.tryitdiet.models.Recipe;
 import com.example.tryitdiet.models.User;
+import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,10 +21,12 @@ public class UserController {
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userRepo, PasswordEncoder passwordEncoder) {
+
+    public UserController(UserRepository userRepo, PasswordEncoder passwordEncoder, PostRepository postRepo) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
     }
+
 
     // Welcome page
     @GetMapping("/")
@@ -70,13 +75,15 @@ public class UserController {
         return "users/login";
     }
 
+
     @GetMapping("/profile")
     public String profilePage(Model model) {
-User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser =  userRepo.getOne(getUser.getId());
         model.addAttribute("user", currentUser);
-
+        List<Post> posts = currentUser.getPosts();
         model.addAttribute("photoUrl", currentUser.getProfilePic());
+        model.addAttribute("posts",posts);
         return "users/profile";
     }
 

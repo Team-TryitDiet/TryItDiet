@@ -2,6 +2,7 @@ package com.example.tryitdiet.controllers;
 
 import com.example.tryitdiet.models.*;
 import com.example.tryitdiet.repositories.*;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,14 +92,17 @@ public class PostController {
             Model model,
             @RequestParam(value = "search", required = false) String search
     ) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user",user);
-         List<Post> allPost = postRepo.findAll();
 
+        long currentUserId = 0;
+        if ( !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) ) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            currentUserId = user.getId();
+        }
+        model.addAttribute("user_id", currentUserId);
+         List<Post> allPost = postRepo.findAll();
 
         // if search is not empty
         if (search != null) {
-//            allPost = postRepo.findByTitleContaining(search);
             allPost = postRepo.findByTitleStartsWith(search);
 
         }
@@ -114,7 +118,13 @@ public class PostController {
             @PathVariable(name = "id") long id,
             Model model
     ) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        long currentUserId = 0;
+        if ( !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) ) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            currentUserId = user.getId();
+            model.addAttribute("user",userRepo.findById(currentUserId).orElse(null));
+        }
         Post post = postRepo.findById(id).orElse(null);
         List<Comment> comments = post.getComments();
 
@@ -128,7 +138,7 @@ public class PostController {
         }
         model.addAttribute("allComments", comments);
         model.addAttribute("post", post);
-        model.addAttribute("user", user);
+        model.addAttribute("user_id", currentUserId);
 
         // add a new comment object to the model
         model.addAttribute("newComment", new Comment());
@@ -168,6 +178,7 @@ public class PostController {
             @RequestParam(name = "postId") long postId,
             @ModelAttribute Comment newComment
     ) {
+
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
