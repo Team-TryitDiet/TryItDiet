@@ -25,8 +25,12 @@
 <!--    </div>-->
 <!--</div>-->
 <!--Original post style-->
+<div th:replace="partials/sidebar :: sidebar"></div>
 
-<div class="scroll">
+
+<div class="d-flex ">
+
+<div class="scroll mx-auto">
     <div class="row">
         <!--    Beginning of post section-->
         <div class="container">
@@ -47,6 +51,7 @@
         </div>
     </div>
 </div>
+</div>
 
 
 
@@ -64,7 +69,9 @@
 <!--</div>-->
 <!--End of original post style-->
 
-<footer th:replace="partials/footer :: footer"></footer>
+<!--<footer th:replace="partials/footer :: footer"></footer>-->
 <scripts th:replace="partials/scripts :: scripts"/>
+<script  th:src="@{/js/sidebar.js}" type="text/javascript"></script>
+
 </body>
 </html>

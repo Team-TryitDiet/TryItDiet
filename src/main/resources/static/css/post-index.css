@@ -346,6 +346,9 @@ p.small {
     text-align: center;
     padding: 20px;
 }
-#container { overflow:scroll; } /* Vertical scrolling only */
+#container {
+    overflow:scroll;
+
+} /* Vertical scrolling only */
 
 
