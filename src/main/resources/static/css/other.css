@@ -1,0 +1,19 @@
+
+.bg50 {
+    background-image: url("../img/pasta7_b274.jpg");
+    opacity: .9;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: smaller;
+}
+
+.card-inner {
+    margin-left: 4rem;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #000000;
+}
