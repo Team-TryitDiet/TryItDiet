@@ -1,0 +1,67 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+.bg {
+    background-image: url("../img/oranges.jpg");
+    opacity: .9;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: smaller;
+}
+
+.footdf {
+    background-color: var(--cp-vega);
+    color: #FFECDB;
+    opacity: .9;
+}
+
+.noop {
+    opacity: .75;
+}
+
+.cardop {
+    width: 100%;
+    opacity: .75;
+}
+
+a:link  {
+    color: #360036;
+}
+
+nav a:hover {
+    background-color: var(--cp-vega);
+}
+
+.icon-bar a:hover {
+    background-color: var(--cp-vega); /* Add a color to icon hover */
+}
+
+.activesb {
+    background-color: var(--cp-vega); /* Add a color to active icon */
+}
+
+.over{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.scroll{
+    background-color: var(--cp-vega); /* Add a color to active icon */
+    width: 80%;
+    height: 40rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+a:hover {
+    background-color: var(--cp-vega); /* Add a color to active icon */;
+}
+
+#container { overflow:scroll; } /* Vertical scrolling only */

@@ -59,5 +59,10 @@ nav a:hover {
     text-align: center;
     padding: 20px;
 }
+
+a:hover {
+    background-color: var(--cp-dair); /* Add a color to active icon */;
+}
+
 #container { overflow:scroll; } /* Vertical scrolling only */
 
