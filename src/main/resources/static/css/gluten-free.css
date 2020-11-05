@@ -59,4 +59,12 @@ nav a:hover {
     text-align: center;
     padding: 20px;
 }
+
+.sidebar a:hover {
+    background-color: var(--cp-glut); /* Add a color to active icon */
+}
+
+a:hover {
+    background-color: var(--cp-glut); /* Add a color to active icon */;
+}
 #container { overflow:scroll; } /* Vertical scrolling only */
