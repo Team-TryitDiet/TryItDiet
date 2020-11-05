@@ -23,10 +23,9 @@
             <div th:case="${true}">
                 <h3 class="profile-name" th:text="'Phone Number: ' + ${user.phone_number}">phone number:</h3>
             </div>
-
         </div>
         <div class="box">
-            <button class="btn button" id="picker" type="button">Upload the Profile Picture</button>
+            <button class="btn button" id="picker" type="submit">Upload the Profile Picture</button>
             <form th:action="@{/user/edit}"  method="get">
             <button class="btn button" id="profile-info" type="submit" >Upload the Profile Info</button>
             </form>

@@ -69,8 +69,7 @@ img.avart-img {
 }
 
 div.avatar-bg {
-    background: url("https://www.gravatar.com/avatar/1234566?size=200&d=mm");
-    background-position: 50% 50%;
+    background: url("https://www.gravatar.com/avatar/1234566?size=200&d=mm") 50% 50%;
     height: 200px;
     width: 200px;
     background-size: cover;
@@ -133,8 +132,7 @@ hr {
 }
 
 div.avatar-bg {
-    background: url("https://www.gravatar.com/avatar/1234566?size=200&d=mm");
-    background-position: 50% 50%;
+    background: url("https://www.gravatar.com/avatar/1234566?size=200&d=mm") 50% 50%;
     height: 200px;
     width: 200px;
     background-size: cover;

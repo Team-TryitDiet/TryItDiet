@@ -94,24 +94,30 @@ public class UserController {
         User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userRepo.getOne(getUser.getId());
         currentUser.setProfilePic(url);
-        userRepo.save(currentUser);
+        userRepo.saveAndFlush(currentUser);
         return "redirect:/profile";
     }
 
     @GetMapping("/user/edit")
     public String editUserInformation(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Post> posts=currentUser.getPosts();
         model.addAttribute("user", userRepo.findById(currentUser.getId()).orElse(null));
+//        model.addAttribute("profilePic", currentUser.getProfilePic());
+        model.addAttribute("posts", posts);
         return "users/editProfile";
     }
     @PostMapping("/user/edit")
-    public String editUserInfoDone(@ModelAttribute User user,
+    public String editUserInfoDone(
                                    Model model,
-                                   @RequestParam(name = "confirmPassword") String confirmPassword
-            , @RequestParam(name = "password") String password){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(!currentUser.getUsername().equals(user.getUsername())) {
-            if (userRepo.findAllByUsername(user.getUsername()).size() > 0) {
+                                   @RequestParam(name="username") String username,
+                                   @RequestParam(name="email") String email,
+                                   @RequestParam(name = "confirmPassword") String confirmPassword,
+                                   @RequestParam(name = "password") String password,
+                                   @RequestParam(name="phone_name") String phone_number){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(!user.getUsername().equals(username)) {
+            if (userRepo.findAllByUsername(username).size() > 0) {
                 model.addAttribute("errorUserName", "Please choose another username");
                 return "users/editProfile";
             }
@@ -119,9 +125,20 @@ public class UserController {
         if (!password.equals(confirmPassword)) {
             return "users/editProfile";
         }
-        String hash = passwordEncoder.encode(user.getPassword());
+        if(!user.getEmail().equals(email)){
+            if(userRepo.findAllByEmail(email).size()>0){
+                model.addAttribute("errorEmail","Please choose another email");
+                return "users/editProfile";
+            }
+        }
+        user.setUsername(username);
+        user.setEmail(email);
+        String hash = passwordEncoder.encode(password);
         user.setPassword(hash);
+        if(!phone_number.equals("")) {
+            user.setPhone_number(phone_number);
+        }
         userRepo.save(user);
-        return "users/profile";
+        return "redirect:/login";
     }
 }
