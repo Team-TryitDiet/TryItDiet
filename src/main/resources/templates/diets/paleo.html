@@ -9,25 +9,53 @@
 <body class="bg7">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <main class="container-fluid">
-    <h1 class="justify-content-center">Paleo</h1>
-    <div th:replace="partials/sidebar :: sidebar"></div>
-    <div class="container">
-        <div class="card w-75 mb-3" th:each="diet : ${diets}">
-            <div class="card-body">
-                <!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
-                <div class="d-flex">
-                    <div class="card w-75 mb-3" th:each="post:${diet.posts}">
-                        <div class="card-title"><h2 th:text="${post.title}"></h2></div>
-                        <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                            <button type="submit" class="btn btn-primary mr-1">View</button>
-                        </form>
+    <div class="d-flex justify-content-start">
+        <div th:replace="partials/sidebar :: sidebar"></div>
+        <div class="scroll">
+            <div class="row">
+                <!--    Beginning of post section-->
+                <div class="container">
+                    <!--        Beginning of card container-->
+                    <div class="card text-center justify-content-center cardop col-12">
+                        <div class="card-header">
+                            Gluten-Free
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Say </h5>
+                            <p class="card-text">What is a gluten free diet? A gluten free diet is an eating pattern
+                                that
+                                consists of not consuming any dairy products containing milk, milk proteins
+                                (whey/casein),
+                                and/or milk sugar(lactose).</p>
+                            <div>
+                                <h3>Why Choose a Dairy-Free Diet?</h3>
+                                <p>Approximately 65% of the general population have a dairy allergen, and/or are lactose
+                                    intolerant. These individuals have difficulty digesting lactose, and experience
+                                    symptoms such as abdominal pain, bloating, nausea, and/or diarrhea if they consume
+                                    lactose.</p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div> <!-- End of Card container -->
+                    <hr>
+                    <!--                    Beginning of the diet post card-->
+                    <div class="container">
+                        <div class="d-flex flex-wrap noop" th:each="diet : ${diets}">
+                            <div class="card mb-2 col-3" th:each="post:${diet.posts}">
+                                <div class="card-title"><h2 th:text="${post.title}"></h2></div>
+                                <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                    <button type="submit" class="btn btn-dark mr-1">View</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </div> <!-- end of post section -->
             </div>
         </div>
     </div>
+
 </main>
-<footer th:replace="partials/footer :: footer"></footer>
+<script th:src="@{/js/sidebar.js}"></script>
 <scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>

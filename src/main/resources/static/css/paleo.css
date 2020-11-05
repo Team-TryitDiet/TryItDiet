@@ -5,9 +5,12 @@ body, html {
 
 .bg7 {
     background-image: url("../img/limeGreen-watermelon.jpg");
+    opacity: .9;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    font-size: smaller;
 }
 
 .footdf {
@@ -17,12 +20,12 @@ body, html {
 }
 
 .noop {
-    opacity: 1;
+    opacity: .75;
 }
 
 .cardop {
-    opacity: .8;
-    width: 50%;
+    width: 100%;
+    opacity: .75;
 }
 
 a:link  {
@@ -32,3 +35,33 @@ a:link  {
 nav a:hover {
     background-color: var(--cp-pal);
 }
+
+.icon-bar a:hover {
+    background-color: var(--cp-pal); /* Add a color to icon hover */
+}
+
+.activesb {
+    background-color: var(--cp-pal); /* Add a color to active icon */
+}
+
+.over{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.scroll{
+    background-color: var(--cp-pal); /* Add a color to active icon */
+    width: 80%;
+    height: 40rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+a:hover {
+    background-color: var(--cp-pal); /* Add a color to active icon */;
+}
+
+#container { overflow:scroll; } /* Vertical scrolling only */
