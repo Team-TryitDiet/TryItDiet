@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+    <link rel="stylesheet" th:href="@{/css/editProfile.css}">
+    <div th:replace="partials/head :: head"/>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"/>
+
+
+<section>
+    <div class="jumbotron text-center d-flex flex-column justify-content-between align-items-center mx-auto">
+        <div>
+            <h1><i class="fa fa-pencil" id="pencil"></i>Edit Profile</h1>
+        </div>
+        <form th:action="@{/user/edit}" th:method="POST" th:object="${user}">
+            <input type="text" th:field="*{id}" style="display: none;">
+
+            <div class="d-flex flex-column">
+                <label id="label1" for="username">Username</label>
+                <input type="text" id="username" th:field="*{username}" placeholder="Please enter a username">
+                <p th:if="${errorUserName}" th:text="${errorUserName}" />
+            </div>
+
+            <div class="d-flex flex-column">
+                <label id="label2" for="email">Email</label>
+                <input type="email" id="email" th:field="*{email}" placeholder="Please enter an email">
+            </div>
+
+            <div class="d-flex flex-column">
+                <label for="password">Password</label>
+                <input type="password" id="password" th:field="*{password}"  placeholder="Please enter a password">
+            </div>
+
+            <div class="d-flex flex-column">
+                <label for="confirmPassword">Confirm the Password</label>
+                <input id="confirmPassword" name="confirmPassword" type="password"  placeholder="Confirm password">
+            </div>
+            <div class="d-flex flex-column">
+                <label for="phone_number">Phone Number</label>
+                <input id="phone_number" th:field="*{phone_number}" placeholder="(optional) ***-***-****">
+            </div>
+            <div>
+                <p><button class="btn btn-primary" value="Update" type="submit" id="updatebtn" >Update</button></p>
+            </div>
+        </form>
+    </div>
+</section>
+<script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
+
+<div th:replace="partials/scripts :: scripts"/>
+
+
+<script th:src="@{/js/keys.js}"></script>
+
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+<script th:src="@{/js/filestack.js}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

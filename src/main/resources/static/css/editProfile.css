@@ -1,0 +1,208 @@
+div.avatar > img {
+    border-radius: 50%;
+}
+
+div.container.profile {
+    padding: 10px 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.no-marging {
+    margin: 0 !important;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolue {
+    position: absolute;
+}
+
+div.profile-row {
+    margin-top: 55px;
+}
+
+.absolue.center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+}
+
+div.alert {
+    width: 40%;
+}
+
+.alert-col {
+}
+
+.alert-col > .alert {
+    padding: 10px;
+    border-radius: 0;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.alert-col > .alert.display {
+    opacity: 1;
+}
+
+hr {
+    height: 2px;
+}
+
+.content-right > * {
+    float: right;
+}
+
+.form-btn {
+    min-width: 100px;
+    margin: 0 5px;
+    max-width: 200px;
+}
+
+img.avart-img {
+    max-width: 200px;
+}
+
+div.avatar-bg {
+    background: url("https://www.gravatar.com/avatar/1234566?size=200&d=mm");
+    background-position: 50% 50%;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    border-radius: 50%;
+    margin-left: calc(50% - 100px);
+}
+
+div.avatar {
+}
+
+div.container.profile {
+    padding: 10px 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolue {
+    position: absolute;
+}
+
+div.profile-row {
+    margin-top: 55px;
+}
+
+.absolue.center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+}
+
+div.alert {
+    width: 40%;
+}
+
+.alert-col > .alert {
+    padding: 10px;
+    border-radius: 0;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+hr {
+    height: 2px;
+}
+
+.content-right > * {
+    float: right;
+}
+
+.form-btn {
+    min-width: 100px;
+    margin: 0 5px;
+    max-width: 200px;
+}
+
+div.avatar-bg {
+    background: url("https://www.gravatar.com/avatar/1234566?size=200&d=mm");
+    background-position: 50% 50%;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    border-radius: 50%;
+    margin-left: calc(50% - 100px);
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+}
+
+.jumbotron {
+    height: 100vh;
+    width: 50%;
+    background-image: url("../img/lemonEditProfile.jpg");
+    background-size: cover;
+    max-width: 100%;
+    opacity: 0.75;
+}
+
+#pencil {
+    color: rgb(238,205,142);
+    padding: 5px;
+}
+
+.h1, h1 {
+    color: rgb(214,204,155);
+    opacity: 0.8;
+    background-color: #542718;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+body {
+    height: 100%;
+    background-image: url("../img/editProfileBackground.jpg");
+    background-repeat: repeat-x;
+    background-size: 35%,auto;
+}
+
+label {
+    background-color: rgb(237,223,102);
+    border-radius: 10px;
+    padding: 7px;
+    color: rgb(50,20,20);
+    font-weight: 600;
+}
+
+input {
+    border-radius: 10px;
+    border-color: rgb(214,106,106);
+}
+
+#updatebtn {
+    background-color: rgb(251,231,52);
+    color: rgb(48,44,3);
+    font-weight: 800;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: rgb(33,30,30);
+}
+
+#label1 {
+    background-color: white;
+}
+
+#label2 {
+    background-color: white;
+}
+

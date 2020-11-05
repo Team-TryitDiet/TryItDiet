@@ -93,18 +93,35 @@ public class UserController {
     public String saveUserProfile(@RequestParam String url, @ModelAttribute User user) {
         User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userRepo.getOne(getUser.getId());
-
-
         currentUser.setProfilePic(url);
         userRepo.save(currentUser);
         return "redirect:/profile";
     }
 
     @GetMapping("/user/edit")
-    public String editUserInformation(@ModelAttribute User user, Model model) {
+    public String editUserInformation(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", userRepo.findById(currentUser.getId()).orElse(null));
-        return "users/register";
-
+        return "users/editProfile";
+    }
+    @PostMapping("/user/edit")
+    public String editUserInfoDone(@ModelAttribute User user,
+                                   Model model,
+                                   @RequestParam(name = "confirmPassword") String confirmPassword
+            , @RequestParam(name = "password") String password){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(!currentUser.getUsername().equals(user.getUsername())) {
+            if (userRepo.findAllByUsername(user.getUsername()).size() > 0) {
+                model.addAttribute("errorUserName", "Please choose another username");
+                return "users/editProfile";
+            }
+        }
+        if (!password.equals(confirmPassword)) {
+            return "users/editProfile";
+        }
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        userRepo.save(user);
+        return "users/profile";
     }
 }
