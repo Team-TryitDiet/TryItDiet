@@ -16,7 +16,7 @@
 <section>
     <div class="profile-card">
         <div class="profile-back"></div>
-        <img class="rounded-circle profile-pic" th:src="${photoUrl}">
+        <img class="rounded-circle profile-pic" id="uploadedImage" style="object-fit: cover" th:src="${photoUrl}">
         <h3 class="profile-name" th:text="'UserName: ' + ${user.username}"></h3>
         <h3 class="profile-name" th:text="'Email: ' + ${user.email}">email:</h3>
         <div th:switch="${!user.phone_number.equals('')}">

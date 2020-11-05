@@ -115,7 +115,8 @@ public class UserController {
                                    @RequestParam(name = "confirmPassword") String confirmPassword,
                                    @RequestParam(name = "password") String password,
                                    @RequestParam(name="phone_name") String phone_number){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userPrinciple = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepo.getOne(userPrinciple.getId());
         if(!user.getUsername().equals(username)) {
             if (userRepo.findAllByUsername(username).size() > 0) {
                 model.addAttribute("errorUserName", "Please choose another username");
@@ -135,10 +136,9 @@ public class UserController {
         user.setEmail(email);
         String hash = passwordEncoder.encode(password);
         user.setPassword(hash);
-        if(!phone_number.equals("")) {
-            user.setPhone_number(phone_number);
-        }
+        user.setPhone_number(phone_number);
+
         userRepo.save(user);
-        return "redirect:/login";
+        return "redirect:/profile";
     }
 }
