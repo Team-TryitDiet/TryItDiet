@@ -26,22 +26,24 @@
         </div>
         <div class="box">
             <button class="btn button" id="picker" type="submit">Upload the Profile Picture</button>
-            <form th:action="@{/user/edit}"  method="get">
-            <button class="btn button" id="profile-info" type="submit" >Upload the Profile Info</button>
+            <form th:action="@{/user/edit}" method="get">
+                <button class="btn button" id="profile-info" type="submit">Upload the Profile Info</button>
             </form>
         </div>
     </div>
-    <div class="container">
+    <div class="container ">
         <h1 id="heading-profile">see all the post you created</h1>
-        <div th:each="post : ${posts}">
-            <div th:switch="${post.user.username.equals(user.username)}">
-                <div th:case="${true}">
-                    <div class="row">
-                        <div class="col">
-                            <h1 class="text-center d-flex flex-column column-posts" th:text="${post.title}"></h1>
-                            <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                                <button class="btn1 text-center d-flex mx-auto" type="submit">View</button>
-                            </form>
+        <div class="container scroll" id="listAllPosts">
+            <div th:each="post : ${posts}">
+                <div th:switch="${post.user.username.equals(user.username)}">
+                    <div th:case="${true}">
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="text-center d-flex flex-column column-posts" th:text="${post.title}"></h1>
+                                <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                    <button class="btn1 text-center d-flex mx-auto" type="submit">View</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
