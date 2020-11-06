@@ -1,6 +1,6 @@
 $(document).ready( async function () {
     // Fetch ingredient info from ingredients.json and return result/response in json format
-    const data = await fetch("/ingredients.json").then(result => result.json());
+    const data = await fetch("https://api.jsonbin.io/b/5fa5712a0071ef5ad016b1b5").then(result => result.json());
 
     // Using DOM to target the parent element of the recipe's ingredients that will
     // contain the ingredient names (Edit form)
