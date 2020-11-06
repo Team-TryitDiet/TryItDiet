@@ -21,7 +21,7 @@ VALUES ('chicken alfredo', CURDATE(), 1, 1),
 
 INSERT INTO recipes (preparation, notes)
 VALUES
-('salt, pepper, heavy whipping cream, chicken, pasta, cumin', 'some more notes on chicken alfredo'),
+('salt, pepper, heavy whipping cream, chicken, pasta, cumin', 'some notes on chicken alfredo'),
 ('How to: beef, onion, garlic, butter, pasta, carrots, celery', 'some salt, pepper, beef bouillon'),
 ('salt, pepper, rice, butter, chicken bouillon', 'some more notes on chicken and rice');
 
@@ -49,25 +49,192 @@ INSERT INTO recipes_diets(recipe_id, diet_id)
     (2, 3),
     (3, 1);
 
-
+# USE tryit_diet_db;
+# TRUNCATE TABLE ingredients;
 INSERT INTO ingredients (name)
 VALUES
-       ('celery'),
-       ('beef'),
-       ('chicken'),
-       ('beans'),
-       ('butter'),
-       ('milk'),
-       ('cheese'),
-       ('broccoli'),
-       ('carrots'),
-       ('salmon'),
-       ('lamb'),
-       ('pork'),
-       ('pasta'),
-       ('garlic'),
-       ('onion'),
-       ('rice');
+    ('erythritol'),
+    ('xylitol'),
+    ('splenda'),
+    ('honey'),
+    ('molasses'),
+    ('white sugar'),
+    ('brown sugar'),
+    ('white vinegar'),
+    ('balsamic vinegar'),
+    ('apple cider vinegar'),
+    ('baking soda'),
+    ('baking powder'),
+    ('cocoa powder'),
+    ('olive oil'),
+    ('peanut oil'),
+    ('coconut oil'),
+    ('spray oil'),
+    ('sea salt'),
+    ('milled pepper'),
+    ('basil'),
+    ('oregano'),
+    ('parsley'),
+    ('garlic powder'),
+    ('onion powder'),
+    ('cinnamon'),
+    ('nutmeg'),
+    ('chili'),
+    ('cumin'),
+    ('thyme'),
+    ('fennel'),
+    ('vanilla extract'),
+    ('almond extract'),
+    ('maple extract'),
+    ('mint extract'),
+    ('orange extract'),
+    ('rum extract'),
+    ('almond flour'),
+    ('coconut flour'),
+    ('almond meal'),
+    ('coconut'),
+    ('protein powder'),
+    ('flax seed meal'),
+    ('thickener'),
+    ('chia seeds'),
+    ('soy sauce'),
+    ('worcestershire sauce'),
+    ('kitchen bouquet'),
+    ('onion'),
+    ('garlic'),
+    ('jalapeno slices'),
+    ('black olives'),
+    ('ro-tel'),
+    ('iced tea bags'),
+    ('mint tea bags'),
+    ('pizza sauce'),
+    ('organic beef broth'),
+    ('organic chicken broth'),
+    ('pumpkin seeds'),
+    ('sunflower seeds'),
+    ('macadamia nuts'),
+    ('almonds'),
+    ('walnuts'),
+    ('pine nuts'),
+    ('cashews'),
+    ('pecans'),
+    ('sun-dried tomatoes'),
+    ('roasted red peppers'),
+    ('artichoke hearts'),
+    ('pesto'),
+    ('alfredo sauce'),
+    ('pumpkin'),
+    ('feta'),
+    ('medium cheddar'),
+    ('sharp cheddar'),
+    ('parmesan'),
+    ('cream cheese'),
+    ('shredded mozzarella'),
+    ('heavy whipping cream'),
+    ('butter'),
+    ('sour cream'),
+    ('beef'),
+    ('eggs'),
+    ('chicken'),
+    ('bacon'),
+    ('salami'),
+    ('pepperoni'),
+    ('green beans'),
+    ('grape tomatoes'),
+    ('pickles'),
+    ('cucumber'),
+    ('zucchini'),
+    ('cauliflower'),
+    ('spinach'),
+    ('mushrooms'),
+    ('lettuce'),
+    ('lemon juice'),
+    ('green olives'),
+    ('mayonnaise'),
+    ('ketchup'),
+    ('yellow mustard'),
+    ('relish'),
+    ('brussels sprouts'),
+    ('carrots'),
+    ('ginger root'),
+    ('green'),
+    ('red bell peppers'),
+    ('lime juice'),
+    ('blueberries'),
+    ('strawberries'),
+    ('barbecue sauce'),
+    ('snap peas');
+
+
+
+
+# PANTRY RAID
+# Sweeteners (6):
+
+#
+#
+
+# Vinegar (3):
+#
+
+
+# Baking Needs (4):
+
+
+# Oils (4):
+
+
+# Spices (3):
+
+
+#
+# Mrs. Dash’s Garlic Italian Blend,
+
+#
+# Flours (7):
+
+#
+# Thickeners (2):
+
+
+# Liquid flavor (3):
+
+
+# Other (10):
+
+#
+# Nuts and seeds (9):
+
+#
+# Occasionally:
+
+# *instant coffee
+#
+#
+#
+#
+#
+# 9:09
+# REFRIGERATOR RIGHTEOUSNESS
+# Cheeses (7):
+
+# Other dairy(6): Greek yogurt, cottage cheese, low-carb yogurt,
+
+
+# Meat (8):
+
+
+# Vegetables (10):
+
+# Fruit (1):
+
+# Fats(2):
+
+# Non-dairy(2): Unsweetened almond milk, unsweetened coconut milk
+# Other (3):
+
+# Occasionally:
+
 
 # Build the relationship between ingredients and foodgroups manually
 # INSERT INTO ingredients_foodgroups (ingredient_id, foodgroup_id)
