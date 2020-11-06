@@ -6,9 +6,9 @@
     <title>Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
-    <link rel="stylesheet" th:href="@{/css/profile.css}">
     <div th:replace="partials/head :: head"/>
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+<!--    <link rel="stylesheet" href="css/profile.css">-->
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"/>
@@ -52,7 +52,7 @@
 
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
 
-<div th:replace="partials/scripts :: scripts"/>
+<scripts th:replace="partials/scripts :: scripts"/>
 
 
 <script th:src="@{/js/keys.js}"></script>
@@ -61,7 +61,6 @@
 
 <script th:src="@{/js/filestack.js}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>-->
 </body>
 </html>
