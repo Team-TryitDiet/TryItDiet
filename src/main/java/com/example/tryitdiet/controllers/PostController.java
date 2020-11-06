@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -138,7 +139,7 @@ public class PostController {
 
                 // if ingredients is not empty
                 if (!ingredients.isEmpty()) {
-                    recipes.addAll(recipeRepo.findAllByIngredients(ingredients));
+                    recipes.addAll(recipeRepo.findAllByIngredientsIn(ingredients));
                 }
                 // if diets is not empty
                 if (!diets.isEmpty()) {
@@ -155,7 +156,7 @@ public class PostController {
             }
         }
 
-        model.addAttribute("posts", allPost);
+        model.addAttribute("posts", new HashSet<>(allPost));
         return "posts/index";
     }
 
