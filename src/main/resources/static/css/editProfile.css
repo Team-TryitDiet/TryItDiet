@@ -151,8 +151,8 @@ section {
     width: 50%;
     background-image: url("../img/lemonEditProfile.jpg");
     background-size: cover;
-    max-width: 100%;
-    opacity: 0.75;
+    /*max-width: 100%;*/
+    opacity: 0.85;
 }
 
 #pencil {
@@ -173,11 +173,11 @@ section {
 }
 
 body {
-    height: 100%;
+    /*height: 100%;*/
     /*background-image: url("../img/editProfileBackground.jpg");*/
     /*background-repeat: repeat-x;*/
     /*background-size: 35%,auto;*/
-    background: linear-gradient(0deg, white 50%, #dada27 50%) no-repeat;
+    background: linear-gradient(0deg, white 50%, #e9e98b 50%) no-repeat;
 }
 
 label {
@@ -211,5 +211,17 @@ input {
 }
 
 a:hover {
-    background-color: #dada27;
+    background-color:  #e9e98b;
+}
+.scroll{
+    /*background-color: #784B92;*/
+    /*width: 100%;*/
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+#listAllPosts {
+    overflow:scroll;
 }
