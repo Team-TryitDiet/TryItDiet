@@ -13,11 +13,11 @@ body, html {
     font-size: smaller;
 }
 
-.footdf {
+/*.footdf {
     background-color: var(--cp-dair);
     color: #FFECDB;
     opacity: .9;
-}
+}*/
 
 .noop {
     opacity: .75;
@@ -28,9 +28,9 @@ body, html {
     opacity: .75;
 }
 
-a:link  {
-    color: #360036;
-}
+/*a:link  {
+    color: var(--cp-sidecolor);
+}*/
 
 nav a:hover {
     background-color: var(--cp-dair);
@@ -64,9 +64,6 @@ a:hover {
     background-color: var(--cp-dair); /* Add a color to active icon */;
 }
 
-.mainp {
-    font-size: 18px;
-}
 
 #container { overflow:scroll; } /* Vertical scrolling only */
 
