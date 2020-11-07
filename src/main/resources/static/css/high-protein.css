@@ -28,9 +28,9 @@ body, html {
     opacity: .75;
 }
 
-a:link  {
+/*a:link  {
     color: #360036;
-}
+}*/
 
 nav a:hover {
     background-color: var(--cp-hp);
