@@ -105,9 +105,9 @@ a:hover{
 }
 
 
-/**/
+/**
 post cards
-/**/
+**/
 
 * {
     transition: all 0.3s ease-out;
@@ -128,7 +128,8 @@ html, body {
     justify-content: center;
 }
 
-h3 {
+/*This is the css for all h3 tags of the tryit diet cards*/
+.tryitCard {
     color: #262626;
     font-size: 17px;
     line-height: 24px;
@@ -136,12 +137,14 @@ h3 {
     margin-bottom: 4px;
 }
 
-p {
+/*This is the css for all p tags of the tryit diet cards*/
+.tryitCardP {
     font-size: 17px;
     font-weight: 400;
     line-height: 20px;
     color: #666666;
 }
+
 
 p.small {
     font-size: 14px;
@@ -337,6 +340,7 @@ p.small {
 
 
 
+/*Css for a scrollable container */
 .scroll{
     /*background-color: #784B92;*/
     width: 80%;
