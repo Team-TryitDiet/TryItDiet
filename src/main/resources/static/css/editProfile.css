@@ -1,3 +1,4 @@
+
 div.avatar > img {
     border-radius: 50%;
 }
@@ -155,52 +156,60 @@ section {
 }
 
 #pencil {
-    color: rgb(238,205,142);
-    padding: 5px;
+    color: antiquewhite;
+    padding: 15px;
 }
 
 .h1, h1 {
-    color: rgb(214,204,155);
-    opacity: 0.8;
-    background-color: #542718;
+    color: antiquewhite;
+    opacity: 0.9;
+    background-color: #651206;
     border-radius: 20px;
-    padding: 10px;
+    /*padding: 10px;*/
+    padding:15px 100px;
+    border-style: solid;
+    border-color:navajowhite;
+    border-width:4px;
 }
 
 body {
     height: 100%;
-    background-image: url("../img/editProfileBackground.jpg");
-    background-repeat: repeat-x;
-    background-size: 35%,auto;
+    /*background-image: url("../img/editProfileBackground.jpg");*/
+    /*background-repeat: repeat-x;*/
+    /*background-size: 35%,auto;*/
+    background: linear-gradient(0deg, white 50%, #dada27 50%) no-repeat;
 }
 
 label {
-    background-color: rgb(237,223,102);
+    color: #e6cc22;
     border-radius: 10px;
     padding: 7px;
-    color: rgb(50,20,20);
+    background-color: #651206;
     font-weight: 600;
+    margin:20px 0;
+    font-size:25px;
+    opacity: 1;
+    border-color: #e6cc22;
+    border-style:solid;
 }
 
 input {
     border-radius: 10px;
-    border-color: rgb(214,106,106);
+    border-color:#651206;
+    margin:10px 0;
+    padding:7px;
 }
-
 #updatebtn {
     background-color: rgb(251,231,52);
     color: rgb(48,44,3);
-    font-weight: 800;
-    border-width: 1px;
+    font-size:15px;
+    font-weight: bolder;
     border-radius: 10px;
-    border-color: rgb(33,30,30);
+    border-color: #651206;
+    border-style:outset;
+    border-width: 4px;
 }
 
-#label1 {
-    background-color: white;
+a:hover {
+    background-color: #dada27;
 }
-
-#label2 {
-    background-color: white;
-}
-
