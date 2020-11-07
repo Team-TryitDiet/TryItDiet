@@ -98,7 +98,7 @@
                 <form th:action="@{'/posts/comment'}" th:object="${newComment}" method="post">
                     <input type="hidden" th:value="${post.id}" name="postId">
 <!--                    <label for="body">Comment Body</label>-->
-                    <textarea class="w-70" id="body" name="body"></textarea>
+                    <textarea class="w-100 h-75" id="body" name="body"></textarea>
 <!--                    <a  value="submit" type="submit" class="float-right btn btn-dark"> <i  class="fa fa-comment"></i> submit</a>-->
                     <button type="submit" value="submit" class=" float-right btn btn-dark card-text fa fa-comment"> Submit</button>
                 </form>
