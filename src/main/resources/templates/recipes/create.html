@@ -5,10 +5,8 @@
     <title></title>
     <links th:include="partials/head :: head"></links>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>create recipe</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/v/ju-1.12.1/jq-3.3.1/dt-1.10.22/e-1.9.5/r-2.2.6/sl-1.3.1/datatables.min.css"/>
+    <title>Create Recipe</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/b-1.6.5/r-2.2.6/sc-2.0.3/sl-1.3.1/datatables.min.css"/>
 
 
     <link rel="stylesheet" th:href="@{/css/createRecipe.css}">
@@ -112,59 +110,11 @@
         </div>
     </form>
 </section>
-<!--    <div class="container">-->
-<!--                <form th:action="@{/posts/recipe}" method="post">-->
 
-<!--                    <label for="prep">Enter Recipe Title: </label>-->
-<!--                    <br>-->
-<!--                    <input th:value="${post.title}" name="title"/>-->
-<!--                    <label for="prep">Enter Recipe preparation: </label>-->
-<!--                    <br>-->
-<!--                    <textarea th:value="${recipe.preparation}" name="preparation" id="prep" cols="72" rows="4"></textarea>-->
-<!--                    <br>-->
-<!--                    <label for="notes">Enter your Recipe Notes: </label>-->
-<!--                    <br>-->
-<!--                    <textarea th:value="${recipe.notes}" name="notes" id="notes" cols="72" rows="4"></textarea>-->
-<!--                    <div name="tags" id="tags" cols="72" rows="4" contenteditable="true"></div>-->
-
-<!--                <table id="ingredientTable" class="display" style="width: 500px">-->
-<!--                    <thead>-->
-<!--                    <th>ID</th>-->
-<!--                    <th>Name</th>-->
-<!--                    </thead>-->
-<!--                    <tfoot>-->
-<!--                    <th>ID</th>-->
-<!--                    <th>Name</th>-->
-<!--                    </tfoot>-->
-<!--                </table>-->
-<!--                &lt;!&ndash; DataTable selections go here &ndash;&gt;-->
-<!--                <div id="hiddenIngredients"></div>-->
-
-<!--                <br>-->
-<!--                    <table>-->
-<!--                        <div class="card" th:each="diet : ${dietsList}">-->
-<!--                            <input type="checkbox" name="diets" th:text="${diet.title}" th:value="${diet.id}"/>-->
-<!--                            <br>-->
-<!--                        </div>-->
-<!--                    </table>-->
-<!--                    <button type="submit" id="submitBtn">Create</button>-->
-
-<!--                </form>-->
-<!--    </div>-->
-
-
-<!--<footer th:replace="partials/footer :: footer"></footer>-->
 <scripts th:replace="partials/scripts :: scripts"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<!--<script type="text/javascript" charset="utf8"-->
-<!--        src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>-->
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.22/b-1.6.5/r-2.2.6/sc-2.0.3/sl-1.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/b-1.6.5/r-2.2.6/sc-2.0.3/sl-1.3.1/datatables.min.js"></script>
 <!-- Include the JS file with the AJAX request -->
 <script type="text/javascript" th:src="@{/js/ingredients.js}"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<!--<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>-->
-<!--<script type="text/javascript" src="DataTables/datatables.min.js"></script>-->
-
 </body>
 </html>
