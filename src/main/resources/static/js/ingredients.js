@@ -33,6 +33,8 @@ $(document).ready( async function () {
             },
             { data: "name" }
         ],
+        stateSave: true,
+        pageLength: 50,
         "initComplete": () => {
             data.forEach(obj => {
                 // store the each ingredients id and name into the map
@@ -64,7 +66,7 @@ $(document).ready( async function () {
     if (selectedIngredients.length > 0) {
         selectedIngredients.forEach((elem) => {
             table.row( `${elem - 1}` ).select();
-            mySetIds.add(elem)
+            mySetIds.add(elem);
         });
     }
 
@@ -83,7 +85,6 @@ $(document).ready( async function () {
             mySetNames.add(dtInfoName[0]);
             mySetTags.add(`<span class="badge badge-success">${dtInfoName[0]}</span>`);
             ingredientTags.innerHTML = Array.from(mySetTags).join(" ");
-            // recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );
 
@@ -101,7 +102,6 @@ $(document).ready( async function () {
             mySetNames.delete(dtInfoName[0]);
             mySetTags.delete(`<span class="badge badge-success">${dtInfoName[0]}</span>`);
             ingredientTags.innerHTML = Array.from(mySetTags).join(" ");
-            // recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );
 

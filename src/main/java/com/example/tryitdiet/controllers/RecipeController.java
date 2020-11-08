@@ -90,8 +90,6 @@ public class RecipeController {
         // This is from the database
         List<Diet> dietsList = dietRepo.findAll();
 
-
-//        System.out.println(post.getRecipe().getIngredients());
         model.addAttribute("recipeIngredients", post.getRecipe().getIngredients());
 
         model.addAttribute("post", post);
@@ -118,7 +116,6 @@ public class RecipeController {
             Diet thisDiet = dietRepo.getOne(diets.get(i));
             recipeDiets.add(thisDiet);
         }
-        // System.out.println(recipeDiets);
         post.getRecipe().setIngredients(ingredients);
         post.getRecipe().setDiets(recipeDiets);
         // This is saving the changes in our database
