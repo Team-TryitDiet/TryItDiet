@@ -7,7 +7,7 @@ $(document).ready( async function () {
     const recipeIngredientNames = document.getElementById("testHiddenIngredientNames");
 
     // Using DOM to target the element of the notes property of the recipe
-    const recipeNotes = document.getElementById("notes");
+    // const recipeNotes = document.getElementById("notes");
     const ingredientTags = document.getElementById("tags");
 
     // Declared a Map to store the data from ingredients.json
@@ -83,7 +83,7 @@ $(document).ready( async function () {
             mySetNames.add(dtInfoName[0]);
             mySetTags.add(`<input class="tagstyle" value="${dtInfoName[0]}" />`);
             ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
-            recipeNotes.innerText = Array.from(mySetNames).join(", ");
+            // recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );
 
@@ -101,7 +101,7 @@ $(document).ready( async function () {
             mySetNames.delete(dtInfoName[0]);
             mySetTags.delete(`<input class="tagstyle" value="${dtInfoName[0]}" />`);
             ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
-            recipeNotes.innerText = Array.from(mySetNames).join(", ");
+            // recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );
 
