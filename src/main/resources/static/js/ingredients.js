@@ -7,7 +7,7 @@ $(document).ready( async function () {
     const recipeIngredientNames = document.getElementById("testHiddenIngredientNames");
 
     // Using DOM to target the element of the notes property of the recipe
-    const recipeNotes = document.getElementById("notes");
+    // const recipeNotes = document.getElementById("notes");
     const ingredientTags = document.getElementById("tags");
 
     // Declared a Map to store the data from ingredients.json

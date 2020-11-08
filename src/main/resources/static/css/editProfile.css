@@ -1,3 +1,4 @@
+
 div.avatar > img {
     border-radius: 50%;
 }
@@ -150,57 +151,85 @@ section {
     width: 50%;
     background-image: url("../img/lemonEditProfile.jpg");
     background-size: cover;
-    max-width: 100%;
-    opacity: 0.75;
+    /*max-width: 100%;*/
+    opacity: 0.85;
 }
 
 #pencil {
-    color: rgb(238,205,142);
-    padding: 5px;
+    color: #d00dd0;
+    padding: 20px;
 }
-
+#pencil2 {
+    color: #d00dd0;
+    padding: 20px;
+}
 .h1, h1 {
-    color: rgb(214,204,155);
-    opacity: 0.8;
-    background-color: #542718;
+    /*color: antiquewhite;*/
+    color:purple;
+    opacity: 0.9;
+    /*background-color: #651206;*/
+    background-color: #dbdb0b;
     border-radius: 20px;
-    padding: 10px;
+    /*padding: 10px;*/
+    padding:15px 100px;
+    border-style: solid;
+    border-color:navajowhite;
+    border-width:4px;
+    font-weight: bolder;
 }
 
 body {
-    height: 100%;
-    background-image: url("../img/editProfileBackground.jpg");
-    background-repeat: repeat-x;
-    background-size: 35%,auto;
+    /*height: 100%;*/
+    /*background-image: url("../img/editProfileBackground.jpg");*/
+    /*background-repeat: repeat-x;*/
+    /*background-size: 35%,auto;*/
+    background: linear-gradient(0deg, white 50%, #e9e98b 50%) no-repeat;
 }
 
 label {
-    background-color: rgb(237,223,102);
+    /*color: #e9e98b;*/
+    color:purple;
     border-radius: 10px;
     padding: 7px;
-    color: rgb(50,20,20);
+    /*background-color: #651206;*/
+    background-color: #dbdb0b;
     font-weight: 600;
+    margin:20px 0;
+    font-size:25px;
+    opacity: 0.9;
+    border-color: #e6cc22;
+    border-style:solid;
 }
 
 input {
     border-radius: 10px;
-    border-color: rgb(214,106,106);
+    border-color:#651206;
+    margin:10px 0;
+    padding:7px;
 }
-
 #updatebtn {
-    background-color: rgb(251,231,52);
-    color: rgb(48,44,3);
-    font-weight: 800;
-    border-width: 1px;
+    background-color: rebeccapurple;
+    color: rgb(193, 177, 8);
+    font-size:15px;
+    font-weight: bolder;
     border-radius: 10px;
-    border-color: rgb(33,30,30);
+    border-color: rgb(193, 177, 8);
+    border-style:outset;
+    border-width: 4px;
 }
 
-#label1 {
-    background-color: white;
+a:hover {
+    background-color:  #e9e98b;
 }
-
-#label2 {
-    background-color: white;
+.scroll{
+    /*background-color: #784B92;*/
+    /*width: 100%;*/
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
 }
-
+#listAllPosts {
+    overflow:scroll;
+}
