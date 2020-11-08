@@ -166,6 +166,12 @@ p {
     font-weight: 400;
     padding: 5px;
 }
+#table-heading {
+    color: #8e44ad;
+    font-weight: 400;
+    padding: 5px;
+    margin-bottom: 10px;
+}
 
 .form-check {
     background-color: rgb(245,236,238);
@@ -192,7 +198,7 @@ p {
     margin-top: 100px;
 }
 #tab-3 {
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 #form-heading {
@@ -201,4 +207,40 @@ p {
     font-weight: lighter;
 }
 
+#tab-3-form {
+    box-shadow: 0 0 16px rgba(81, 203, 238, 1);
+    /*padding-bottom: 3%;*/
+    border-radius: 22px;
+    padding:30px 150px;
+}
+
+.tab-3 {
+    position:absolute;
+    display: block;
+
+}
+#ingredientTable_length , #ingredientTable_filter,#ingredientTable_info {
+    color: #8e44ad;
+    padding: 0 5px;
+    /*border-color: rgb(150,233,251);*/
+}
+
+#ingredientTable_wrapper select {
+    border: 2px solid rgb(150, 233, 251) !important;
+    border-radius: 5px;
+}
+
+#ingredientTable_filter label input{
+    border: 2px solid rgb(150, 233, 251) !important;
+    border-radius: 5px;
+}
+
+#submitBtn:not(:disabled):not(.disabled) {
+    color: rgb(245,236,238);
+    font-weight: bold;
+    background-color:#8e44ad;
+    margin:20px 0;
+    border: 2px solid rgb(150, 233, 251);
+    border-radius: 10px;
+}
 
