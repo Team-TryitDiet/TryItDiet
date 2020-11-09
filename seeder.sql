@@ -88,7 +88,7 @@ VALUES (1, 3),
        (3, 16),
        (4, 23),
        (5, 8),
-       ();
+       (6, 15);
 
 INSERT INTO recipes_diets(recipe_id, diet_id)
     VALUES (1, 2),
