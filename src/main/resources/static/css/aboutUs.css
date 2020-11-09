@@ -1,6 +1,12 @@
 .card-header {
+    padding-top: 15px;
     height: 200px;
-    background-color: orange;
+    background-color: rgb(146, 205, 238);
+}
+#zihan .card-header{
+    padding-top: 15px;
+    height: 200px;
+    background-color: #f5c3cc;
 }
 
 #download-icon {
@@ -53,7 +59,10 @@
 }
 
 .card-header:first-child:hover {
-    background-color: #ffb366;
+    background-color: rgb(25, 124, 181);
+}
+#zihan .card-header:first-child:hover {
+    background-color: #d3596e;
 }
 
 .fa {
@@ -79,6 +88,9 @@ img {
 }
 
 .h1, h1 {
-    color: #007bff;
+    font-size: 72px;
+    background: -webkit-linear-gradient(pink, rgb(83, 184, 244));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
