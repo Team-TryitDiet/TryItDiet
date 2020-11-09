@@ -1,6 +1,8 @@
 package com.example.tryitdiet.controllers;
 
 import com.example.tryitdiet.models.Diet;
+import com.example.tryitdiet.models.Ingredient;
+import com.example.tryitdiet.models.Post;
 import com.example.tryitdiet.repositories.DietRepository;
 import com.example.tryitdiet.repositories.IngredientRepository;
 import com.example.tryitdiet.repositories.PostRepository;
@@ -49,65 +51,40 @@ public class DietController {
     public String showDairyFreePage(
             @RequestParam(value = "search", required = false) String search,
             Model model) {
-        if ("dairy-free" != null) {
-            List<Diet> dfPosts = dietRepo.findByTitleContaining("dairy-free");
+        Diet df = dietRepo.findDietByTitle("dairy-free");
+        List<Post> dfPosts = df.getPosts();
 
-            for (Diet diet : dfPosts) {
-                System.out.println(diet);
-            }
+        // If search is not empty
+        if (search != null) {
+            // check to see if search term(s) is/has:
+            // 1. ingredients
+            // 3. title
+            String[] splitSearch = search.split("[,.?!\\t\\n ]+");
 
-            // If search is not empty
-            if (search != null) {
-                // check to see if search term(s) is/has:
-                // 1. ingredients
-                // 3. title
-                String[] splitSearch = search.split("[,.?!\\t\\n ]+");
+            // if search string is not just empty spaces, commas, etc.
+            if (splitSearch.length > 0) {
 
-                // if search string is not just empty spaces, commas, etc.
-                if (splitSearch.length > 0) {
-
-                    // declare aa Ingredient List collection for
-//                    List<Ingredient> ingredients = new ArrayList<>();
-                    List<Diet> diets = dietRepo.findByTitleContaining("dairy-free");
-//                    List<Recipe> recipes = new ArrayList<>();
-                    dfPosts.clear();
-
-                    // Build list of ingredients and/or diets and
-                    for (int i = 0; i < splitSearch.length; i++) {
-                        if ( diets.contains( dietRepo.findDietByTitle(splitSearch[i]) ) ) {
-//                            if (ingredientRepo.findIngredientByName(splitSearch[i]) != null
-//                                    && diets.contains( )
-//                            ) {
-//                                ingredients.add(ingredientRepo.findIngredientByName(splitSearch[i]));
-//                            }
-                            dfPosts.addAll(diets);
-                        }
+                // loop through dairy-free posts and grab all recipes and ingredients
+                HashSet<Ingredient> dfIngredients = new HashSet<>();
+                for(Post post : dfPosts) {
+                    if (post.getRecipe() != null) {
+                        dfIngredients.addAll(post.getRecipe().getIngredients());
                     }
-
-                    // if ingredients is not empty
-//                    if (!ingredients.isEmpty()) {
-//                        recipes.addAll(recipeRepo.findAllByIngredientsIn(ingredients));
-//                    }
-                    // if diets is not empty
-//                    if (!diets.isEmpty()) {
-////                        dfPosts.addAll(postRepo.findAllByDiets(diets));
-//                        recipes.addAll(recipeRepo.findAllByDiets(diets));
-//                    }
-
-                    // loop through recipes if it is not empty
-//                    if (!recipes.isEmpty()) {
-//                        for (Recipe recipe : recipes) {
-//                            dfPosts.add(postRepo.findAllByRecipe);
-//                        }
-//                    }
                 }
+
+                // loop through search term
+                for(int i = 0; i < splitSearch.length; i++) {
+
+                    // check if search term is a post title
+//                    if(dfRecipes.contains(recipeRepo.findBy)) {}
+                }
+
             }
-
-
-
-            model.addAttribute("controller", "/diets/dairy-free");
-            model.addAttribute("diets", new HashSet<>(dfPosts));
         }
+
+
+        model.addAttribute("controller", "/diets/dairy-free");
+        model.addAttribute("dfPosts", dfPosts);
         return "diets/dairy-free";
     }
 

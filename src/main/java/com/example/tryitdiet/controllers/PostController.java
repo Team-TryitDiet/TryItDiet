@@ -118,7 +118,7 @@ public class PostController {
             // if search string is not just empty spaces, commas, etc.
             if (splitSearch.length > 0) {
 
-                // declare aa Ingredient List collection for
+                // declare an Ingredient List collection for ingredients in search field
                 List<Ingredient> ingredients = new ArrayList<>();
                 List<Diet> diets = new ArrayList<>();
                 List<Recipe> recipes = new ArrayList<>();

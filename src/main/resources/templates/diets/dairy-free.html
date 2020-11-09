@@ -40,8 +40,8 @@
                     <hr>
                     <!--                    Beginning of the diet post card-->
                     <div class="container">
-                        <div class="d-flex flex-wrap noop" th:each="diet : ${diets}">
-                            <div class="card mb-2 col-3" th:each="post : ${diet.posts}">
+                        <div class="d-flex flex-wrap noop">
+                            <div class="card mb-2 col-3" th:each="post : ${dfPosts}">
                                 <div class="card-title"><h2 th:text="${post.title}"></h2></div>
                                 <form th:action="@{'/posts/' + ${post.id}}" method="get">
                                     <button type="submit" class="btn btn-dark mr-1">View</button>
