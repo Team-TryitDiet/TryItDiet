@@ -87,11 +87,12 @@
     </div>
 </div>
 <!--    Create a comment only if the user login-->
+
 <div class="d-flex">
     <div class="card-body">
         <div class="card w-50">
     <div class="content">
-        <div class="card-body ">
+        <div class="card-body w-50 ">
         <div th:switch="${user_id !=0}">
             <div th:case="${true}">
                 <h3 id="">Create a Comment</h3>
