@@ -202,11 +202,11 @@ public class PostController {
     ) {
         // Get the currently selected post
         Post post = postRepo.findById(id).orElse(null);
-        List<Diet> dietsList1 = dietRepo.findAll();
+        List<Diet> dietsList = dietRepo.findAll();
         // Add the selected post to the model to allow us to
         // put the post's content onto the page
         model.addAttribute("post", post);
-        model.addAttribute("dietsList1", dietsList1);
+        model.addAttribute("dietsList", dietsList);
         return "posts/edit";
     }
 

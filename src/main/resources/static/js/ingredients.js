@@ -1,13 +1,13 @@
 $(document).ready( async function () {
     // Fetch ingredient info from ingredients.json and return result/response in json format
-    const data = await fetch("https://api.jsonbin.io/b/5fa5712a0071ef5ad016b1b5").then(result => result.json());
+    const data = await fetch("/ingredients.json").then(result => result.json());
 
     // Using DOM to target the parent element of the recipe's ingredients that will
     // contain the ingredient names (Edit form)
     const recipeIngredientNames = document.getElementById("testHiddenIngredientNames");
 
     // Using DOM to target the element of the notes property of the recipe
-    const recipeNotes = document.getElementById("notes");
+    // const recipeNotes = document.getElementById("notes");
     const ingredientTags = document.getElementById("tags");
 
     // Declared a Map to store the data from ingredients.json
@@ -33,6 +33,8 @@ $(document).ready( async function () {
             },
             { data: "name" }
         ],
+        stateSave: true,
+        pageLength: 50,
         "initComplete": () => {
             data.forEach(obj => {
                 // store the each ingredients id and name into the map
@@ -64,7 +66,7 @@ $(document).ready( async function () {
     if (selectedIngredients.length > 0) {
         selectedIngredients.forEach((elem) => {
             table.row( `${elem - 1}` ).select();
-            mySetIds.add(elem)
+            mySetIds.add(elem);
         });
     }
 
@@ -83,7 +85,6 @@ $(document).ready( async function () {
             mySetNames.add(dtInfoName[0]);
             mySetTags.add(`<span class="badge badge-success">${dtInfoName[0]}</span>`);
             ingredientTags.innerHTML = Array.from(mySetTags).join(" ");
-            // recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );
 
@@ -101,7 +102,6 @@ $(document).ready( async function () {
             mySetNames.delete(dtInfoName[0]);
             mySetTags.delete(`<span class="badge badge-success">${dtInfoName[0]}</span>`);
             ingredientTags.innerHTML = Array.from(mySetTags).join(" ");
-            // recipeNotes.innerText = Array.from(mySetNames).join(", ");
         }
     } );
 
