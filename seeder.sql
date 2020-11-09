@@ -19,7 +19,8 @@ VALUES ('chicken alfredo', CURDATE(), 1, 1),
        ('beef stroganoff', CURDATE(), 1, 2),
        ('chicken & rice', CURDATE(), 1, 3),
        ('Lemon Chicken with Orzo', CURDATE(), 2, 4),
-       ('Baked Pot Stickers with Dipping Sauce', CURDATE(), 2, 5);
+       ('Baked Pot Stickers with Dipping Sauce', CURDATE(), 2, 5),
+       ('Blushing Grapefruit Sorbet', CURDATE(), 2, 6);
 
 INSERT INTO recipes (preparation, notes)
 VALUES
@@ -55,7 +56,17 @@ Cooking spray
 SAUCE:
 1/2 cup jalapeno pepper jelly
 1/4 cup rice vinegar
-2 tablespoons reduced-sodium soy sauce');
+2 tablespoons reduced-sodium soy sauce'),
+('3 cups water
+1 cup sugar
+1/2 cup honey
+1 tablespoon grated grapefruit zest
+1 tablespoon minced fresh gingerroot
+2 whole star anise
+2 whole cloves
+1 bay leaf
+2 cups ruby red grapefruit juice, chilled
+3 tablespoons lemon juice');
 
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id)
 VALUES (1, 3),
@@ -76,7 +87,8 @@ VALUES (1, 3),
        (3, 15),
        (3, 16),
        (4, 23),
-       (5, 8);
+       (5, 8),
+       ();
 
 INSERT INTO recipes_diets(recipe_id, diet_id)
     VALUES (1, 2),
