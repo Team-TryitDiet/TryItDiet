@@ -67,10 +67,12 @@
 
 .fa {
     color: rgb(86,173,222);
+    background-color: white;
 }
 
 #zihan .fa {
     color: pink;
+    background-color: white;
 }
 
 section {
@@ -94,3 +96,6 @@ img {
     -webkit-text-fill-color: transparent;
 }
 
+.card-body .card-link:hover {
+    background-color: white;
+}
