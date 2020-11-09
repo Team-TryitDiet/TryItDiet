@@ -10,11 +10,11 @@ body, html {
     background-size: cover;
 }
 
-.footdf {
+/*.footdf {
     background-color: var(--cp-vegit);
     color: black;
     opacity: .9;
-}
+}*/
 
 .noop {
     opacity: 1;
@@ -25,9 +25,9 @@ body, html {
     width: 50%;
 }
 
-a:link  {
+/*a:link  {
     color: #360036;
-}
+}*/
 
 nav a:hover {
     background-color: var(--cp-vegit);
