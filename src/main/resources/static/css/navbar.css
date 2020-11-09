@@ -8,12 +8,13 @@ a:hover {
     background-color: #E5B3C0;
 }
 
-
 .custbtn {
-    border-color: white;
+    border-style: none !important;
     color: black;
     background-color: transparent;
-!important;
 }
 
+.custbtn:hover {
+    background-color: #E5B3C0;
+}
 
