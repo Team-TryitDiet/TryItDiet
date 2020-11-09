@@ -1,7 +1,7 @@
 #welcome-page {
     text-align: center;
     padding: 90px;
-    background-image: url("../img/pomegranate.jpg");
+    background-image: url("../img/pomegranateMin.jpg");
     background-size: cover;
     max-width: 100%;
     background-repeat: no-repeat;
@@ -21,7 +21,6 @@ h1 {
 .btn:not(:disabled):not(.disabled) {
     background: rgb(215,117,117);
     border-radius: 10px;
-    margin-top: 30px;
     border-color: rgb(74,3,3);
 }
 
@@ -30,7 +29,10 @@ section {
     height: 100vh;
 }
 
+#button-div {
+    margin-top: 30px;
 
+}
 /*#listAllPosts{*/
 /*    overflow: auto;*/
 /*}*/

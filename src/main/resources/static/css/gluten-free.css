@@ -4,7 +4,7 @@ body, html {
 }
 
 .bg10 {
-    background-image: url("../img/grape.jpg");
+    background-image: url("../img/grapeMin.jpg");
     opacity: .9;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,11 +13,11 @@ body, html {
     font-size: smaller;
 }
 
-.footdf {
+/*.footdf {
     background-color: var(--cp-glut);
     color: #FFECDB;
     opacity: .9;
-}
+}*/
 
 .noop {
     opacity: .75;
@@ -28,9 +28,9 @@ body, html {
     width: 100%;
 }
 
-a:link  {
+/*a:link  {
     color: #360036;
-}
+}*/
 
 nav a:hover {
     background-color: var(--cp-glut);

@@ -1,0 +1,83 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+.bg {
+    /*background-image: url("../img/tomato.jpg");*/
+    background-color: whitesmoke;
+    opacity: .9;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: smaller;
+}
+
+/*.footdf {
+    background-color: var(--cp-vega);
+    color: #FFECDB;
+    opacity: .9;
+}*/
+
+.noop {
+    opacity: .75;
+}
+
+.cardop {
+    width: 100%;
+    opacity: .75;
+}
+
+/*a:link  {
+    color: #360036;
+}*/
+
+nav a:hover {
+    /*background-color: var(--cp-vegit);*/
+    background-image: linear-gradient(to right, var(--cp-dair),var(--cp-glut),var(--cp-hp),var(--cp-ket),
+    var(--cp-pal),var(--cp-pesc),var(--cp-medit),var(--cp-vega),
+    var(--cp-vegit));
+}
+
+.icon-bar a:hover {
+    /*background-color: var(--cp-vegit); !* Add a color to icon hover *!*/
+    background-image: linear-gradient(to right, var(--cp-dair),var(--cp-glut),var(--cp-hp),var(--cp-ket),
+    var(--cp-pal),var(--cp-pesc),var(--cp-medit),var(--cp-vega),
+    var(--cp-vegit));
+}
+
+.activesb {
+    /*background-color: var(--cp-vegit); !* Add a color to active icon *!*/
+    background-image: linear-gradient(to right, var(--cp-dair),var(--cp-glut),var(--cp-hp),var(--cp-ket),
+    var(--cp-pal),var(--cp-pesc),var(--cp-medit),var(--cp-vega),
+    var(--cp-vegit));
+}
+
+.over{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.scroll{
+    background-image: linear-gradient(to right, var(--cp-dair),var(--cp-glut),var(--cp-hp),var(--cp-ket),
+    var(--cp-pal),var(--cp-pesc),var(--cp-medit),var(--cp-vega),
+    var(--cp-vegit));
+    /*background-color: var(--cp-vegit); !* Add a color to active icon *!*/
+    width: 80%;
+    height: 40rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+a:hover {
+    /*background-color: var(--cp-vegit); !* Add a color to active icon *!;*/
+    background-image: linear-gradient(to right, var(--cp-dair),var(--cp-glut),var(--cp-hp),var(--cp-ket),
+    var(--cp-pal),var(--cp-pesc),var(--cp-medit),var(--cp-vega),
+    var(--cp-vegit));
+}
+
+#container { overflow:scroll; } /* Vertical scrolling only */
