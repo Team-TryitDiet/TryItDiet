@@ -4,7 +4,6 @@
 <head>
     <title></title>
     <links th:include="partials/head :: head"></links>
-
     <link rel="stylesheet" th:href="@{/css/createRecipe.css}">
 </head>
 <body>
@@ -71,9 +70,9 @@
                             <h1 id="diets-heading" style="text-align: center;">Diets Category</h1>
 
                             <div class="form-check" th:each="diet : ${dietsList}">
-                                <input class="form-check-input" type="checkbox" id="formCheck-1" name="diets"
+                                <input class="formCheck-1 form-check-input" type="checkbox" th:id="${diet.id}" name="diets"
                                        th:value="${diet.id}">
-                                <label class="form-check-label" for="formCheck-1" th:text="${diet.title}">
+                                <label class="form-check-label" th:for="${diet.id}" th:text="${diet.title}">
                                     Label</label>
 
                             </div>

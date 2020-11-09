@@ -7,10 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Create Recipe</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/b-1.6.5/r-2.2.6/sc-2.0.3/sl-1.3.1/datatables.min.css"/>
-
-
     <link rel="stylesheet" th:href="@{/css/createRecipe.css}">
-
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
@@ -57,16 +54,20 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-10 col-sm-10 col-md-8 offset-1 offset-sm-1 offset-md-2">
-                                                <textarea class="form-control"
-                                                          style="font-family:Armata, sans-serif;font-size:15px;"
-                                                          name="preparation" id="prep"
-                                                          rows="7"
-                                                          th:value="${recipe.preparation}"></textarea></div>
+                                    <textarea class="form-control"
+                                              style="font-family:Armata, sans-serif;font-size:15px;"
+                                              name="preparation" id="prep"
+                                              rows="7"
+                                              th:value="${recipe.preparation}">
+                                    </textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Diets Section -->
             <div class="tab-pane" role="tabpanel" id="tab-2">
                 <div class="container">
                     <div id="dietsform">
@@ -74,9 +75,9 @@
                             <h1 id="diets-heading" style="text-align: center;">Diets Category</h1>
 
                             <div class="form-check" th:each="diet : ${dietsList}">
-                                <input class="form-check-input" type="checkbox" id="formCheck-1" name="diets"
+                                <input class="formCheck-1 form-check-input" type="checkbox" th:id="${diet.id}" name="diets"
                                        th:value="${diet.id}">
-                                <label class="form-check-label" for="formCheck-1" th:text="${diet.title}">
+                                <label class="form-check-label" th:for="${diet.id}" th:text="${diet.title}">
                                     Label</label>
 
                             </div>
@@ -84,6 +85,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Ingredients Section -->
             <div class="tab-pane" role="tabpanel" id="tab-3">
                 <div class="container d-flex justify-content-center">
                     <div id="tab-3-form" style="text-align:center; background-color: rgb(245,236,238); color:

@@ -82,7 +82,7 @@
                                 <!-- start the loop here -->
                                 <span th:switch="${post.recipe.diets.contains(diet)}">
                                     <span th:case="${true}">
-                                        <input th:id="${diet.id}" class="formCheck-1" type="checkbox" name="diets"
+                                        <input th:id="${diet.id}" class="formCheck-1 form-check-input" type="checkbox" name="diets"
 
                                                th:value="${diet.id}"
                                                checked="checked"/>
@@ -90,7 +90,7 @@
                                                th:text="${diet.title}">Label</label>
                                     </span>
                                     <span th:case="*">
-                                        <input th:id="${diet.id}" class="formCheck-1" type="checkbox" name="diets"
+                                        <input th:id="${diet.id}" class="formCheck-1 form-check-input" type="checkbox" name="diets"
 
                                                th:value="${diet.id}"/>
                                         <label class="form-check-label" th:for="${diet.id}"
