@@ -179,18 +179,7 @@ section {
 }
 
 body {
-/*<<<<<<< HEAD*/
-/*    !*height: 100%;*!*/
-/*    !*background-image: url("../img/editProfileBackground.jpg");*!*/
-/*    !*background-repeat: repeat-x;*!*/
-/*    !*background-size: 35%,auto;*!*/
     background: linear-gradient(0deg, white 50%, #e9e98b 50%) no-repeat;
-/*=======*/
-/*    height: 100%;*/
-/*    background-image: url("../img/editProfileBackgroundMin.jpg");*/
-/*    background-repeat: repeat-x;*/
-/*    background-size: 35%,auto;*/
-
 }
 
 label {
