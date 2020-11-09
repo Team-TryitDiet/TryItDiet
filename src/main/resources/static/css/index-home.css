@@ -21,7 +21,6 @@ h1 {
 .btn:not(:disabled):not(.disabled) {
     background: rgb(215,117,117);
     border-radius: 10px;
-    margin-top: 30px;
     border-color: rgb(74,3,3);
 }
 
@@ -30,7 +29,10 @@ section {
     height: 100vh;
 }
 
+#button-div {
+    margin-top: 30px;
 
+}
 /*#listAllPosts{*/
 /*    overflow: auto;*/
 /*}*/
