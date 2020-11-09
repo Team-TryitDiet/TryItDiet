@@ -156,6 +156,7 @@ public class PostController {
             }
         }
 
+        model.addAttribute("controller", "/posts");
         model.addAttribute("posts", new HashSet<>(allPost));
         return "posts/index";
     }

@@ -5,25 +5,40 @@ import com.example.tryitdiet.repositories.DietRepository;
 import com.example.tryitdiet.repositories.IngredientRepository;
 import com.example.tryitdiet.repositories.PostRepository;
 import com.example.tryitdiet.repositories.RecipeRepository;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
 public class DietController {
-    private DietRepository dietRepo;
 
+    private final DietRepository dietRepo;
+    private final PostRepository postRepo;
+    private final IngredientRepository ingredientRepo;
+    private final RecipeRepository recipeRepo;
 
-    public DietController(DietRepository dietRepo, PostRepository postRepo, IngredientRepository ingredientRepo) {
+    public DietController(DietRepository dietRepo, PostRepository postRepo, RecipeRepository recipeRepo, IngredientRepository ingredientRepo) {
         this.dietRepo = dietRepo;
-
+        this.postRepo = postRepo;
+        this.recipeRepo = recipeRepo;
+        this.ingredientRepo = ingredientRepo;
     }
+
+//    dairy-free
+//    gluten-free
+//    high-protein
+//    keto
+//    paleo
+//    pescatarian
+//    mediterranean
+//    vegan
+//    vegetarian
+//    other
+
 
     @GetMapping("/diets/diet-index")
     public String showDietIndexPage() {
@@ -31,11 +46,67 @@ public class DietController {
     }
 
     @GetMapping("/diets/dairy-free")
-    public String showDairyFreePage(Model model) {
+    public String showDairyFreePage(
+            @RequestParam(value = "search", required = false) String search,
+            Model model) {
         if ("dairy-free" != null) {
-            List<Diet> diets = dietRepo.findByTitleContaining("dairy-free");
-            System.out.println(diets);
-            model.addAttribute("diets", diets);
+            List<Diet> dfPosts = dietRepo.findByTitleContaining("dairy-free");
+
+            for (Diet diet : dfPosts) {
+                System.out.println(diet);
+            }
+
+            // If search is not empty
+            if (search != null) {
+                // check to see if search term(s) is/has:
+                // 1. ingredients
+                // 3. title
+                String[] splitSearch = search.split("[,.?!\\t\\n ]+");
+
+                // if search string is not just empty spaces, commas, etc.
+                if (splitSearch.length > 0) {
+
+                    // declare aa Ingredient List collection for
+//                    List<Ingredient> ingredients = new ArrayList<>();
+                    List<Diet> diets = dietRepo.findByTitleContaining("dairy-free");
+//                    List<Recipe> recipes = new ArrayList<>();
+                    dfPosts.clear();
+
+                    // Build list of ingredients and/or diets and
+                    for (int i = 0; i < splitSearch.length; i++) {
+                        if ( diets.contains( dietRepo.findDietByTitle(splitSearch[i]) ) ) {
+//                            if (ingredientRepo.findIngredientByName(splitSearch[i]) != null
+//                                    && diets.contains( )
+//                            ) {
+//                                ingredients.add(ingredientRepo.findIngredientByName(splitSearch[i]));
+//                            }
+                            dfPosts.addAll(diets);
+                        }
+                    }
+
+                    // if ingredients is not empty
+//                    if (!ingredients.isEmpty()) {
+//                        recipes.addAll(recipeRepo.findAllByIngredientsIn(ingredients));
+//                    }
+                    // if diets is not empty
+//                    if (!diets.isEmpty()) {
+////                        dfPosts.addAll(postRepo.findAllByDiets(diets));
+//                        recipes.addAll(recipeRepo.findAllByDiets(diets));
+//                    }
+
+                    // loop through recipes if it is not empty
+//                    if (!recipes.isEmpty()) {
+//                        for (Recipe recipe : recipes) {
+//                            dfPosts.add(postRepo.findAllByRecipe);
+//                        }
+//                    }
+                }
+            }
+
+
+
+            model.addAttribute("controller", "/diets/dairy-free");
+            model.addAttribute("diets", new HashSet<>(dfPosts));
         }
         return "diets/dairy-free";
     }

@@ -77,16 +77,9 @@
                             <button class="btn-link btn nav-link">Logout</button>
                         </form>
                     </li>
-
-<!--                    Began working on normal logout nav item-->
-                    <!--<li sec:authorize="isAuthenticated()" class="nav-item navsiz">
-                        <a class="nav-link" href="/logout}">Logout</a>
-                    </li>-->
-
-
                 </ul>
-                <!--                Form for searching post's title, working on adding ingredients functionality-->
-                <form class="d-flex" action="/posts" method="GET">
+                <!-- Form for searching post's title, working on adding ingredients functionality-->
+                <form class="d-flex" th:action="${controller}" method="GET">
                     <input class="form-control mr-2" type="search" name="search" placeholder="Search"
                            aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
