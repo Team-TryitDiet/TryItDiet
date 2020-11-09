@@ -51,7 +51,7 @@ VALUES
 ('worcestershire sauce'),
 ('kitchen bouquet'),
 ('onion'),
-('green onion'),
+('green onions'),
 ('garlic'),
 ('jalapeno slices'),
 ('black olives'),
