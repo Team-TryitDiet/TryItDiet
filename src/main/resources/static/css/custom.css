@@ -10,6 +10,7 @@
     --cp-vegit: #f63b3f;
     --cp-hfc: #360036;
     --cp-navc: #E5B3C0;
+    --cp-sidecolor: #818181;
 }
 
 .site-footer
@@ -282,7 +283,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: var(--cp-sidecolor);
     display: block;
     transition: 0.3s;
 }
@@ -342,6 +343,10 @@
     text-decoration: none;
     font-size: 17px;
     border-radius: 5px;
+}
+
+.mainp {
+    font-size: 18px;
 }
 
 /* Change the color of links on mouse-over */

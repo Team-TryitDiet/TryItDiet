@@ -37,6 +37,11 @@ public class UserController {
         return "index";
     }
 
+    @GetMapping("/aboutUs")
+    public String aboutUs(){
+        return "aboutUs";
+    }
+
     //    get method for register an account
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
