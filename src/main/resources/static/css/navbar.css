@@ -8,12 +8,17 @@ a:hover {
     background-color: #E5B3C0;
 }
 
-
-.custbtn {
-    border-color: white;
-    color: black;
-    background-color: transparent;
-!important;
+#logout:hover {
+    background-color: #E5B3C0;
 }
 
+.custbtn {
+    border-style: none !important;
+    color: black;
+    background-color: transparent;
+}
+
+.custbtn:hover {
+    background-color: #E5B3C0;
+}
 
