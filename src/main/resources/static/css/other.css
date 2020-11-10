@@ -2,6 +2,8 @@
 
 .bg50 {
     background-image: url("../img/pasta7_b274.jpg");
+}
+
 body, html {
     height: 100%;
     width: 100%;
@@ -18,7 +20,7 @@ body, html {
     font-size: smaller;
 }
 
-<<<<<<< HEAD
+
 .card-inner {
     margin-left: 10rem;
 }
@@ -31,7 +33,7 @@ h1, h2, h3 {
 .card-text {
     font-size: 15px;
 }
-=======
+
 /*.footdf {
     background-color: var(--cp-vega);
     color: #FFECDB;
@@ -99,4 +101,4 @@ a:hover {
 }
 
 #container { overflow:scroll; } /* Vertical scrolling only */
->>>>>>> 398a8c6d21edc6525d31a0dbad8579935810c244
+
