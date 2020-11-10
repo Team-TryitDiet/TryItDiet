@@ -29,7 +29,6 @@
                 <p class="d-xl-flex justify-content-xl-end" th:text="${post.user.username}">user</p>
             </div>
 
-
             <div class="d-xl-flex justify-content-xl-center">
                 <div th:switch="${post.recipe == null}">
                     <div th:case="${true}">
@@ -37,9 +36,11 @@
                             <div th:case="${true}">
                                 <div th:switch="${post.user.username.equals(user.username)}">
                                     <div th:case="${true}">
+
+                                        <!-- Post Edit button -->
                                         <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
-                                            <button class="btn btn-primary text-left" type="submit">Edit<i
-                                                    class="fa fa-edit"></i>
+                                            <button class="btn text-right" type="submit"><i
+                                                    class="fa fa-edit"></i> Edit
                                             </button>
                                         </form>
                                     </div>
@@ -52,7 +53,7 @@
         </div>
     </div>
 
-    <!--        the recipe post -->
+    <!-- the recipe post -->
     <div th:switch="${post.recipe != null}">
         <div th:case="${true}">
 
@@ -62,31 +63,33 @@
                     <h1 th:text="${post.title}"></h1>
                     <p th:text="${post.recipe.notes}"></p>
                     <p th:text="${post.recipe.preparation}"></p>
-
                     <hr>
                     <div class="d-flex flex-row flex-nowrap overflow-auto">
                         <div th:each="diet:${post.recipe.diets}">
-                        <span class="ml-1 small text-success col"
-                              th:text="${diet.title}"></span></div>
+                            <span class="ml-1 small text-success col"
+                                  th:text="${diet.title}"></span>
+                        </div>
                     </div>
                     <hr>
                     <div class="d-flex flex-row flex-nowrap overflow-auto">
                         <div th:each="ingredient:${post.recipe.ingredients}">
-                        <span id="ingredients" class="ml-1 small text-success col"
-                              th:text="${ingredient.name}"></span></div>
+                            <span id="ingredients" class="ml-1 small text-success col"
+                                  th:text="${ingredient.name}"></span>
+                        </div>
                     </div>
                     <hr>
                     <p class="d-xl-flex justify-content-xl-end" th:text="${post.user.username}">user</p>
                 </div>
-                <div class="d-xl-flex justify-content-xl-left">
+                <div class="d-xl-flex justify-content-xl-center">
                     <div th:switch="${user_id !=0}">
                         <div th:case="${true}">
-                            <!--                                    if login check if the current user equals the user who create the recipe -->
+                            <!-- if login check if the current user equals the user who create the recipe -->
                             <div th:switch="${post.user.username.equals(user.username)}">
                                 <div th:case="${true}">
 
-                                    <button class="btn btn-primary text-left" type="submit">Edit<i
-                                            class="fa fa-edit"></i>
+                                    <!-- Recipe Edit button -->
+                                    <button id="editPost" class="btn text-left" type="submit"><i
+                                            class="fa fa-edit"></i> Edit
                                     </button>
 
                                 </div>
@@ -95,15 +98,21 @@
                     </div>
                 </div>
             </form>
+
         </div>
     </div>
     <div th:switch="${user_id !=0}">
         <div th:case="${true}">
             <div th:switch="${post.user.username.equals(user.username)}">
                 <div th:case="${true}">
+
+                    <!-- Post Delete button -->
                     <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
-                        <button class="btn btn-primary text-left" type="submit">Delete<i
-                                class="fa fa-trash"></i></button>
+                        <div class="d-xl-flex justify-content-xl-center">
+                            <button id="deletePost" class="btn text-left" type="submit"><i
+                                    class="fa fa-trash"></i> Delete
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -111,8 +120,8 @@
     </div>
 
 </section>
-<!-- Create a comment only if the user login-->
 
+<!-- Create a comment only if the user login -->
 <div th:switch="${user_id !=0}">
     <div th:case="${true}">
         <div>
@@ -127,10 +136,7 @@
     </div>
 </div>
 
-<!--    post all comments-->
-<div class="card" th:each="comment : ${allComments}">
-
-
+<!-- post all comments -->
     <div class="card" id="commentGroup">
         <div class="card-header">
             <h3>Comment</h3>
@@ -159,6 +165,7 @@
                         <div th:case="${true}">
                             <div th:switch="${comment.user.username.equals(user.username)}">
                                 <div th:case="${true}">
+
                                     <!--edit the comment-->
                                     <div class="d-flex">
                                         <form th:action="@{'/comments/edit'}" method="get">
@@ -168,6 +175,7 @@
                                             </button>
                                         </form>
                                     </div>
+
                                     <!--delete the comment-->
                                     <div class="d-flex">
                                         <form th:action="@{'/comments/delete'}" method="post">
