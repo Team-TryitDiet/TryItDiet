@@ -9,6 +9,52 @@
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
+
+<!--design goes here-->
+<!--<section>-->
+<!--    <div class="container site-section" id="welcome">-->
+<!--        <h1>Welcome to Mom &amp; Pop's Bakery </h1>-->
+<!--        <p>Mom &amp; Pop's Bakery was founded in Paris in 1993 with the mission of giving great cake to the world. Our dedication and tasty cakes have won us numerous awards. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id purus ipsum.-->
+<!--        </p>-->
+<!--        <div class="text-left"><span class="ml-1 small text-success">NOVO</span></div>-->
+<!--        <div class="text-left" id="ingredients"><span class="ml-1 small text-success">NOVO</span></div>-->
+<!--        <p class="d-xl-flex justify-content-xl-end">user</p>-->
+<!--    </div>-->
+<!--    <div class="d-xl-flex justify-content-xl-center"><button class="btn btn-primary text-left" type="button"><i class="material-icons">check_box</i></button><button class="btn btn-primary text-left" type="button"><i class="material-icons">delete_forever</i></button></div>-->
+<!--</section>-->
+<!--<div class="card" id="commentGroup">-->
+<!--    <div class="card-header">-->
+<!--        <h3>Comment</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--        <ul class="list-group">-->
+<!--            <li class="list-group-item text-right" style="margin-bottom:6px;">-->
+<!--                <div class="media">-->
+<!--                    <div></div>-->
+<!--                    <div class="media-body">-->
+<!--                        <div class="media" style="overflow:visible;">-->
+<!--                            <div></div>-->
+<!--                            <div class="media-body" style="overflow:visible;">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <p class="text-left"><a href="#">Sara Doe:</a><br>-->
+<!--                                        </p>-->
+<!--                                        <p class="text-left"> This guy has been going 100+ MPH on side streets. <br>-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div><button class="btn btn-primary" type="button"><i class="fa fa-edit"></i></button><button class="btn btn-primary" type="button"><i class="icon ion-android-delete"></i></button></li>-->
+<!--        </ul>-->
+<!--        <div>-->
+<!--            <p>Add comment</p><textarea></textarea><button class="btn btn-primary" type="button"><i class="fa fa-check"></i></button></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--end of the design-->
+<!--            show the single post -->
+
 <div class="container">
     <div class="card w-75">
         <div class="card-body">
@@ -105,7 +151,6 @@
 
 <!--    post all comments-->
 <div class="card" th:each="comment : ${allComments}">
-
     <div class="card-body">
         <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
         <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
