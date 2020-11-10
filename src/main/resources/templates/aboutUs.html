@@ -18,7 +18,9 @@
                 <div class="col col-3">
                     <div class="card cards-shadown cards-hover" data-aos="flip-left" data-aos-duration="950">
                         <div
-                                class="card-header"><img th:src="@{/img/jesse.jpg}"></div>
+                                class="card-header" id="jess">
+                            <!--                            <img th:src="@{/img/jesse.jpg}">-->
+                        </div>
                         <div class="card-body">
                             <p class="card-text cardbody-sub-text" style="text-align: center;">Jesus Garza</p>
                             <a class="card-link h4" href="https://www.linkedin.com/in/jesusgarza25/"><i class="fa fa-linkedin-square" style="margin-left:23px;"></i></a>
@@ -27,10 +29,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col col-3" id="zihan">
+                <div class="col col-3">
                     <div class="card cards-shadown cards-hover" data-aos="flip-left" data-aos-duration="950">
-                        <div class="card-header" style="text-align: center;"><img th:src="@{/img/zihan.jpg}"></div>
-                        <div class="card-body">
+                        <div class="card-header" id="zihan"></div>
+                        <div class="card-body zihan">
                             <p class="card-text cardbody-sub-text">Zihan Zhao</p>
                             <a class="card-link h4" href="https://www.linkedin.com/in/zihanhannah/"><i class="fa fa-linkedin-square" style="margin-left:23px;"></i></a>
                             <a class="card-link h4" href="https://github.com/zihanhannah"><i class="fa fa-github" style="margin-left:23px;"></i></a>
@@ -40,8 +42,11 @@
                 </div>
                 <div class="col col-3">
                     <div class="card cards-shadown cards-hover" data-aos="flip-left" data-aos-duration="950">
-                        <div class="card-header"><img th:src="@{/img/brain.jpg}"></div>
+                        <div class="card-header" id="brian"></div>
                         <div class="card-body">
+                            <!--<<<<<<< HEAD-->
+                            <!--                            <p class="card-text cardbody-sub-text size-lg">Brian Barton</p>-->
+                            <!--=======-->
                             <p class="card-text cardbody-sub-text">Brian Barton</p>
                             <a class="card-link h4" href="https://www.linkedin.com/in/brian-barton30"><i class="fa fa-linkedin-square" style="margin-left:23px;"></i></a>
                             <a class="card-link h4" href="https://github.com/BrianNBarton" ><i class="fa fa-github" style="margin-left:23px;"></i></a>
@@ -51,7 +56,7 @@
                 </div>
                 <div class="col col-3">
                     <div class="card cards-shadown cards-hover" data-aos="flip-left" data-aos-duration="950">
-                        <div class="card-header"><img th:src="@{/img/tommy.jpg}"></div>
+                        <div class="card-header" id="tommy"></div>
                         <div class="card-body">
                             <p class="card-text cardbody-sub-text">Tommy Cirilo-Thorpe</p>
                             <a class="card-link h4" href=" https://www.linkedin.com/in/tommy-cirilo/"><i class="fa fa-linkedin-square" style="margin-left:23px;"></i></a>
@@ -65,7 +70,6 @@
     </div>
     </div>
 </section>
-
 <div th:replace="partials/scripts :: scripts"/>
 <script type="text/javascript" th:src="@{/js/aboutUs.js}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
