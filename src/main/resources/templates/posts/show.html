@@ -19,12 +19,13 @@
             <div class="container site-section welcome">
                 <h1 th:text="${post.title}"></h1>
                 <p th:text="${post.description}"></p>
-
-                <div th:each="diet:${post.diets}">
-                    <div class="text-left"><span class="ml-1 small text-success"
-                                                 th:text="${diet.title}"></span></div>
+                <hr>
+                <div class="d-flex flex-row flex-nowrap overflow-auto">
+                    <div th:each="diet: ${post.diets}">
+                        <span class="ml-1 small text-success col" th:text="${diet.title}"></span>
+                    </div>
                 </div>
-
+                <hr>
                 <p class="d-xl-flex justify-content-xl-end" th:text="${post.user.username}">user</p>
             </div>
 
@@ -62,15 +63,19 @@
                     <p th:text="${post.recipe.notes}"></p>
                     <p th:text="${post.recipe.preparation}"></p>
 
-                    <div th:each="diet:${post.recipe.diets}">
-                        <div class="text-left"><span class="ml-1 small text-success"
-                                                     th:text="${diet.title}"></span></div>
+                    <hr>
+                    <div class="d-flex flex-row flex-nowrap overflow-auto">
+                        <div th:each="diet:${post.recipe.diets}">
+                        <span class="ml-1 small text-success col"
+                              th:text="${diet.title}"></span></div>
                     </div>
-
-                    <div th:each="ingredient:${post.recipe.ingredients}">
-                        <div class="text-left" id="ingredients"><span class="ml-1 small text-success"
-                                                                      th:text="${ingredient.name}"></span></div>
+                    <hr>
+                    <div class="d-flex flex-row flex-nowrap overflow-auto">
+                        <div th:each="ingredient:${post.recipe.ingredients}">
+                        <span id="ingredients" class="ml-1 small text-success col"
+                              th:text="${ingredient.name}"></span></div>
                     </div>
+                    <hr>
                     <p class="d-xl-flex justify-content-xl-end" th:text="${post.user.username}">user</p>
                 </div>
                 <div class="d-xl-flex justify-content-xl-left">
@@ -124,67 +129,64 @@
 
 <!--    post all comments-->
 <div class="card" th:each="comment : ${allComments}">
-<!--    <div class="card-body">-->
-<!--        <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>-->
-<!--        <div class="card-text"><p th:text="${comment.getBody()}"></p></div>-->
 
 
-        <div class="card" id="commentGroup">
-            <div class="card-header">
-                <h3>Comment</h3>
-            </div>
-            <div class="card-body" th:each="comment : ${allComments}">
-                <ul class="list-group">
-                    <li class="list-group-item text-right" style="margin-bottom:6px;">
-                        <div class="media">
-                            <div></div>
-                            <div class="media-body">
-                                <div class="media" style="overflow:visible;">
-                                    <div></div>
-                                    <div class="media-body" style="overflow:visible;">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p class="text-left" th:text="${comment.getUser().getUsername()}"></p>
-                                                <br>
-                                                <p class="text-left" th:text="${comment.getBody()}"><br></p>
-                                            </div>
+    <div class="card" id="commentGroup">
+        <div class="card-header">
+            <h3>Comment</h3>
+        </div>
+        <div class="card-body" th:each="comment : ${allComments}">
+            <ul class="list-group">
+                <li class="list-group-item text-right" style="margin-bottom:6px;">
+                    <div class="media">
+                        <div></div>
+                        <div class="media-body">
+                            <div class="media" style="overflow:visible;">
+                                <div></div>
+                                <div class="media-body" style="overflow:visible;">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="text-left" th:text="${comment.getUser().getUsername()}"></p>
+                                            <br>
+                                            <p class="text-left" th:text="${comment.getBody()}"><br></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div th:switch="${user_id !=0}">
-                            <div th:case="${true}">
-                                <div th:switch="${comment.user.username.equals(user.username)}">
-                                    <div th:case="${true}">
-                                        <!--edit the comment-->
-                                        <div class="d-flex">
-                                            <form th:action="@{'/comments/edit'}" method="get">
-                                                <input type="hidden" name="commentId" th:value="${comment.id}"/>
-                                                <input type="hidden" name="postId" th:value="${post.id}"/>
-                                                <button class="btn btn-primary" type="submit"><i class="fa fa-edit"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                        <!--delete the comment-->
-                                        <div class="d-flex">
-                                            <form th:action="@{'/comments/delete'}" method="post">
-                                                <input type="hidden" name="commentId" th:value="${comment.id}"/>
-                                                <input type="hidden" name="postId" th:value="${post.id}"/>
-                                                <button type="submit" class="btn btn-primary"><i
-                                                        class="icon ion-android-delete"></i></button>
-                                            </form>
-                                        </div>
+                    </div>
+                    <div th:switch="${user_id !=0}">
+                        <div th:case="${true}">
+                            <div th:switch="${comment.user.username.equals(user.username)}">
+                                <div th:case="${true}">
+                                    <!--edit the comment-->
+                                    <div class="d-flex">
+                                        <form th:action="@{'/comments/edit'}" method="get">
+                                            <input type="hidden" name="commentId" th:value="${comment.id}"/>
+                                            <input type="hidden" name="postId" th:value="${post.id}"/>
+                                            <button class="btn btn-primary" type="submit"><i class="fa fa-edit"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <!--delete the comment-->
+                                    <div class="d-flex">
+                                        <form th:action="@{'/comments/delete'}" method="post">
+                                            <input type="hidden" name="commentId" th:value="${comment.id}"/>
+                                            <input type="hidden" name="postId" th:value="${post.id}"/>
+                                            <button type="submit" class="btn btn-primary"><i
+                                                    class="icon ion-android-delete"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </li>
+            </ul>
 
-            </div>
         </div>
     </div>
+</div>
 </div>
 <scripts th:replace="partials/scripts :: scripts"/>
 </body>

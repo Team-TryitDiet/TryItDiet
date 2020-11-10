@@ -40,7 +40,6 @@ img {
 .ml-1.small.text-success {
     background-color: pink;
     border-radius: 5px;
-    padding: 3px;
     color: black;
     padding: 5px;
 }
@@ -50,9 +49,11 @@ img {
     /*margin: 5px;*/
 }
 
-.text-left {
-    margin: 5px;
-}
+/*.text-left {*/
+/*    margin: 5px;*/
+/*    text-align: left!important;*/
+
+/*}*/
 
 #ingredients {
     margin: 5px;
