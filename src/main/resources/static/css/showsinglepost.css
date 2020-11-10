@@ -23,7 +23,7 @@ img {
     color: pink;
 }
 
-#welcome {
+.welcome {
     border-radius: 20px;
     background-color: rgb(245,236,238);
     border-style: solid;
@@ -40,7 +40,6 @@ img {
 .ml-1.small.text-success {
     background-color: pink;
     border-radius: 5px;
-    padding: 3px;
     color: black;
     padding: 5px;
 }
@@ -50,8 +49,20 @@ img {
     /*margin: 5px;*/
 }
 
-.text-left {
-    margin: 5px;
+
+#editPost {
+    color: rgb(86,173,222);
+    padding: 0;
+}
+
+#deletePost {
+    color: rgb(255,0,0);
+    padding: 5px 0;
+    background-color: pink;
+}
+
+.fa-trash {
+    color: rgb(255,0,0);
 }
 
 #ingredients {
@@ -90,17 +101,21 @@ p {
 }
 
 section .btn:not(:disabled):not(.disabled) {
-    background-color: white;
-    border: none;
-    width: 70px;
-    height: 70px;
+    color: pink;
+    border: rgb(150,233,251) solid 2px;
+    background-color: pink;
+    /*border: none;*/
+    width: 96px;
+    height: 40px;
+}
+#postEditButton{
+    color:rgb(86,173,222);
+}
+.commentBody {
+    width: 100%;
+    border-radius: .8rem;
 }
 
-#commentGroup {
-}
-
-.fa.fa-edit {
-}
 
 #commentGroup .btn:not(:disabled):not(.disabled) {
     background-color: white;
@@ -111,7 +126,6 @@ section .btn:not(:disabled):not(.disabled) {
 textarea {
     border-style: solid;
     background-color: rgb(245,236,238);
-    border-color: green;
     border-style: solid;
     border-color: rgb(150,233,251);
     font-weight: 400;
@@ -147,11 +161,26 @@ p {
     margin-top: 60px;
 }
 
-#welcome p {
+.welcome p {
     max-width: 800px;
     font-size: 20px;
     margin: 0 auto;
     color: #666;
 }
 
+#createComment{
+    border-style: solid;
+    border-color: rgb(150,233,251);
+    background-color: pink;
+    color:white;
+}
+
+#createComment .fa {
+    color:white;
+    padding-left: 3px;
+}
+
+#commentBody{
+    color: rgb(131,131,208);
+}
 
