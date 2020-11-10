@@ -40,10 +40,10 @@
 
                                             <!-- Post Edit button -->
                                             <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
-                                                <button class="btn text-left" type="submit"><i
+                                                <button class="btn" id="postEditButton" type="submit"><i
                                                         class="fa fa-edit"></i> Edit
                                                 </button>
-<!--                                                <button type="submit" value="submit" class=" float-right btn btn-dark card-text fa fa-comment"> Submit</button>-->
+                                                <!--                                                <button type="submit" value="submit" class=" float-right btn btn-dark card-text fa fa-comment"> Submit</button>-->
                                             </form>
                                         </div>
 
@@ -93,7 +93,7 @@
                                     <div th:case="${true}">
 
                                         <!-- Recipe Edit button -->
-                                        <button id="editPost" class="btn text-left" type="submit"><i
+                                        <button id="editPost" class="btn" type="submit"><i
                                                 class="fa fa-edit"></i> Edit
                                         </button>
 
@@ -116,7 +116,7 @@
                     <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
                         <div class="container">
                             <div class="d-flex justify-content-end">
-                                <button id="deletePost" class="btn text-left" type="submit"><i
+                                <button id="deletePost" class="btn" type="submit"><i
                                         class="fa fa-trash"></i> Delete
                                 </button>
                             </div>
@@ -138,7 +138,7 @@
                 <p>Add Comment</p>
                 <textarea id="body" name="body" class="commentBody"></textarea>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" value="submit" class="btn btn-primary"> Submit<i
+                    <button type="submit" value="submit" id="createComment" class="btn btn-primary"> Submit<i
                             class="fa fa-check"></i>
                     </button>
                 </div>
@@ -150,37 +150,38 @@
 
 <!-- post all comments -->
 
-    <div class="card" id="commentGroup">
-        <div class="card-header">
-            <h3>Comment</h3>
-        </div>
-        <div class="card-body" th:each="comment : ${allComments}">
-            <ul class="list-group">
-                <li class="list-group-item text-right" style="margin-bottom:6px;">
-                    <div class="media">
-                        <div></div>
-                        <div class="media-body">
-                            <div class="media" style="overflow:visible;">
-                                <div></div>
-                                <div class="media-body" style="overflow:visible;">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-left" th:text="${comment.getUser().getUsername()}"></p>
-                                            <br>
-                                            <p class="text-left" th:text="${comment.getBody()}"><br></p>
-                                        </div>
+<div class="card" id="commentGroup">
+    <div class="card-header">
+        <h3 class="ml-3">Comment</h3>
+    </div>
+    <div class="card-body" th:each="comment : ${allComments}">
+        <ul class="list-group">
+            <li class="list-group-item text-right" style="margin-bottom:6px;">
+                <div class="media">
+                    <div></div>
+                    <div class="media-body">
+                        <div class="media" style="overflow:visible;">
+                            <div></div>
+                            <div class="media-body" style="overflow:visible;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-left" th:text="${comment.getUser().getUsername()}"></p>
+                                        <br>
+                                        <h2 id="commentBody" class="text-left" th:text="${comment.getBody()}"><br></h2>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div th:switch="${user_id !=0}">
-                        <div th:case="${true}">
-                            <div th:switch="${comment.user.username.equals(user.username)}">
-                                <div th:case="${true}">
+                </div>
+                <div th:switch="${user_id !=0}">
+                    <div th:case="${true}">
+                        <div th:switch="${comment.user.username.equals(user.username)}">
+                            <div th:case="${true}">
 
+                                <div class="d-flex flex-nowrap overflow-auto">
                                     <!--edit the comment-->
-                                    <div class="d-flex">
+                                    <div class="d-flex justify-content-end ">
                                         <form th:action="@{'/comments/edit'}" method="get">
                                             <input type="hidden" name="commentId" th:value="${comment.id}"/>
                                             <input type="hidden" name="postId" th:value="${post.id}"/>
@@ -190,23 +191,24 @@
                                     </div>
 
                                     <!--delete the comment-->
-                                    <div class="d-flex">
+                                    <div class="d-flex justify-content-end ">
                                         <form th:action="@{'/comments/delete'}" method="post">
                                             <input type="hidden" name="commentId" th:value="${comment.id}"/>
                                             <input type="hidden" name="postId" th:value="${post.id}"/>
-                                            <button type="submit" class="btn btn-primary"><i
-                                                    class="icon ion-android-delete"></i></button>
+                                            <button class="btn btn-primary" type="submit"><i class="fa fa-trash"></i>
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </li>
+        </ul>
 
-        </div>
     </div>
+</div>
 </div>
 </div>
 <scripts th:replace="partials/scripts :: scripts"/>
