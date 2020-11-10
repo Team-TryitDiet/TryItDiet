@@ -3,17 +3,14 @@
         border-radius: 50rem !important;
     }
 }
-
 @media (min-width: 576px) {
     .rounded-nav .nav-link {
         border-radius: 50rem !important;
     }
 }
-
 .with-arrow .nav-link.active {
     position: relative;
 }
-
 .with-arrow .nav-link.active::after {
     content: '';
     border-left: 6px solid transparent;
@@ -25,39 +22,31 @@
     transform: translateX(-50%);
     display: block;
 }
-
 .lined .nav-link {
     border: none;
     border-bottom: 3px solid transparent;
 }
-
 .lined .nav-link:hover {
     border: none;
     border-bottom: 3px solid transparent;
 }
-
 .lined .nav-link.active {
     background: none;
     color: #555;
     border-color: #2b90d9;
 }
-
 .nav-pills .nav-link {
     color: #555;
 }
-
 .text-uppercase {
     letter-spacing: 0.1em;
 }
-
 #example {
     margin-bottom: 0;
 }
-
 .nav-tabs {
     border-bottom: none;
 }
-
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
     color: #555;
     cursor: default;
@@ -65,7 +54,6 @@
     border-bottom: solid 5px red;
     line-height: normal;
 }
-
 .nav > li > a:focus, .nav > li > a {
     text-decoration: none;
     margin: 0;
@@ -73,16 +61,13 @@
     border: none;
     border-bottom: solid 5px gray;
 }
-
 .nav-tabs > li > a:hover {
     border: none;
     border-bottom: solid 5px gray;
 }
-
 .tab-content {
     padding: 10px;
 }
-
 .nav-tabs > li > a {
     border-radius: 0;
     margin: 0;
@@ -90,13 +75,11 @@
     color: black;
     font-size: 20px;
 }
-
 .nav-tabs > li {
     float: left;
     margin-bottom: -1px;
     width: 33.33%;
 }
-
 #form-div {
     background-color: rgb(247,241,241);
     padding-bottom: 3%;
@@ -114,7 +97,6 @@ hr {
     padding-bottom: 3px;
     border-radius: 46.2px;
 }
-
 #submit-btn {
     margin-left: 3%;
 }
@@ -122,41 +104,32 @@ section {
     width: 100%;
     height: 100vh;
 }
-
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     border-radius: 20px;
     background-color: rgb(245,236,238);
     color: #8e44ad;
     font-weight: 600;
 }
-
 .text-center {
     color: #8e44ad;
     margin-top: 2rem;
     padding: 10px;
 }
-
-
-
 .nav-tabs .nav-link {
     color: pink;
 }
-
 p {
     color: #8e44ad;
 }
-
 .form-control {
     border-color: rgb(150,233,251);
     border-radius: 20px;
     border-width: 2px;
     border-style: solid;
 }
-
 .h1, h1 {
     color: #8e44ad;
 }
-
 #diets-heading {
     border-radius: 20px;
     background-color: rgb(245,236,238);
@@ -172,7 +145,6 @@ p {
     padding: 5px;
     margin-bottom: 10px;
 }
-
 .form-check {
     background-color: rgb(245,236,238);
     border-radius: 10px;
@@ -181,60 +153,49 @@ p {
     font-size: x-large;
     color: #8e44ad;
 }
-
 .formCheck-1 {
     margin-top: 14px;
 }
-
 .container, .container-lg, .container-md, .container-sm, .container-xl {
-    margin-top: 50px;
+    margin-top: .625rem;
 }
-
 #tab-1 {
-    margin-top: 150px;
+    margin-top: 0;
 }
-
 #tab-2 {
-    margin-top: 100px;
+    margin-top: 0;
 }
 #tab-3 {
-    margin-top: 100px;
+    margin-top: 0;
 }
-
 #form-heading {
     color: #8e44ad;
     padding: 5px;
     font-weight: lighter;
 }
-
 #tab-3-form {
     box-shadow: 0 0 16px rgba(81, 203, 238, 1);
     /*padding-bottom: 3%;*/
     border-radius: 22px;
     padding:30px 150px;
 }
-
 .tab-3 {
     position:absolute;
     display: block;
-
 }
 #ingredientTable_length , #ingredientTable_filter,#ingredientTable_info {
     color: #8e44ad;
     padding: 0 5px;
     /*border-color: rgb(150,233,251);*/
 }
-
 #ingredientTable_wrapper select {
     border: 2px solid rgb(150, 233, 251) !important;
     border-radius: 5px;
 }
-
 #ingredientTable_filter label input{
     border: 2px solid rgb(150, 233, 251) !important;
     border-radius: 5px;
 }
-
 #submitBtn:not(:disabled):not(.disabled) {
     color: rgb(245,236,238);
     font-weight: bold;
@@ -243,31 +204,43 @@ p {
     border: 2px solid rgb(150, 233, 251);
     border-radius: 10px;
 }
-
 a.page-link {
     color: #8e44ad;
 }
-
 a.page-link:hover {
     color: #8e44ad;
 }
-
 a.page-link:focus {
     background-color: #8e44ad;
     color: white;
 }
-
 .page-item.active .page-link {
     background-color: #8e44ad;
     color: white;
 }
-
 li.paginate_button.page-item a:focus {
     background-color: #8e44ad;
     color: white;
 }
-
 table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     background-color: #8e44ad;
     color: white;
+}
+.scroll{
+    /*background-color: #784B92;*/
+    width: 50%;
+    height: 10rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+    align-content: center;
+    justify-content: center;
+}
+.badge-success {
+    background-color:  #8e44ad;
+}
+
+tbody {
+    cursor: pointer;
 }
