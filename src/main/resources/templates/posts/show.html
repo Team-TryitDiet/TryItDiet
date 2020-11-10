@@ -5,187 +5,210 @@
     <links th:include="partials/head :: head"></links>
     <title>Single Post</title>
     <link rel="stylesheet" th:href="@{/css/showsinglepost.css}">
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 
 <!--design goes here-->
-<!--<section>-->
-<!--    <div class="container site-section" id="welcome">-->
-<!--        <h1>Welcome to Mom &amp; Pop's Bakery </h1>-->
-<!--        <p>Mom &amp; Pop's Bakery was founded in Paris in 1993 with the mission of giving great cake to the world. Our dedication and tasty cakes have won us numerous awards. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id purus ipsum.-->
-<!--        </p>-->
-<!--        <div class="text-left"><span class="ml-1 small text-success">NOVO</span></div>-->
-<!--        <div class="text-left" id="ingredients"><span class="ml-1 small text-success">NOVO</span></div>-->
-<!--        <p class="d-xl-flex justify-content-xl-end">user</p>-->
-<!--    </div>-->
-<!--    <div class="d-xl-flex justify-content-xl-center"><button class="btn btn-primary text-left" type="button"><i class="material-icons">check_box</i></button><button class="btn btn-primary text-left" type="button"><i class="material-icons">delete_forever</i></button></div>-->
-<!--</section>-->
-<!--<div class="card" id="commentGroup">-->
-<!--    <div class="card-header">-->
-<!--        <h3>Comment</h3>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--        <ul class="list-group">-->
-<!--            <li class="list-group-item text-right" style="margin-bottom:6px;">-->
-<!--                <div class="media">-->
-<!--                    <div></div>-->
-<!--                    <div class="media-body">-->
-<!--                        <div class="media" style="overflow:visible;">-->
-<!--                            <div></div>-->
-<!--                            <div class="media-body" style="overflow:visible;">-->
-<!--                                <div class="row">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <p class="text-left"><a href="#">Sara Doe:</a><br>-->
-<!--                                        </p>-->
-<!--                                        <p class="text-left"> This guy has been going 100+ MPH on side streets. <br>-->
-<!--                                        </p>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div><button class="btn btn-primary" type="button"><i class="fa fa-edit"></i></button><button class="btn btn-primary" type="button"><i class="icon ion-android-delete"></i></button></li>-->
-<!--        </ul>-->
-<!--        <div>-->
-<!--            <p>Add comment</p><textarea></textarea><button class="btn btn-primary" type="button"><i class="fa fa-check"></i></button></div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--end of the design-->
-<!--            show the single post -->
+<section>
 
-<div class="container">
-    <div class="card w-75">
-        <div class="card-body">
-            <div class="card-title" th:text="${post.title}"></div>
-            <div class="card-text" th:text="${post.description}"></div>
+    <!--       if it is the regular post:     show diets of the regular post -->
 
-            <!--       if it is the regular post:     show diets of the regular post -->
-            <div th:switch="${post.recipe == null}">
-                <div th:case="${true}">
-
-                    <div class="card" th:each="diet:${post.diets}">
-                        <div class="card-text"><p th:text="${diet.title}"></p></div>
+    <div th:switch="${post.recipe == null}">
+        <div th:case="${true}">
+            <div class="container site-section welcome">
+                <h1 th:text="${post.title}"></h1>
+                <p th:text="${post.description}"></p>
+                <hr>
+                <div class="d-flex flex-row flex-nowrap overflow-auto">
+                    <div th:each="diet: ${post.diets}">
+                        <span class="ml-1 small text-success col" th:text="${diet.title}"></span>
                     </div>
-                    <div th:switch="${user_id !=0}">
+                </div>
+                <hr>
+                <p class="d-flex justify-content-end" th:text="${post.user.username}">user</p>
+            </div>
+
+            <div class="container">
+                <div class="d-flex justify-content-end">
+                    <div th:switch="${post.recipe == null}">
                         <div th:case="${true}">
-                            <div th:switch="${post.user.username.equals(user.username)}">
+                            <div th:switch="${user_id !=0}">
                                 <div th:case="${true}">
-                                    <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
-                                        <button type="submit" class="btn btn-primary mr-1">Edit</button>
-                                    </form>
+                                    <div th:switch="${post.user.username.equals(user.username)}">
+                                        <div th:case="${true}">
+
+                                            <!-- Post Edit button -->
+                                            <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
+                                                <button class="btn text-left" type="submit"><i
+                                                        class="fa fa-edit"></i> Edit
+                                                </button>
+<!--                                                <button type="submit" value="submit" class=" float-right btn btn-dark card-text fa fa-comment"> Submit</button>-->
+                                            </form>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="d-flex">
-                <!--       if it is the recipe post:      show all the elements in recipe -->
+    <!-- the recipe post -->
+    <div th:switch="${post.recipe != null}">
+        <div th:case="${true}">
 
-                <div th:switch="${post.recipe != null}">
-                    <div th:case="${true}">
+            <form th:action="@{/posts/recipe/edit}" method="get">
+                <div class="container site-section welcome">
+                    <input type="hidden" name="postId" th:value="${post.id}">
+                    <h1 th:text="${post.title}"></h1>
+                    <p th:text="${post.recipe.notes}"></p>
+                    <p th:text="${post.recipe.preparation}"></p>
+                    <hr>
+                    <div class="d-flex flex-row flex-nowrap overflow-auto">
+                        <div th:each="diet:${post.recipe.diets}">
+                            <span class="ml-1 small text-success col"
+                                  th:text="${diet.title}"></span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row flex-nowrap overflow-auto">
+                        <div th:each="ingredient:${post.recipe.ingredients}">
+                            <span id="ingredients" class="ml-1 small text-success col"
+                                  th:text="${ingredient.name}"></span>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="d-xl-flex justify-content-xl-end" th:text="${post.user.username}">user</p>
+                </div>
+                <div class="container">
+                    <div class="d-flex justify-content-end">
+                        <div th:switch="${user_id !=0}">
+                            <div th:case="${true}">
+                                <!-- if login check if the current user equals the user who create the recipe -->
+                                <div th:switch="${post.user.username.equals(user.username)}">
+                                    <div th:case="${true}">
 
-                        <form th:action="@{/posts/recipe/edit}" method="get">
-                            <input type="hidden" name="postId" th:value="${post.id}">
-                            <div class="card-text"><p th:text="${post.recipe.notes}"></p></div>
-                            <div class="card-text"><p th:text="${post.recipe.preparation}"></p></div>
-                            <div class="card" th:each="diet:${post.recipe.diets}">
-                                <div class="card-text"><p th:text="${diet.title}"></p></div>
+                                        <!-- Recipe Edit button -->
+                                        <button id="editPost" class="btn text-left" type="submit"><i
+                                                class="fa fa-edit"></i> Edit
+                                        </button>
+
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-                            <!--                                    check if the user login -->
+        </div>
+    </div>
+    <div th:switch="${user_id !=0}">
+        <div th:case="${true}">
+            <div th:switch="${post.user.username.equals(user.username)}">
+                <div th:case="${true}">
 
-                            <div th:switch="${user_id !=0}">
-                                <div th:case="${true}">
-                                    <!--                                    if login check if the current user equals the user who create the recipe -->
-                                    <div th:switch="${post.user.username.equals(user.username)}">
-                                        <div th:case="${true}">
-                                            <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                    <!-- Post Delete button -->
+                    <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
+                        <div class="container">
+                            <div class="d-flex justify-content-end">
+                                <button id="deletePost" class="btn text-left" type="submit"><i
+                                        class="fa fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Create a comment only if the user login -->
+<div class="container">
+    <div th:switch="${user_id !=0}">
+        <div th:case="${true}">
+            <form th:action="@{'/posts/comment'}" th:object="${newComment}" method="post">
+                <input type="hidden" th:value="${post.id}" name="postId">
+                <p>Add Comment</p>
+                <textarea id="body" name="body" class="commentBody"></textarea>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" value="submit" class="btn btn-primary"> Submit<i
+                            class="fa fa-check"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- post all comments -->
+
+    <div class="card" id="commentGroup">
+        <div class="card-header">
+            <h3>Comment</h3>
+        </div>
+        <div class="card-body" th:each="comment : ${allComments}">
+            <ul class="list-group">
+                <li class="list-group-item text-right" style="margin-bottom:6px;">
+                    <div class="media">
+                        <div></div>
+                        <div class="media-body">
+                            <div class="media" style="overflow:visible;">
+                                <div></div>
+                                <div class="media-body" style="overflow:visible;">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="text-left" th:text="${comment.getUser().getUsername()}"></p>
+                                            <br>
+                                            <p class="text-left" th:text="${comment.getBody()}"><br></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    <div th:switch="${user_id !=0}">
+                        <div th:case="${true}">
+                            <div th:switch="${comment.user.username.equals(user.username)}">
+                                <div th:case="${true}">
 
-            </div>
-            <!-- delete button only for the user login and who build the post(regular post && recipe post) -->
-            <div class="d-flex">
-                <div th:switch="${user_id !=0}">
-                    <div th:case="${true}">
-                        <div th:switch="${post.user.username.equals(user.username)}">
-                            <div th:case="${true}">
-                                <form th:action="@{'/posts/delete/' + ${post.id}}" method="get">
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </form>
+                                    <!--edit the comment-->
+                                    <div class="d-flex">
+                                        <form th:action="@{'/comments/edit'}" method="get">
+                                            <input type="hidden" name="commentId" th:value="${comment.id}"/>
+                                            <input type="hidden" name="postId" th:value="${post.id}"/>
+                                            <button class="btn btn-primary" type="submit"><i class="fa fa-edit"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                    <!--delete the comment-->
+                                    <div class="d-flex">
+                                        <form th:action="@{'/comments/delete'}" method="post">
+                                            <input type="hidden" name="commentId" th:value="${comment.id}"/>
+                                            <input type="hidden" name="postId" th:value="${post.id}"/>
+                                            <button type="submit" class="btn btn-primary"><i
+                                                    class="icon ion-android-delete"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="card-text" th:text="${post.getUser().getUsername()}"></div>
+                </li>
+            </ul>
+
         </div>
     </div>
 </div>
-
-<!-- Create a comment only if the user login-->
-<div class="d-flex">
-    <div class="content">
-        <div th:switch="${user_id !=0}">
-            <div th:case="${true}">
-                <h3>Create a Comment</h3>
-                <form th:action="@{'/posts/comment'}" th:object="${newComment}" method="post">
-                    <input type="hidden" th:value="${post.id}" name="postId">
-                    <label for="body">Comment Body</label>
-                    <textarea id="body" name="body"></textarea>
-                    <button type="submit" value="submit"> Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
-
-<!--    post all comments-->
-<div class="card" th:each="comment : ${allComments}">
-    <div class="card-body">
-        <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
-        <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
-
-        <div th:switch="${user_id !=0}">
-            <div th:case="${true}">
-                <div th:switch="${comment.user.username.equals(user.username)}">
-                    <div th:case="${true}">
-                        <!--edit the comment-->
-                        <div class="d-flex">
-                            <form th:action="@{'/comments/edit'}" method="get">
-                                <input type="hidden" name="commentId" th:value="${comment.id}"/>
-                                <input type="hidden" name="postId" th:value="${post.id}"/>
-                                <button type="submit" class="btn btn-primary">Edit the comment</button>
-                            </form>
-                        </div>
-
-                        <!--delete the comment-->
-                        <div class="d-flex">
-                            <form th:action="@{'/comments/delete'}" method="post">
-                                <input type="hidden" name="commentId" th:value="${comment.id}"/>
-                                <input type="hidden" name="postId" th:value="${post.id}"/>
-                                <button type="submit" class="btn btn-primary">Delete the comment</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-<!--<footer th:replace="partials/footer :: footer"></footer>-->
 <scripts th:replace="partials/scripts :: scripts"/>
 </body>
 </html>
