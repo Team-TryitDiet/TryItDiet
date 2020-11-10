@@ -116,7 +116,7 @@ section .btn:not(:disabled):not(.disabled) {
     border-radius: .8rem;
 }
 
-
+/*button set up*/
 #commentGroup .btn:not(:disabled):not(.disabled) {
     background-color: white;
     color: rgb(86,173,222);
