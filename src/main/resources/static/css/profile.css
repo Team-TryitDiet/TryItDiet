@@ -124,7 +124,7 @@ body {
     opacity: 0.9;
     border-radius: 30px;
     margin: 10px;
-    color: #322422;
+    color: #dbcdca;
 }
 .col h1{
     font-size:28px;
@@ -138,6 +138,7 @@ body {
     border-radius: 10px;
     opacity: 100%;
     border-width:medium;
+    color: #dfc6c6;
 }
 .profile-name {
     background-color: rgb(64,68,57);
