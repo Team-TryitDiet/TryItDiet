@@ -244,3 +244,30 @@ p {
     border-radius: 10px;
 }
 
+a.page-link {
+    color: #8e44ad;
+}
+
+a.page-link:hover {
+    color: #8e44ad;
+}
+
+a.page-link:focus {
+    background-color: #8e44ad;
+    color: white;
+}
+
+.page-item.active .page-link {
+    background-color: #8e44ad;
+    color: white;
+}
+
+li.paginate_button.page-item a:focus {
+    background-color: #8e44ad;
+    color: white;
+}
+
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
+    background-color: #8e44ad;
+    color: white;
+}
