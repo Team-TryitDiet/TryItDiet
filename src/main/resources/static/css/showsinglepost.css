@@ -23,7 +23,7 @@ img {
     color: pink;
 }
 
-#welcome {
+.welcome {
     border-radius: 20px;
     background-color: rgb(245,236,238);
     border-style: solid;
@@ -147,7 +147,7 @@ p {
     margin-top: 60px;
 }
 
-#welcome p {
+.welcome p {
     max-width: 800px;
     font-size: 20px;
     margin: 0 auto;
