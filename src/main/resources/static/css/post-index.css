@@ -20,6 +20,15 @@ body html {
 
 a:hover{
     text-decoration:none;
+
+}
+
+nav a:hover {
+    background-color: #00838d;
+}
+
+#logout:hover {
+    background-color: #00838d;
 }
 
 .widget.single-news {

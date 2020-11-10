@@ -80,4 +80,10 @@ a:hover {
     var(--cp-vegit));
 }
 
+#logout:hover {
+    background-image: linear-gradient(to right, var(--cp-dair),var(--cp-glut),var(--cp-hp),var(--cp-ket),
+    var(--cp-pal),var(--cp-pesc),var(--cp-medit),var(--cp-vega),
+    var(--cp-vegit));
+}
+
 #container { overflow:scroll; } /* Vertical scrolling only */
