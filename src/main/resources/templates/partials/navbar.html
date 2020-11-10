@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <standard_links th:fragment="navbar">
-<!--    Prototype navbar 1-->
+    <!--    Prototype navbar 1-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -19,16 +19,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="#"></a>
 
-                    </li>
+                    </li>-->
                     <!-- Beginning of the drop down menu-->
                     <li class="nav-item dropdown navsiz">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-expanded="false">
-                            Diets
-                        </a>
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-expanded="false">Diets</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/diets/dairy-free">Dairy Free</a></li>
                             <li><a class="dropdown-item" href="/diets/gluten-free">Gluten-Free</a></li>
@@ -41,48 +39,57 @@
                             <li><a class="dropdown-item" href="/diets/vegetarian">Vegetarian</a></li>
                             <li><a class="dropdown-item" href="/diets/other">Other</a></li>
                         </ul>
-                    </li>
+                    </li><!-- end of first drop down -->
 
-                    <li class="nav-item navsiz"><a class="nav-link active" aria-current="page" href="/posts">Posts</a>
-                    </li>
-
-                    <!-- If the user is not logged in (anonymous to the site), display the login form and register button -->
-                    <li sec:authorize="isAnonymous()" class="nav-item navsiz">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
-                    <li sec:authorize="isAnonymous()" class="nav-item navsiz">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-
-                    <!-- If the user is already logged in / authenticated, display the logout button (form) -->
-                    <!--             ******************       Have a bug here *************-->
                     <!-- Beginning of the second drop down menu for posts CRUD added a 2 to id-->
-                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown navsiz">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                           data-toggle="dropdown" aria-expanded="false">
-                            Posts
-                        </a>
+                    <li class="nav-item dropdown navsiz">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown2" role="button"
+                           data-toggle="dropdown" aria-expanded="false">Posts</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/posts">View All</a></li>
-                            <li><a class="dropdown-item" href="/create">Create</a></li>
+                            <li sec:authorize="isAuthenticated()"><a class="dropdown-item" href="/create">Create</a></li>
                         </ul>
                     </li>
 
-                    <li sec:authorize="isAuthenticated()" class="nav-item navsiz">
-                        <a class="nav-link" href="/profile">Profile</a>
+                    <!-- If the user is not logged in (anonymous to the site), display the login form and register link -->
+                    <li sec:authorize="isAnonymous()" class="nav-item navsiz">
+                        <a class="nav-link active" href="/register">Register</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item navsiz">
+                        <a class="nav-link active" href="/login">Login</a>
                     </li>
 
+                    <!-- If the user is already logged in / authenticated, display the logout button (form) recipes, and profile -->
+
+
+                    <li sec:authorize="isAuthenticated()" class="nav-item navsiz">
+                        <a class="nav-link active" href="/posts/recipe">Recipes</a>
+                    </li>
+
+                    <li sec:authorize="isAuthenticated()" class="nav-item navsiz">
+                        <a class="nav-link active" href="/profile">Profile</a>
+                    </li>
+
+                    <li class="nav-item navsiz">
+                        <a class="nav-link active" href="/aboutUs">About Us</a>
+                    </li>
 
                     <!--                    This is the logout button that is giving issues-->
                     <li sec:authorize="isAuthenticated()" class="nav-item navsiz">
                         <form th:action="@{/logout}" th:method="post">
-
                             <!--                            <input class="nav-link" type="submit" />Logout-->
                             <button class="btn-link btn nav-link">Logout</button>
-                            <!--                        removed classes from button class="btn-link btn"-->
                         </form>
                     </li>
+
+<!--                    Began working on normal logout nav item-->
+                    <!--<li sec:authorize="isAuthenticated()" class="nav-item navsiz">
+                        <a class="nav-link" href="/logout}">Logout</a>
+                    </li>-->
+
+
                 </ul>
+                <!--                Form for searching post's title, working on adding ingredients functionality-->
                 <form class="d-flex" action="/posts" method="GET">
                     <input class="form-control mr-2" type="search" name="search" placeholder="Search"
                            aria-label="Search">
@@ -93,7 +100,7 @@
     </nav>
 
 
-<!--    prototype navbar 2-->
+    <!--    prototype navbar 2-->
 
 
 </standard_links>

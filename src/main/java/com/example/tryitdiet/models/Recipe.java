@@ -1,6 +1,5 @@
 package com.example.tryitdiet.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -15,7 +14,7 @@ public class Recipe {
     @Column(name = "id")
     private long id;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String preparation;
 
     @Column

@@ -2,32 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Keto</title>
     <link th:replace="partials/head :: head"/>
     <link rel="stylesheet" th:href="@{/css/keto.css}">
 </head>
 <body class="bg5">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <main class="container-fluid">
-    <h1 class="justify-content-center">Keto</h1>
-    <div th:replace="partials/sidebar :: sidebar"></div>
-    <div class="container">
-        <div class="card w-75 mb-3" th:each="diet : ${diets}">
-            <div class="card-body">
-                <!--                <div class="card-title"><h2 th:text="${diet.title}"></h2></div>-->
-                <div class="d-flex">
-                    <div class="card w-75 mb-3" th:each="post:${diet.posts}">
-                        <div class="card-title"><h2 th:text="${post.title}"></h2></div>
-                        <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                            <button type="submit" class="btn btn-primary mr-1">View</button>
-                        </form>
+    <div class="d-flex justify-content-start">
+        <div th:replace="partials/sidebar :: sidebar"></div>
+        <div class="scroll">
+            <div class="row">
+                <!--    Beginning of post section-->
+                <div class="container">
+                    <!--        Beginning of card container-->
+                    <div class="card text-center justify-content-center cardop col-12">
+                        <div class="card-header">
+                            <h3>Keto</h3>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Is it okay to eat fat, even though I have some?</h3>
+                            <p class="mainp">What is a Keto diet? A keto diet, also known as ketogenic, is a diet that focuses on
+                                    very low carb consumption, but high fat consumption. This may seem counter intuitive at first
+                                    but this trains your body to use fat for fuel instead of carbs.</p>
+                            <div>
+                                <h3>Why Choose a Keto Diet?</h3>
+                                <p class="mainp">The Keto diet have been extensively studied and proven to help with weight loss,
+                                    help to control blood-pressure, lower blood sugar levels, and overall promote better health.</p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div> <!-- End of Card container -->
+                    <hr>
+                    <!--                    Beginning of the diet post card-->
+                    <div class="container">
+                        <div class="d-flex flex-wrap noop" th:each="diet : ${diets}">
+                            <div class="card mb-2 col-3" th:each="post:${diet.posts}">
+                                <div class="card-title"><h2 th:text="${post.title}"></h2></div>
+                                <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                    <button type="submit" class="btn btn-dark mr-1">View</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </div> <!-- end of post section -->
             </div>
         </div>
     </div>
+
 </main>
-<footer th:replace="partials/footer :: footer"></footer>
+<script th:src="@{/js/sidebar.js}"></script>
 <scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>

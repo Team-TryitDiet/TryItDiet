@@ -37,6 +37,11 @@ public class UserController {
         return "index";
     }
 
+    @GetMapping("/aboutUs")
+    public String aboutUs(){
+        return "aboutUs";
+    }
+
     //    get method for register an account
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
@@ -93,18 +98,52 @@ public class UserController {
     public String saveUserProfile(@RequestParam String url, @ModelAttribute User user) {
         User getUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userRepo.getOne(getUser.getId());
-
-
         currentUser.setProfilePic(url);
-        userRepo.save(currentUser);
+        userRepo.saveAndFlush(currentUser);
         return "redirect:/profile";
     }
 
     @GetMapping("/user/edit")
-    public String editUserInformation(@ModelAttribute User user, Model model) {
+    public String editUserInformation(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Post> posts=currentUser.getPosts();
         model.addAttribute("user", userRepo.findById(currentUser.getId()).orElse(null));
-        return "users/register";
+//        model.addAttribute("profilePic", currentUser.getProfilePic());
+        model.addAttribute("posts", posts);
+        return "users/editProfile";
+    }
+    @PostMapping("/user/edit")
+    public String editUserInfoDone(
+                                   Model model,
+                                   @RequestParam(name="username") String username,
+                                   @RequestParam(name="email") String email,
+                                   @RequestParam(name = "confirmPassword") String confirmPassword,
+                                   @RequestParam(name = "password") String password,
+                                   @RequestParam(name="phone_name") String phone_number){
+        User userPrinciple = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepo.getOne(userPrinciple.getId());
+        if(!user.getUsername().equals(username)) {
+            if (userRepo.findAllByUsername(username).size() > 0) {
+                model.addAttribute("errorUserName", "Please choose another username");
+                return "users/editProfile";
+            }
+        }
+        if (!password.equals(confirmPassword)) {
+            return "users/editProfile";
+        }
+        if(!user.getEmail().equals(email)){
+            if(userRepo.findAllByEmail(email).size()>0){
+                model.addAttribute("errorEmail","Please choose another email");
+                return "users/editProfile";
+            }
+        }
+        user.setUsername(username);
+        user.setEmail(email);
+        String hash = passwordEncoder.encode(password);
+        user.setPassword(hash);
+        user.setPhone_number(phone_number);
 
+        userRepo.save(user);
+        return "redirect:/profile";
     }
 }

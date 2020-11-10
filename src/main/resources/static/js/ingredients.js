@@ -7,7 +7,7 @@ $(document).ready( async function () {
     const recipeIngredientNames = document.getElementById("testHiddenIngredientNames");
 
     // Using DOM to target the element of the notes property of the recipe
-    const recipeNotes = document.getElementById("notes");
+    // const recipeNotes = document.getElementById("notes");
     const ingredientTags = document.getElementById("tags");
 
     // Declared a Map to store the data from ingredients.json
@@ -33,6 +33,8 @@ $(document).ready( async function () {
             },
             { data: "name" }
         ],
+        stateSave: true,
+        pageLength: 50,
         "initComplete": () => {
             data.forEach(obj => {
                 // store the each ingredients id and name into the map
@@ -50,10 +52,10 @@ $(document).ready( async function () {
                     if (dtSelection.has(name)) {
                         selectedIngredients.push(dtSelection.get(name));
                         mySetNames.add(name);
-                        mySetTags.add(`<input class="tagstyle" value="${name}" />`);
+                        mySetTags.add(`<span class="badge badge-success">${name}</span>`);
                     }
                 }
-                ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
+                ingredientTags.innerHTML = Array.from(mySetTags).join(" ");
             }
         }
     });
@@ -64,7 +66,7 @@ $(document).ready( async function () {
     if (selectedIngredients.length > 0) {
         selectedIngredients.forEach((elem) => {
             table.row( `${elem - 1}` ).select();
-            mySetIds.add(elem)
+            mySetIds.add(elem);
         });
     }
 
@@ -80,11 +82,9 @@ $(document).ready( async function () {
             // add ingredient id and name to the set(s)
             mySetIds.add(dtInfoId[0]);
 
-            // <p>Status: <span class="w3-tag">Done</span></p>
             mySetNames.add(dtInfoName[0]);
-            mySetTags.add(`<input class="tagstyle" value="${dtInfoName[0]}" />`);
-            ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
-            recipeNotes.innerText = Array.from(mySetNames).join(", ");
+            mySetTags.add(`<span class="badge badge-success">${dtInfoName[0]}</span>`);
+            ingredientTags.innerHTML = Array.from(mySetTags).join(" ");
         }
     } );
 
@@ -100,9 +100,8 @@ $(document).ready( async function () {
             // remove ingredient id and name from the set(s)
             mySetIds.delete(dtInfoId[0]);
             mySetNames.delete(dtInfoName[0]);
-            mySetTags.delete(`<input class="tagstyle" value="${dtInfoName[0]}" />`);
-            ingredientTags.innerHTML = Array.from(mySetTags).join(", ");
-            recipeNotes.innerText = Array.from(mySetNames).join(", ");
+            mySetTags.delete(`<span class="badge badge-success">${dtInfoName[0]}</span>`);
+            ingredientTags.innerHTML = Array.from(mySetTags).join(" ");
         }
     } );
 

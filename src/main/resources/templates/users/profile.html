@@ -6,9 +6,9 @@
     <title>Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
-    <link rel="stylesheet" th:href="@{/css/profile.css}">
     <div th:replace="partials/head :: head"/>
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+<!--    <link rel="stylesheet" href="css/profile.css">-->
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"/>
@@ -16,33 +16,35 @@
 <section>
     <div class="profile-card">
         <div class="profile-back"></div>
-        <img class="rounded-circle profile-pic" th:src="${photoUrl}">
+        <img class="rounded-circle profile-pic" id="uploadedImage" style="object-fit: cover" alt="profile-image"
+             th:src="${photoUrl}">
         <h3 class="profile-name" th:text="'UserName: ' + ${user.username}"></h3>
         <h3 class="profile-name" th:text="'Email: ' + ${user.email}">email:</h3>
         <div th:switch="${!user.phone_number.equals('')}">
             <div th:case="${true}">
                 <h3 class="profile-name" th:text="'Phone Number: ' + ${user.phone_number}">phone number:</h3>
             </div>
-
         </div>
         <div class="box">
-            <button class="btn button" id="picker" type="button">Upload the Profile Picture</button>
-            <form th:action="@{/user/edit}"  method="get">
-            <button class="btn button" id="profile-info" type="submit" >Upload the Profile Info</button>
+            <button class="btn button" id="picker" type="submit">Upload Profile Picture</button>
+            <form th:action="@{/user/edit}" method="get">
+                <button class="btn button" id="profile-info" type="submit">Edit Profile Info</button>
             </form>
         </div>
     </div>
-    <div class="container">
+    <div class="container ">
         <h1 id="heading-profile">see all the post you created</h1>
-        <div th:each="post : ${posts}">
-            <div th:switch="${post.user.username.equals(user.username)}">
-                <div th:case="${true}">
-                    <div class="row">
-                        <div class="col">
-                            <h1 class="text-center d-flex flex-column column-posts" th:text="${post.title}"></h1>
-                            <form th:action="@{'/posts/' + ${post.id}}" method="get">
-                                <button class="btn1 text-center d-flex mx-auto" type="submit">View</button>
-                            </form>
+        <div class="container scroll" id="listAllPosts">
+            <div th:each="post : ${posts}">
+                <div th:switch="${post.user.username.equals(user.username)}">
+                    <div th:case="${true}">
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="text-center d-flex flex-column column-posts" th:text="${post.title}"></h1>
+                                <form th:action="@{'/posts/' + ${post.id}}" method="get">
+                                    <button class="btn1 text-center d-flex mx-auto" type="submit">View</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,7 +55,7 @@
 
 <script th:inline="javascript">const url =/*[[@{/profile/pic}]]*/</script>
 
-<div th:replace="partials/scripts :: scripts"/>
+<scripts th:replace="partials/scripts :: scripts"/>
 
 
 <script th:src="@{/js/keys.js}"></script>
@@ -62,7 +64,6 @@
 
 <script th:src="@{/js/filestack.js}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>-->
 </body>
 </html>

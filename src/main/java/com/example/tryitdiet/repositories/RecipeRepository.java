@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     // Method to get list of Recipe by ingredients
-    List<Recipe> findAllByIngredients(List<Ingredient> ingredients);
+    List<Recipe> findAllByIngredientsIn(List<Ingredient> ingredients);
     List<Recipe> findAllByDiets(List<Diet> diets);
 }
