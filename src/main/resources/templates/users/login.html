@@ -9,10 +9,10 @@
 </head>
 <body class="bg1">
 <nav th:replace="partials/navbar :: navbar"/>
-<div class="container-fluid contsiz">
-    <div class="d-flex justify-content-center pl-0">
-        <div class="column pl-4">
-            <form class="forbg" th:action="@{/login}" method="POST">
+<div class="container-fluid contsiz d-flex align-items-center justify-content-center">
+    <div class="">
+        <div class="column negmarg">
+            <form class="forbg negmarg p-3" th:action="@{/login}" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input class="form-control" id="username" name="username">
