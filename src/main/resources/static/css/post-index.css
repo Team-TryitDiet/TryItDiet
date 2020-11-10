@@ -183,7 +183,9 @@ p.small {
 .card1 {
     display: block;
     position: relative;
-    max-width: 262px;
+    max-width: 16rem;
+    max-height: 15rem;
+    min-height: 12rem;
     background-color: #f2f8f9;
     border-radius: 4px;
     padding: 32px 24px;
@@ -346,9 +348,6 @@ p.small {
     opacity: 1;
 }
 
-
-
-
 /*Css for a scrollable container */
 .scroll{
     /*background-color: #784B92;*/
@@ -361,7 +360,6 @@ p.small {
 }
 #container {
     overflow:scroll;
-
 } /* Vertical scrolling only */
 
 
