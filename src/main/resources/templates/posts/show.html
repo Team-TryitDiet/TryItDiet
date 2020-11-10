@@ -151,6 +151,7 @@
 
 <!--    post all comments-->
 <div class="card" th:each="comment : ${allComments}">
+
     <div class="card-body">
         <div class="card-text"><h2 th:text="${comment.getUser().getUsername()}"></h2></div>
         <div class="card-text"><p th:text="${comment.getBody()}"></p></div>
