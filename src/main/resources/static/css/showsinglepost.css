@@ -49,11 +49,6 @@ img {
     /*margin: 5px;*/
 }
 
-/*.text-left {*/
-/*    margin: 5px;*/
-/*    text-align: left!important;*/
-
-/*}*/
 
 #editPost {
     color: rgb(86,173,222);
@@ -62,7 +57,8 @@ img {
 
 #deletePost {
     color: rgb(255,0,0);
-    padding: 0;
+    padding: 5px 0;
+    background-color: pink;
 }
 
 .fa-trash {
@@ -106,23 +102,20 @@ p {
 
 section .btn:not(:disabled):not(.disabled) {
     color: pink;
-    border: pink solid 2px;
-    background-color: white;
+    border: rgb(150,233,251) solid 2px;
+    background-color: pink;
     /*border: none;*/
-    width: 70px;
-    height: 70px;
+    width: 96px;
+    height: 40px;
 }
-
+#postEditButton{
+    color:rgb(86,173,222);
+}
 .commentBody {
     width: 100%;
     border-radius: .8rem;
 }
 
-#commentGroup {
-}
-
-.fa.fa-edit {
-}
 
 #commentGroup .btn:not(:disabled):not(.disabled) {
     background-color: white;
@@ -133,7 +126,6 @@ section .btn:not(:disabled):not(.disabled) {
 textarea {
     border-style: solid;
     background-color: rgb(245,236,238);
-    border-color: green;
     border-style: solid;
     border-color: rgb(150,233,251);
     font-weight: 400;
@@ -176,4 +168,19 @@ p {
     color: #666;
 }
 
+#createComment{
+    border-style: solid;
+    border-color: rgb(150,233,251);
+    background-color: pink;
+    color:white;
+}
+
+#createComment .fa {
+    color:white;
+    padding-left: 3px;
+}
+
+#commentBody{
+    color: rgb(131,131,208);
+}
 
