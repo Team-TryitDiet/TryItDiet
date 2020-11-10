@@ -271,3 +271,16 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     background-color: #8e44ad;
     color: white;
 }
+.scroll{
+    /*background-color: #784B92;*/
+    width: 50%;
+    height: 800%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+    align-content: center;
+    justify-content: center;
+
+}
