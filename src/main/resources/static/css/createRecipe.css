@@ -240,3 +240,7 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .badge-success {
     background-color:  #8e44ad;
 }
+
+tbody {
+    cursor: pointer;
+}
