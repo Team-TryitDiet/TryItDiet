@@ -1,0 +1,59 @@
+.text-left {
+    padding-left: 150px;
+    margin-top: 150px;
+    font-size: x-large;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    background-color: rgb(150,233,251);
+    border: none;
+}
+
+.fa.fa-check {
+    color: pink;
+}
+
+.btn {
+    margin: 0px 10px;
+    margin-bottom: 20px;
+}
+
+.fa {
+    color: rgb(86,173,222);
+}
+
+p {
+    font-size: 15px;
+}
+
+#commentGroup .btn:not(:disabled):not(.disabled) {
+    background-color: white;
+    color: rgb(86,173,222);
+    border: none;
+}
+
+textarea {
+    border-style: solid;
+    border-color: green;
+    background-color: rgb(245,236,238);
+    border-style: solid;
+    border-color: rgb(150,233,251);
+    font-weight: 400;
+    padding-bottom: 3%;
+    box-shadow: 0 0 16px rgba(81, 203, 238, 1);
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+p {
+    color: rgb(131,131,208);
+}
+
+textarea {
+    margin-top: 5px;
+}
+
+p {
+    margin-top: 10px;
+}
+

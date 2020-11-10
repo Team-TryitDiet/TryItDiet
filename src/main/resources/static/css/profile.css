@@ -171,3 +171,7 @@ body {
 a:hover {
     background-color: rgb(212,234,226);
 }
+
+#logout:hover {
+    background-color: rgb(212,234,226);
+}

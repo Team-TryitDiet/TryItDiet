@@ -13,8 +13,9 @@ body, html {
 
 .forbg2 {
     background-color: darkolivegreen;
-    opacity: .8;
+    /*opacity: .9;*/
     height: 100vh;
+    color: whitesmoke;
 }
 
 .morewidth {
@@ -37,8 +38,13 @@ nav a:hover {
     background-color: darkolivegreen;
 }
 
+#logout:hover {
+    background-color: darkolivegreen;
+}
+
+/*
 .footdf {
     background-color: saddlebrown;
     color: white;
     opacity: .9;
-}
+}*/

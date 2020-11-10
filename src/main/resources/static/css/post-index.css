@@ -3,10 +3,10 @@ body html {
     width: 100%;
 }
 
-body{
+/*body{
     margin-top:20px;
     background-color: #eee;
-}
+}*/
 
 .bg20 {
     background-image: url("../img/cutting-boardMin.jpg");
@@ -20,6 +20,15 @@ body{
 
 a:hover{
     text-decoration:none;
+
+}
+
+nav a:hover {
+    background-color: #00838d;
+}
+
+#logout:hover {
+    background-color: #00838d;
 }
 
 .widget.single-news {
@@ -131,7 +140,7 @@ html, body {
 /*This is the css for all h3 tags of the tryit diet cards*/
 .tryitCard {
     color: #262626;
-    font-size: 17px;
+    font-size: 1.5rem;
     line-height: 24px;
     font-weight: 700;
     margin-bottom: 4px;
@@ -139,15 +148,15 @@ html, body {
 
 /*This is the css for all p tags of the tryit diet cards*/
 .tryitCardP {
-    font-size: 17px;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 20px;
     color: #666666;
 }
 
-
+/*This controls the actual P size*/
 p.small {
-    font-size: 14px;
+    font-size: 1.2rem;
 }
 
 .go-corner {

@@ -217,6 +217,11 @@ input {
 a:hover {
     background-color:  #e9e98b;
 }
+
+#logout:hover {
+    background-color: #e9e98b;
+}
+
 .scroll{
     /*background-color: #784B92;*/
     /*width: 100%;*/

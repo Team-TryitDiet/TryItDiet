@@ -8,6 +8,10 @@ a:hover {
     background-color: #E5B3C0;
 }
 
+#logout:hover {
+    background-color: #E5B3C0;
+}
+
 .custbtn {
     border-style: none !important;
     color: black;
