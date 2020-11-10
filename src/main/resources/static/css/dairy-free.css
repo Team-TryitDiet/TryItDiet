@@ -36,6 +36,10 @@ nav a:hover {
     background-color: var(--cp-dair);
 }
 
+#logout:hover {
+    background-color: var(--cp-dair);
+}
+
 .icon-bar a:hover {
     background-color: var(--cp-dair); /* Add a color to icon hover */
 }

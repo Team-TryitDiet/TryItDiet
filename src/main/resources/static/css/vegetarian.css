@@ -64,4 +64,8 @@ a:hover {
     background-color: var(--cp-vegit); /* Add a color to active icon */;
 }
 
+#logout:hover {
+    background-color: var(--cp-vegit);
+}
+
 #container { overflow:scroll; } /* Vertical scrolling only */
