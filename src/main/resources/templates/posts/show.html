@@ -38,8 +38,7 @@
                                 <div th:switch="${post.user.username.equals(user.username)}">
                                     <div th:case="${true}">
                                         <form th:action="@{'/posts/'+ ${post.id} +'/edit'}" method="get">
-                                            <button class="btn btn-primary text-left" type="submit">Edit<i
-                                                    class="fa fa-edit"></i>
+                                            <button class="btn btn-primary text-left" type="submit">Edit
                                             </button>
                                         </form>
                                     </div>
@@ -128,7 +127,6 @@
 </div>
 
 <!--    post all comments-->
-<div class="card" th:each="comment : ${allComments}">
 
 
     <div class="card" id="commentGroup">

@@ -91,8 +91,10 @@ p {
 }
 
 section .btn:not(:disabled):not(.disabled) {
+    color: pink;
+    border: pink solid 2px;
     background-color: white;
-    border: none;
+    /*border: none;*/
     width: 70px;
     height: 70px;
 }
